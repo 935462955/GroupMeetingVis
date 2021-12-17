@@ -1,0 +1,1332 @@
+[
+    {
+        "id": 0,
+        "startTime-endTime": "50.42-50.99",
+        "text": "Okay.",
+        "speaker": "B",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 1,
+        "startTime-endTime": "53.56-53.96",
+        "text": "Right.",
+        "speaker": "B",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 2,
+        "startTime-endTime": "55.98-77.29",
+        "text": "Um well this is the kick-off meeting for our our project. Um and um this is just what we're gonna be doing over the next twenty five minutes. Um so first of all , just to kind of make sure that we all know each other , I'm Laura and I'm the project manager. Do you want to introduce yourself again?",
+        "speaker": "B",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 3,
+        "startTime-endTime": "67.21-67.45",
+        "text": "Mm-hmm.",
+        "speaker": "D",
+        "reply_to_id": "2"
+    },
+    {
+        "id": 4,
+        "startTime-endTime": "74.89-75.24",
+        "text": "Great.",
+        "speaker": "D",
+        "reply_to_id": "2"
+    },
+    {
+        "id": 5,
+        "startTime-endTime": "77.44-80.87",
+        "text": "Hi , I'm David and I'm supposed to be an industrial designer.",
+        "speaker": "A",
+        "reply_to_id": "2"
+    },
+    {
+        "id": 6,
+        "startTime-endTime": "80.81-81.26",
+        "text": "Okay.",
+        "speaker": "B",
+        "reply_to_id": "5"
+    },
+    {
+        "id": 7,
+        "startTime-endTime": "82.08-86.5",
+        "text": "And I'm Andrew and I'm uh our marketing expert.",
+        "speaker": "D",
+        "reply_to_id": "2"
+    },
+    {
+        "id": 8,
+        "startTime-endTime": "85.99-88.71",
+        "text": "Um I'm Craig and I'm User Interface.",
+        "speaker": "C",
+        "reply_to_id": "2"
+    },
+    {
+        "id": 9,
+        "startTime-endTime": "89.3-101.76",
+        "text": "Great. Okay. Um so we're designing a new remote control and um Oh I have to record who's here actually. So that's David , Andrew and Craig , isn't it?",
+        "speaker": "B",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 10,
+        "startTime-endTime": "104.89-106.58",
+        "text": "And you all arrived on time.",
+        "speaker": "B",
+        "reply_to_id": "9"
+    },
+    {
+        "id": 11,
+        "startTime-endTime": "108.96-132.03",
+        "text": "Um yeah so des uh design a new remote control. Um , as you can see it's supposed to be original , trendy and user friendly. Um so that's kind of our our brief , as it were. Um and so there are three different stages to the design. Um I'm not really sure what what you guys have already received um in your emails. What did you get?",
+        "speaker": "B",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 12,
+        "startTime-endTime": "132.57-141.98",
+        "text": "Um , I just got the project announcement about what the project is. Designing a remote control. That's about it , didn't get anything else. Did you get the same thing?",
+        "speaker": "A",
+        "reply_to_id": "11"
+    },
+    {
+        "id": 13,
+        "startTime-endTime": "135.08-135.44",
+        "text": "Mm-hmm.",
+        "speaker": "B",
+        "reply_to_id": "12"
+    },
+    {
+        "id": 14,
+        "startTime-endTime": "137.12-137.39",
+        "text": "Mm-hmm.",
+        "speaker": "D",
+        "reply_to_id": "12"
+    },
+    {
+        "id": 15,
+        "startTime-endTime": "138.96-140.56",
+        "text": "Mm-hmm. Yeah , that's that's it.",
+        "speaker": "D",
+        "reply_to_id": "12"
+    },
+    {
+        "id": 16,
+        "startTime-endTime": "140.1-167.31",
+        "text": "Is that what everybody got? Okay. Um. So we're gonna have like individual work and then a meeting about it. And repeat that process three times. Um and at this point we get try out the whiteboard over there. Um. So uh you get to draw your favourite animal and sum up your favourite characteristics of it. So who would like to go first?",
+        "speaker": "B",
+        "reply_to_id": "12"
+    },
+    {
+        "id": 17,
+        "startTime-endTime": "140.47-140.83",
+        "text": "Yeah.",
+        "speaker": "C",
+        "reply_to_id": "16"
+    },
+    {
+        "id": 18,
+        "startTime-endTime": "141.8-141.95",
+        "text": "Yeah.",
+        "speaker": "D",
+        "reply_to_id": "16"
+    },
+    {
+        "id": 19,
+        "startTime-endTime": "166.67-167.81",
+        "text": "I will go. That's fine.",
+        "speaker": "D",
+        "reply_to_id": "16"
+    },
+    {
+        "id": 20,
+        "startTime-endTime": "167.84-168.84",
+        "text": "Very good.",
+        "speaker": "B",
+        "reply_to_id": "19"
+    },
+    {
+        "id": 21,
+        "startTime-endTime": "174.2-182.34",
+        "text": "Alright. So This one here , right?",
+        "speaker": "D",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 22,
+        "startTime-endTime": "183.26-184.24",
+        "text": "Mm-hmm.",
+        "speaker": "B",
+        "reply_to_id": "21"
+    },
+    {
+        "id": 23,
+        "startTime-endTime": "183.93-204.24",
+        "text": "Okay. Very nice. Alright. My favourite animal is like A beagle.",
+        "speaker": "D",
+        "reply_to_id": "22"
+    },
+    {
+        "id": 24,
+        "startTime-endTime": "211.97-242.41",
+        "text": "Um charac favourite characteristics of it? Is that right? Uh , right , well basically um high priority for any animal for me is that they be willing to take a lot of physical affection from their family. And , yeah that they have lots of personality and uh be fit and in robust good health. So this is blue. Blue beagle. My family's beagle.",
+        "speaker": "D",
+        "reply_to_id": "22"
+    },
+    {
+        "id": 25,
+        "startTime-endTime": "215.95-216.77",
+        "text": "Yeah. Yeah.",
+        "speaker": "B",
+        "reply_to_id": "24"
+    },
+    {
+        "id": 26,
+        "startTime-endTime": "243.4-245.7",
+        "text": "Right. Lovely.",
+        "speaker": "B",
+        "reply_to_id": "24"
+    },
+    {
+        "id": 27,
+        "startTime-endTime": "255.07-257.26",
+        "text": "Well , my favourite animal would be a monkey.",
+        "speaker": "C",
+        "reply_to_id": "16"
+    },
+    {
+        "id": 28,
+        "startTime-endTime": "268.0-273.99",
+        "text": "Then they're small cute and furry , and uh when planet of the apes becomes real , I'm gonna be up there with them.",
+        "speaker": "C",
+        "reply_to_id": "27"
+    },
+    {
+        "id": 29,
+        "startTime-endTime": "275.67-276.02",
+        "text": "Right.",
+        "speaker": "B",
+        "reply_to_id": "28"
+    },
+    {
+        "id": 30,
+        "startTime-endTime": "275.83-276.15",
+        "text": "Cool.",
+        "speaker": "A",
+        "reply_to_id": "28"
+    },
+    {
+        "id": 31,
+        "startTime-endTime": "280.75-282.65",
+        "text": "There's too much gear.",
+        "speaker": "A",
+        "reply_to_id": "28"
+    },
+    {
+        "id": 32,
+        "startTime-endTime": "285.96-293.37",
+        "text": "You can take as long over this as you like , because we haven't got an awful lot to discuss. Ok oh we do we do. Don't feel like you're in a rush , anyway.",
+        "speaker": "B",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 33,
+        "startTime-endTime": "293.26-294.25",
+        "text": "Okay.",
+        "speaker": "A",
+        "reply_to_id": "32"
+    },
+    {
+        "id": 34,
+        "startTime-endTime": "296.02-300.92",
+        "text": "I coulda told you a whole lot more about beagles. Boy , let me tell you.",
+        "speaker": "D",
+        "reply_to_id": "32"
+    },
+    {
+        "id": 35,
+        "startTime-endTime": "297.94-300.43",
+        "text": "Ach why not We might have to get you up again then.",
+        "speaker": "B",
+        "reply_to_id": "34"
+    },
+    {
+        "id": 36,
+        "startTime-endTime": "301.14-303.58",
+        "text": "I don't know what mine is. I'm gonna have to think on the spot now.",
+        "speaker": "B",
+        "reply_to_id": "16"
+    },
+    {
+        "id": 37,
+        "startTime-endTime": "307.06-307.9",
+        "text": "Impressionist.",
+        "speaker": "D",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 38,
+        "startTime-endTime": "309.38-310.85",
+        "text": "Can't draw.",
+        "speaker": "A",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 39,
+        "startTime-endTime": "312.05-315.13",
+        "text": "Is that a whale?",
+        "speaker": "B",
+        "reply_to_id": "38"
+    },
+    {
+        "id": 40,
+        "startTime-endTime": "312.06-312.84",
+        "text": "Um.",
+        "speaker": "A",
+        "reply_to_id": "38"
+    },
+    {
+        "id": 41,
+        "startTime-endTime": "313.09-313.52",
+        "text": "Yeah.",
+        "speaker": "A",
+        "reply_to_id": "40"
+    },
+    {
+        "id": 42,
+        "startTime-endTime": "318.58-331.57",
+        "text": "Um , well anyway , I don't know , it's just the first animal I can think off the top of my head. Um. Yes. Big reason is 'cause I'm allergic to most animals. Allergic to animal fur , so um fish was a natural choice.",
+        "speaker": "A",
+        "reply_to_id": "40"
+    },
+    {
+        "id": 43,
+        "startTime-endTime": "327.91-328.53",
+        "text": "Ah.",
+        "speaker": "B",
+        "reply_to_id": "42"
+    },
+    {
+        "id": 44,
+        "startTime-endTime": "332.03-337.7",
+        "text": "Um , yeah , and I kind of like whales. They come in and go eat everything in sight.",
+        "speaker": "A",
+        "reply_to_id": "43"
+    },
+    {
+        "id": 45,
+        "startTime-endTime": "338.22-341.52",
+        "text": "And they're quite harmless and mild and interesting.",
+        "speaker": "A",
+        "reply_to_id": "44"
+    },
+    {
+        "id": 46,
+        "startTime-endTime": "338.48-339.05",
+        "text": "Alright.",
+        "speaker": "D",
+        "reply_to_id": "45"
+    },
+    {
+        "id": 47,
+        "startTime-endTime": "341.85-342.2",
+        "text": "Mm.",
+        "speaker": "D",
+        "reply_to_id": "46"
+    },
+    {
+        "id": 48,
+        "startTime-endTime": "342.42-346.85",
+        "text": "Okay. God , I still don't know what I'm gonna write about. Um.",
+        "speaker": "B",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 49,
+        "startTime-endTime": "349.66-350.84",
+        "text": "Superb sketch , by the way.",
+        "speaker": "D",
+        "reply_to_id": "48"
+    },
+    {
+        "id": 50,
+        "startTime-endTime": "353.86-355.11",
+        "text": "Tail's a bit big , I think.",
+        "speaker": "A",
+        "reply_to_id": "48"
+    },
+    {
+        "id": 51,
+        "startTime-endTime": "354.91-368.63",
+        "text": "I was gonna choose a dog as well. But I'll just draw a different kind of dog. M my favourite animal is my own dog at home. Um That doesn't really look like him , actually.",
+        "speaker": "B",
+        "reply_to_id": "50"
+    },
+    {
+        "id": 52,
+        "startTime-endTime": "359.62-359.9",
+        "text": "Yep.",
+        "speaker": "D",
+        "reply_to_id": "51"
+    },
+    {
+        "id": 53,
+        "startTime-endTime": "373.3-374.72",
+        "text": "He looks more like a pig , actually.",
+        "speaker": "B",
+        "reply_to_id": "51"
+    },
+    {
+        "id": 54,
+        "startTime-endTime": "375.84-376.27",
+        "text": "Ah well.",
+        "speaker": "B",
+        "reply_to_id": "53"
+    },
+    {
+        "id": 55,
+        "startTime-endTime": "378.46-380.14",
+        "text": "I see a dog in there. Yep.",
+        "speaker": "D",
+        "reply_to_id": "53"
+    },
+    {
+        "id": 56,
+        "startTime-endTime": "379.52-380.97",
+        "text": "Do you? Oh that's very good of you.",
+        "speaker": "B",
+        "reply_to_id": "55"
+    },
+    {
+        "id": 57,
+        "startTime-endTime": "382.82-383.68",
+        "text": "Now I see a rooster.",
+        "speaker": "D",
+        "reply_to_id": "56"
+    },
+    {
+        "id": 58,
+        "startTime-endTime": "388.27-389.07",
+        "text": "Uh.",
+        "speaker": "B",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 59,
+        "startTime-endTime": "393.42-394.21",
+        "text": "What kind is it?",
+        "speaker": "D",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 60,
+        "startTime-endTime": "394.87-441.92",
+        "text": "Um he's a mixture of uh various things. Um and what do I like about him , um That's just to suggest that his tail wags. Um he's very friendly and cheery and always pleased to see you , and very kind of affectionate and um uh and he's quite quite wee as well so you know he can doesn't take up too much space. Um and uh And he does a funny thing where he chases his tail as well , which is quite amusing , so It is. I think it is. He only does it after he's had his dinner and um he'll just all of a sudden just get up and start chasing his tail 'round the living room.",
+        "speaker": "B",
+        "reply_to_id": "59"
+    },
+    {
+        "id": 61,
+        "startTime-endTime": "431.27-433.44",
+        "text": "Is he aware that th it's his own cha tail he's chasing?",
+        "speaker": "D",
+        "reply_to_id": "60"
+    },
+    {
+        "id": 62,
+        "startTime-endTime": "440.33-440.47",
+        "text": "Hmm.",
+        "speaker": "D",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 63,
+        "startTime-endTime": "442.02-443.21",
+        "text": "It's an after dinner dog then.",
+        "speaker": "A",
+        "reply_to_id": "60"
+    },
+    {
+        "id": 64,
+        "startTime-endTime": "443.59-448.08",
+        "text": "Yeah , so uh Yeah , maybe.",
+        "speaker": "B",
+        "reply_to_id": "63"
+    },
+    {
+        "id": 65,
+        "startTime-endTime": "444.05-448.71",
+        "text": "Probably when he was little he got lots of attention for doing it and has forever been conditioned.",
+        "speaker": "D",
+        "reply_to_id": "60"
+    },
+    {
+        "id": 66,
+        "startTime-endTime": "449.0-453.61",
+        "text": "Maybe. Right , um where did you find this? Just down here? Yeah.",
+        "speaker": "B",
+        "reply_to_id": "65"
+    },
+    {
+        "id": 67,
+        "startTime-endTime": "455.51-456.76",
+        "text": "Okay.",
+        "speaker": "B",
+        "reply_to_id": "66"
+    },
+    {
+        "id": 68,
+        "startTime-endTime": "458.92-462.97",
+        "text": "Um what are we doing next? Uh um.",
+        "speaker": "B",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 69,
+        "startTime-endTime": "465.51-495.0",
+        "text": "Okay , uh we now need to discuss the project finance. Um so according to the brief um we're gonna be selling this remote control for twenty five Euro , um and we're aiming to make fifty million Euro. Um so we're gonna be selling this on an international scale. And uh we don't want it to cost any more than uh twelve fifty Euros , so fifty percent of the selling price.",
+        "speaker": "B",
+        "reply_to_id": "68"
+    },
+    {
+        "id": 70,
+        "startTime-endTime": "488.56-488.91",
+        "text": "'Kay.",
+        "speaker": "D",
+        "reply_to_id": "69"
+    },
+    {
+        "id": 71,
+        "startTime-endTime": "496.02-497.6",
+        "text": "Um , can we just go over that again?",
+        "speaker": "D",
+        "reply_to_id": "69"
+    },
+    {
+        "id": 72,
+        "startTime-endTime": "497.99-498.46",
+        "text": "Sure.",
+        "speaker": "B",
+        "reply_to_id": "71"
+    },
+    {
+        "id": 73,
+        "startTime-endTime": "499.16-504.1",
+        "text": "Uh , so bas at twel Alright , yeah. Okay.",
+        "speaker": "D",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 74,
+        "startTime-endTime": "505.28-514.0",
+        "text": "So cost like production cost is twelve fifty , but selling price is is that wholesale or retail? Like on the shelf.",
+        "speaker": "D",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 75,
+        "startTime-endTime": "508.17-508.92",
+        "text": "All together.",
+        "speaker": "B",
+        "reply_to_id": "74"
+    },
+    {
+        "id": 76,
+        "startTime-endTime": "515.16-518.91",
+        "text": "Um I dunno. I imagine That's a good question.",
+        "speaker": "B",
+        "reply_to_id": "74"
+    },
+    {
+        "id": 77,
+        "startTime-endTime": "518.31-522.57",
+        "text": "Our sale our sale anyway. Yeah , okay okay.",
+        "speaker": "D",
+        "reply_to_id": "76"
+    },
+    {
+        "id": 78,
+        "startTime-endTime": "519.67-530.2",
+        "text": "I imagine it probably is our sale actually because it's probably up to the the um the retailer to uh sell it for whatever price they want. Um.",
+        "speaker": "B",
+        "reply_to_id": "77"
+    },
+    {
+        "id": 79,
+        "startTime-endTime": "526.79-527.05",
+        "text": "Okay.",
+        "speaker": "D",
+        "reply_to_id": "78"
+    },
+    {
+        "id": 80,
+        "startTime-endTime": "528.9-529.14",
+        "text": "Mm-hmm.",
+        "speaker": "D",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 81,
+        "startTime-endTime": "531.58-531.81",
+        "text": "Alright.",
+        "speaker": "D",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 82,
+        "startTime-endTime": "531.83-538.19",
+        "text": "But I I don't know , I mean do you think the fact that it's going to be sold internationally will have a bearing on how we design it at all?",
+        "speaker": "B",
+        "reply_to_id": "81"
+    },
+    {
+        "id": 83,
+        "startTime-endTime": "538.77-539.13",
+        "text": "Yes.",
+        "speaker": "D",
+        "reply_to_id": "82"
+    },
+    {
+        "id": 84,
+        "startTime-endTime": "539.31-542.15",
+        "text": "Think it will? Um.",
+        "speaker": "B",
+        "reply_to_id": "83"
+    },
+    {
+        "id": 85,
+        "startTime-endTime": "540.69-540.94",
+        "text": "Mm-hmm.",
+        "speaker": "D",
+        "reply_to_id": "84"
+    },
+    {
+        "id": 86,
+        "startTime-endTime": "543.86-544.12",
+        "text": "Mm-hmm.",
+        "speaker": "D",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 87,
+        "startTime-endTime": "545.43-546.06",
+        "text": "Hmm.",
+        "speaker": "B",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 88,
+        "startTime-endTime": "548.28-565.35",
+        "text": "Well right away I'm wondering if there's um th th uh , like with D_V_D_ players , if there are zones. Um f frequencies or something um as well as uh characters , um different uh keypad styles and s symbols.",
+        "speaker": "D",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 89,
+        "startTime-endTime": "553.78-558.06",
+        "text": "Oh yeah , regions and stuff , yeah. Yeah. Okay.",
+        "speaker": "B",
+        "reply_to_id": "88"
+    },
+    {
+        "id": 90,
+        "startTime-endTime": "565.05-565.32",
+        "text": "Hmm.",
+        "speaker": "A",
+        "reply_to_id": "88"
+    },
+    {
+        "id": 91,
+        "startTime-endTime": "565.13-571.01",
+        "text": "Yeah. Well for a remote control , do you think that will be I suppose it's depends on how complicated our remote control is.",
+        "speaker": "B",
+        "reply_to_id": "88"
+    },
+    {
+        "id": 92,
+        "startTime-endTime": "566.17-566.7",
+        "text": "Um.",
+        "speaker": "D",
+        "reply_to_id": "91"
+    },
+    {
+        "id": 93,
+        "startTime-endTime": "568.46-568.83",
+        "text": "I don't know.",
+        "speaker": "D",
+        "reply_to_id": "91"
+    },
+    {
+        "id": 94,
+        "startTime-endTime": "571.22-571.58",
+        "text": "Yeah.",
+        "speaker": "D",
+        "reply_to_id": "91"
+    },
+    {
+        "id": 95,
+        "startTime-endTime": "571.74-580.21",
+        "text": "It does make sense from maybe the design point of view 'cause you have more complicated characters like European languages , then you need more buttons.",
+        "speaker": "A",
+        "reply_to_id": "91"
+    },
+    {
+        "id": 96,
+        "startTime-endTime": "580.42-583.9",
+        "text": "Yeah , yeah. Okay.",
+        "speaker": "B",
+        "reply_to_id": "95"
+    },
+    {
+        "id": 97,
+        "startTime-endTime": "580.66-580.94",
+        "text": "Yeah.",
+        "speaker": "D",
+        "reply_to_id": "95"
+    },
+    {
+        "id": 98,
+        "startTime-endTime": "581.3-582.52",
+        "text": "So , possibly.",
+        "speaker": "A",
+        "reply_to_id": "91"
+    },
+    {
+        "id": 99,
+        "startTime-endTime": "582.33-616.94",
+        "text": "Yeah. And then a and then al the other thing international is on top of the price. I'm thinking the price might might appeal to a certain market in one region , whereas in another it'll be different , so Just a chara just a characteristic of the Just Or just like , basic product podi positioning , the twenty five Euro remote control might be a big hit in London , might not be such a big hit in Greece , who knows , something like that , yeah.",
+        "speaker": "D",
+        "reply_to_id": "98"
+    },
+    {
+        "id": 100,
+        "startTime-endTime": "597.79-603.43",
+        "text": "What , just like in terms of like the wealth of the country? Like how much money people have to spend on things like?",
+        "speaker": "B",
+        "reply_to_id": "99"
+    },
+    {
+        "id": 101,
+        "startTime-endTime": "615.74-617.28",
+        "text": "Aye , I see what you mean , yeah.",
+        "speaker": "B",
+        "reply_to_id": "99"
+    },
+    {
+        "id": 102,
+        "startTime-endTime": "619.01-624.87",
+        "text": "Marketing. Good marketing thoughts. Oh gosh , I should be writing all this down. Um.",
+        "speaker": "B",
+        "reply_to_id": "99"
+    },
+    {
+        "id": 103,
+        "startTime-endTime": "620.48-620.64",
+        "text": "Yep.",
+        "speaker": "D",
+        "reply_to_id": "102"
+    },
+    {
+        "id": 104,
+        "startTime-endTime": "655.45-680.81",
+        "text": "Right away I'm making some kind of assumptions about what what information we're given here , thinking , 'kay trendy probably means something other than just basic , something other than just standard. Um so I'm wondering right away , is selling twenty five Euros , is that sort of the thi is this gonna to be like the premium product kinda thing or Uh-huh.",
+        "speaker": "D",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 105,
+        "startTime-endTime": "660.7-661.22",
+        "text": "Mm.",
+        "speaker": "B",
+        "reply_to_id": "104"
+    },
+    {
+        "id": 106,
+        "startTime-endTime": "665.36-665.84",
+        "text": "Yeah.",
+        "speaker": "B",
+        "reply_to_id": "104"
+    },
+    {
+        "id": 107,
+        "startTime-endTime": "677.15-680.53",
+        "text": "Yeah , yeah. Like how much does , you know , a remote control cost.",
+        "speaker": "B",
+        "reply_to_id": "65"
+    },
+    {
+        "id": 108,
+        "startTime-endTime": "681.66-691.58",
+        "text": "Well twenty five Euro , I mean that's um that's about like eighteen pounds or something , isn't it? Or no , is it as much as that? Sixteen seventeen eighteen pounds.",
+        "speaker": "B",
+        "reply_to_id": "65"
+    },
+    {
+        "id": 109,
+        "startTime-endTime": "687.72-688.11",
+        "text": "Mm-hmm.",
+        "speaker": "D",
+        "reply_to_id": "108"
+    },
+    {
+        "id": 110,
+        "startTime-endTime": "689.77-689.98",
+        "text": "Yep.",
+        "speaker": "D",
+        "reply_to_id": "108"
+    },
+    {
+        "id": 111,
+        "startTime-endTime": "691.16-691.97",
+        "text": "Yeah , I'd say so , yeah.",
+        "speaker": "D",
+        "reply_to_id": "108"
+    },
+    {
+        "id": 112,
+        "startTime-endTime": "692.42-700.41",
+        "text": "Um , I dunno , I've never bought a remote control , so I don't know how how good a remote control that would get you. Um.",
+        "speaker": "B",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 113,
+        "startTime-endTime": "696.23-696.58",
+        "text": "No.",
+        "speaker": "D",
+        "reply_to_id": "112"
+    },
+    {
+        "id": 114,
+        "startTime-endTime": "697.98-702.01",
+        "text": "Yeah , yeah.",
+        "speaker": "D",
+        "reply_to_id": "112"
+    },
+    {
+        "id": 115,
+        "startTime-endTime": "702.02-705.01",
+        "text": "But yeah , I suppose it has to look kind of cool and gimmicky.",
+        "speaker": "B",
+        "reply_to_id": "112"
+    },
+    {
+        "id": 116,
+        "startTime-endTime": "704.03-704.41",
+        "text": "Mm-hmm.",
+        "speaker": "D",
+        "reply_to_id": "115"
+    },
+    {
+        "id": 117,
+        "startTime-endTime": "707.1-710.07",
+        "text": "Um right , okay.",
+        "speaker": "B",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 118,
+        "startTime-endTime": "711.43-721.44",
+        "text": "Let me just scoot on ahead here. Okay. Um well d Does anybody have anything to add to uh to the finance issue at all?",
+        "speaker": "B",
+        "reply_to_id": "117"
+    },
+    {
+        "id": 119,
+        "startTime-endTime": "722.77-731.07",
+        "text": "Do we have any other background information on like how that compares to other other Yeah.",
+        "speaker": "D",
+        "reply_to_id": "118"
+    },
+    {
+        "id": 120,
+        "startTime-endTime": "722.81-732.87",
+        "text": "Thin No , actually. That would be useful , though , wouldn't it , if you knew like what your money would get you now.",
+        "speaker": "B",
+        "reply_to_id": "119"
+    },
+    {
+        "id": 121,
+        "startTime-endTime": "732.32-732.54",
+        "text": "Hmm.",
+        "speaker": "A",
+        "reply_to_id": "120"
+    },
+    {
+        "id": 122,
+        "startTime-endTime": "734.73-735.08",
+        "text": "Mm-hmm.",
+        "speaker": "D",
+        "reply_to_id": "120"
+    },
+    {
+        "id": 123,
+        "startTime-endTime": "735.11-735.7",
+        "text": "Mm-hmm.",
+        "speaker": "B",
+        "reply_to_id": "120"
+    },
+    {
+        "id": 124,
+        "startTime-endTime": "753.67-773.41",
+        "text": "Yeah , interesting thing about discussing um production of a remote control for me is that l as you point out , I just don't think of remote controls as somethin something people consciously assess in their purchasing habits. It's just like getting shoelaces with shoes or something. It just comes along.",
+        "speaker": "D",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 125,
+        "startTime-endTime": "767.69-768.25",
+        "text": "Yeah , yeah.",
+        "speaker": "B",
+        "reply_to_id": "124"
+    },
+    {
+        "id": 126,
+        "startTime-endTime": "772.01-772.14",
+        "text": "Oh.",
+        "speaker": "B",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 127,
+        "startTime-endTime": "772.8-776.97",
+        "text": "Five minutes to end of meeting. Oh , okay. We're a bit behind.",
+        "speaker": "B",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 128,
+        "startTime-endTime": "776.12-793.63",
+        "text": "Do you know what I mean? Like so sort of like how do you I I mean one one way of looking at it would be , well the people producing television sets , maybe they have to buy remote controls. Or another way is maybe people who have T_V_ sets are really fed up with their remote control and they really want a better one or something.",
+        "speaker": "D",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 129,
+        "startTime-endTime": "777.32-777.89",
+        "text": "Yeah.",
+        "speaker": "C",
+        "reply_to_id": "128"
+    },
+    {
+        "id": 130,
+        "startTime-endTime": "777.7-778.02",
+        "text": "Yeah.",
+        "speaker": "A",
+        "reply_to_id": "128"
+    },
+    {
+        "id": 131,
+        "startTime-endTime": "792.52-804.33",
+        "text": "I know um My parents went out and bought um remote controls because um they got fed up of having four or five different remote controls for each things the house. So um for them it was just how many devices control.",
+        "speaker": "C",
+        "reply_to_id": "128"
+    },
+    {
+        "id": 132,
+        "startTime-endTime": "794.53-817.04",
+        "text": "But Right. Right. Okay so Right , so in function one of the priorities might be to combine as many uses I think so. Yeah , yeah.",
+        "speaker": "D",
+        "reply_to_id": "131"
+    },
+    {
+        "id": 133,
+        "startTime-endTime": "806.46-806.98",
+        "text": "Yeah.",
+        "speaker": "B",
+        "reply_to_id": "131"
+    },
+    {
+        "id": 134,
+        "startTime-endTime": "811.51-820.83",
+        "text": "Right , so do you think that should be like a main design aim of our remote control d you know , do your your satellite and your regular telly and your V_C_R_ and everything?",
+        "speaker": "B",
+        "reply_to_id": "132"
+    },
+    {
+        "id": 135,
+        "startTime-endTime": "818.45-818.67",
+        "text": "Yeah.",
+        "speaker": "D",
+        "reply_to_id": "134"
+    },
+    {
+        "id": 136,
+        "startTime-endTime": "819.79-879.22",
+        "text": "Well like um , maybe what we could use is a sort of like a example of a successful other piece technology is palm palm pilots. They're gone from being just like little sort of scribble boards to cameras , M_P_ three players , telephones , everything , agenda. So , like , I wonder if we might add something new to the to the remote control market , such as the lighting in your house , or um Yeah , yeah. An Yeah. Like , p personally for me , at home I've I've combined the um the audio video of my television set and my D_V_D_ player and my C_D_ player. So they w all work actually function together but I have different remote controls for each of them. So it's sort of ironic that that then they're in there um you know , the sound and everything it's just one system. But each one's got its own little part.",
+        "speaker": "D",
+        "reply_to_id": "134"
+    },
+    {
+        "id": 137,
+        "startTime-endTime": "832.76-833.2",
+        "text": "Mm-hmm.",
+        "speaker": "B",
+        "reply_to_id": "136"
+    },
+    {
+        "id": 138,
+        "startTime-endTime": "840.25-840.69",
+        "text": "Yeah.",
+        "speaker": "B",
+        "reply_to_id": "136"
+    },
+    {
+        "id": 139,
+        "startTime-endTime": "843.99-853.03",
+        "text": "Or even like , you know , notes about um what you wanna watch. Like you might put in there oh I want to watch such and such and look a Oh that's a good idea. So extra functionalities.",
+        "speaker": "B",
+        "reply_to_id": "136"
+    },
+    {
+        "id": 140,
+        "startTime-endTime": "866.59-867.24",
+        "text": "Mm-hmm.",
+        "speaker": "B",
+        "reply_to_id": "136"
+    },
+    {
+        "id": 141,
+        "startTime-endTime": "876.88-877.46",
+        "text": "Hmm.",
+        "speaker": "B",
+        "reply_to_id": "136"
+    },
+    {
+        "id": 142,
+        "startTime-endTime": "883.05-902.62",
+        "text": "Um okay , uh I'd wel we're gonna have to wrap up pretty quickly in the next couple of minutes. Um I'll just check we've nothing else. Okay. Um so anything else anybody wants to add about what they don't like about remote controls they've used , what they would really like to be part of this new one at all?",
+        "speaker": "B",
+        "reply_to_id": "136"
+    },
+    {
+        "id": 143,
+        "startTime-endTime": "903.08-903.98",
+        "text": "And you keep losing them.",
+        "speaker": "A",
+        "reply_to_id": "142"
+    },
+    {
+        "id": 144,
+        "startTime-endTime": "904.6-906.08",
+        "text": "You keep losing them. Okay.",
+        "speaker": "B",
+        "reply_to_id": "143"
+    },
+    {
+        "id": 145,
+        "startTime-endTime": "904.75-905.26",
+        "text": "Mm.",
+        "speaker": "D",
+        "reply_to_id": "143"
+    },
+    {
+        "id": 146,
+        "startTime-endTime": "906.45-914.44",
+        "text": "Finding them is really a pain , you know. I mean it's usually quite small , or when you want it right , it slipped behind the couch or it's kicked under the table.",
+        "speaker": "A",
+        "reply_to_id": "144"
+    },
+    {
+        "id": 147,
+        "startTime-endTime": "907.47-909.26",
+        "text": "Mm. Mm.",
+        "speaker": "D",
+        "reply_to_id": "146"
+    },
+    {
+        "id": 148,
+        "startTime-endTime": "911.1-912.1",
+        "text": "Mm-hmm. Mm-hmm.",
+        "speaker": "D",
+        "reply_to_id": "146"
+    },
+    {
+        "id": 149,
+        "startTime-endTime": "913.17-922.53",
+        "text": "Yeah. W You get those ones where you can , if you like , whistle or make a really high pitched noise they beep. There I mean is that something we'd want to include , do you think?",
+        "speaker": "B",
+        "reply_to_id": "148"
+    },
+    {
+        "id": 150,
+        "startTime-endTime": "913.22-913.58",
+        "text": "Yeah.",
+        "speaker": "D",
+        "reply_to_id": "149"
+    },
+    {
+        "id": 151,
+        "startTime-endTime": "914.77-915.13",
+        "text": "Yeah.",
+        "speaker": "D",
+        "reply_to_id": "149"
+    },
+    {
+        "id": 152,
+        "startTime-endTime": "915.45-916.11",
+        "text": "You know.",
+        "speaker": "A",
+        "reply_to_id": "149"
+    },
+    {
+        "id": 153,
+        "startTime-endTime": "916.12-919.69",
+        "text": "That's just really good id Yep.",
+        "speaker": "D",
+        "reply_to_id": "149"
+    },
+    {
+        "id": 154,
+        "startTime-endTime": "924.35-956.35",
+        "text": "Uh , sure. I remember when the first remote control my my family had was on a cable. Actually had a cable between it and the T_V_ and big like buttons that sort of like , like on a blender or something. And um , you know , when I think about what they are now , it's better , but actually it's still kind of , I dunno , like a massive junky thing on the table. Maybe we could think about how , could be more , you know , streamlined. S Something like that , yeah. Or whatever would be technologically reasonable.",
+        "speaker": "D",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 155,
+        "startTime-endTime": "925.37-927.4",
+        "text": "Dunno. Okay maybe.",
+        "speaker": "B",
+        "reply_to_id": "154"
+    },
+    {
+        "id": 156,
+        "startTime-endTime": "937.0-937.62",
+        "text": "My goodness.",
+        "speaker": "B",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 157,
+        "startTime-endTime": "946.26-948.04",
+        "text": "Still feels quite primitive.",
+        "speaker": "B",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 158,
+        "startTime-endTime": "951.41-952.78",
+        "text": "Maybe like a touch screen or something?",
+        "speaker": "B",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 159,
+        "startTime-endTime": "954.09-954.42",
+        "text": "Okay.",
+        "speaker": "B",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 160,
+        "startTime-endTime": "956.36-959.3",
+        "text": "Uh-huh , okay. Well I guess that's up to our industrial designer.",
+        "speaker": "B",
+        "reply_to_id": "158"
+    },
+    {
+        "id": 161,
+        "startTime-endTime": "957.54-976.83",
+        "text": "'Cause it could b it could it could be that f it could be that functionally that doesn't make it any better , but that just the appeal of of not having You know , these days there's a r pe things in people's homes are becoming more and more like chic , you know. Um , nicer materials and might be be worth exploring anyway.",
+        "speaker": "D",
+        "reply_to_id": "160"
+    },
+    {
+        "id": 162,
+        "startTime-endTime": "962.22-963.35",
+        "text": "It looks better.",
+        "speaker": "B",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 163,
+        "startTime-endTime": "969.0-969.47",
+        "text": "Yeah.",
+        "speaker": "B",
+        "reply_to_id": "161"
+    },
+    {
+        "id": 164,
+        "startTime-endTime": "971.85-972.39",
+        "text": "Okay.",
+        "speaker": "B",
+        "reply_to_id": "161"
+    },
+    {
+        "id": 165,
+        "startTime-endTime": "975.24-975.63",
+        "text": "Okay.",
+        "speaker": "B",
+        "reply_to_id": "161"
+    },
+    {
+        "id": 166,
+        "startTime-endTime": "977.17-1019.31",
+        "text": "Right , well um so just to wrap up , the next meeting's gonna be in thirty minutes. So that's about um about ten to twelve by my watch. Um so inbetween now and then , um as the industrial designer , you're gonna be working on you know the actual working design of it so y you know what you're doing there. Um for user interface , technical functions , I guess that's you know like what we've been talking about , what it'll actually do. Um and uh marketing executive , you'll be just thinking about what it actually what , you know , what requirements it has to has to fulfil and you'll all get instructions emailed to you , I guess.",
+        "speaker": "B",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 167,
+        "startTime-endTime": "993.88-994.02",
+        "text": "Yep.",
+        "speaker": "A",
+        "reply_to_id": "166"
+    },
+    {
+        "id": 168,
+        "startTime-endTime": "1019.67-1020.01",
+        "text": "Okay.",
+        "speaker": "D",
+        "reply_to_id": "166"
+    },
+    {
+        "id": 169,
+        "startTime-endTime": "1021.55-1022.56",
+        "text": "Um.",
+        "speaker": "B",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 170,
+        "startTime-endTime": "1028.05-1031.66",
+        "text": "Yeah , so it's th the functional design stage is next , I guess.",
+        "speaker": "B",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 171,
+        "startTime-endTime": "1034.47-1037.69",
+        "text": "And uh and that's the end of the meeting.",
+        "speaker": "B",
+        "reply_to_id": "170"
+    },
+    {
+        "id": 172,
+        "startTime-endTime": "1039.12-1050.04",
+        "text": "So I got that little message a lot sooner than I thought I would , so Mm-hmm.",
+        "speaker": "B",
+        "reply_to_id": "171"
+    },
+    {
+        "id": 173,
+        "startTime-endTime": "1039.8-1040.97",
+        "text": "Um.",
+        "speaker": "D",
+        "reply_to_id": "172"
+    },
+    {
+        "id": 174,
+        "startTime-endTime": "1047.17-1074.44",
+        "text": "Before we wrap up , just to make sure we're all on the same page here , um , do we We were given sort of an example of a coffee machine or something , right? Well , um are we at ma right now on the assumption that our television remote control may have features which go beyond the television? Or are we keeping sort of like a a design commitment to television features? I I don't know.",
+        "speaker": "D",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 175,
+        "startTime-endTime": "1056.3-1057.68",
+        "text": "Uh-huh , yeah.",
+        "speaker": "B",
+        "reply_to_id": "174"
+    },
+    {
+        "id": 176,
+        "startTime-endTime": "1056.93-1057.09",
+        "text": "Mm-hmm.",
+        "speaker": "A",
+        "reply_to_id": "174"
+    },
+    {
+        "id": 177,
+        "startTime-endTime": "1068.76-1088.2",
+        "text": "Th Okay , well just very quickly 'cause this we're supposed to finish now. Um I guess that's up to us , I mean you probably want some kind of unique selling point of it , so um , you know Yeah.",
+        "speaker": "B",
+        "reply_to_id": "174"
+    },
+    {
+        "id": 178,
+        "startTime-endTime": "1076.56-1078.06",
+        "text": "Yep. Yeah , sure.",
+        "speaker": "D",
+        "reply_to_id": "177"
+    },
+    {
+        "id": 179,
+        "startTime-endTime": "1081.99-1082.38",
+        "text": "Okay.",
+        "speaker": "D",
+        "reply_to_id": "177"
+    },
+    {
+        "id": 180,
+        "startTime-endTime": "1084.36-1086.91",
+        "text": "I think one factor would be production cost.",
+        "speaker": "A",
+        "reply_to_id": "177"
+    },
+    {
+        "id": 181,
+        "startTime-endTime": "1086.96-1087.76",
+        "text": "Okay , yeah.",
+        "speaker": "D",
+        "reply_to_id": "180"
+    },
+    {
+        "id": 182,
+        "startTime-endTime": "1087.57-1094.9",
+        "text": "Because there's a cap there , so um depends on how much you can cram into that price. Um.",
+        "speaker": "A",
+        "reply_to_id": "180"
+    },
+    {
+        "id": 183,
+        "startTime-endTime": "1089.89-1090.23",
+        "text": "Okay.",
+        "speaker": "D",
+        "reply_to_id": "182"
+    },
+    {
+        "id": 184,
+        "startTime-endTime": "1093.82-1094.41",
+        "text": "Mm-hmm.",
+        "speaker": "B",
+        "reply_to_id": "182"
+    },
+    {
+        "id": 185,
+        "startTime-endTime": "1093.83-1094.13",
+        "text": "Okay.",
+        "speaker": "D",
+        "reply_to_id": "182"
+    },
+    {
+        "id": 186,
+        "startTime-endTime": "1095.78-1096.16",
+        "text": "Yeah.",
+        "speaker": "B",
+        "reply_to_id": "182"
+    },
+    {
+        "id": 187,
+        "startTime-endTime": "1096.03-1098.43",
+        "text": "I think that that's the main factor.",
+        "speaker": "A",
+        "reply_to_id": "182"
+    },
+    {
+        "id": 188,
+        "startTime-endTime": "1098.51-1103.2",
+        "text": "Okay. Right , okay , we'll that's that's the end of the meeting , then. Um.",
+        "speaker": "B",
+        "reply_to_id": "187"
+    },
+    {
+        "id": 189,
+        "startTime-endTime": "1098.52-1098.85",
+        "text": "Okay.",
+        "speaker": "D",
+        "reply_to_id": "188"
+    }
+]

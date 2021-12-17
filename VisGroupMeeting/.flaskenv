@@ -1,0 +1,2 @@
+FLASK_APP=VisGroupMeeting
+FLASK_ENV=development

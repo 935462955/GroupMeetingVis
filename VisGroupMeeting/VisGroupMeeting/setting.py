@@ -1,0 +1,1 @@
+DATA_PATH  = 'VisGroupMeeting/static/data'

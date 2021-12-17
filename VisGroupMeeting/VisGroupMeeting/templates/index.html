@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="interaction"
+     style="height:400px;width:800px;border:solid #999999 1px;border-radius: 5px; margin-bottom: 1rem;padding: 1rem 0">
+    {{data}}
+    <svg>
+
+    </svg>
+</div>
+<div style="height:400px;width:800px; overflow: hidden;background-color: lightgrey"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.7.0/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
+        referrerpolicy="no-referrer"></script>
+<script>
+    const dialogs = JSON.parse(`{{dialogs|safe}}`)
+    const sessions = JSON.parse(`{{sessions|safe}}`)
+    const roles = [...new Set(dialogs.map(v => v.role))]
+    const itav = {} //interactionview
+    itav.config = {
+        width: 1800,
+        height: 900,
+        padding: 20,
+        height2: 50,
+        paddingTop: 100
+    }
+    itav.method = {
+        xScale: d3.scaleLinear()
+            .domain([0, dialogs[dialogs.length - 1].endTime + 10])
+            .range([0 + itav.config.padding, itav.config.width - itav.config.padding]),
+        yScale: d3.scalePoint()
+            .domain(roles)
+            .range([0 + itav.config.padding, itav.config.width / 2 - itav.config.padding])
+            .round(true)
+            .padding(0.5),
+        idx2pos: idx => {
+            const x = itav.method.xScale((Number(dialogs[idx].startTime) + Number(dialogs[idx].endTime)) / 2)
+            const y = itav.method.yScale(dialogs[idx].role)
+            return [x, y]
+        },
+    }
+    itav.data = generateInteractionViewData(dialogs, sessions)
+    itav.method = Object.assign(itav.method, {
+        click: function (e, d) {
+            const session_id = d.session_id ? d.session_id : d3.select(this).attr("class").split("_")[1]
+            if (session_id === 'single')
+                return
+            if (d.session_id) //捆绑
+            {
+                d3.selectAll(`.sidNode_${session_id}`).attr("fill", "none")
+                d3.selectAll(`.sidEge_${session_id}`).attr("opacity", 0)
+                d3.selectAll(`.detailSidEge_${session_id}`).attr("opacity", 0.7)
+                d3.selectAll(`.detailSidNode_${session_id}`).attr("fill", "grey")
+            } else //未捆绑
+            {
+                d3.selectAll(`.sidNode_${session_id}`).attr("fill", "grey")
+                d3.selectAll(`.sidEge_${session_id}`).attr("opacity", 0.7)
+                d3.selectAll(`.detailSidEge_${session_id}`).attr("opacity", 0)
+                d3.selectAll(`.detailSidNode_${session_id}`).attr("fill", "none")
+            }
+        },
+        arcTo: function (d) {
+            const x1 = itav.method.xScale((Number(dialogs[d.source].startTime) + Number(dialogs[d.source].endTime)) / 2)
+            const x2 = itav.method.xScale((Number(dialogs[d.target].startTime) + Number(dialogs[d.target].endTime)) / 2)
+            const y1 = itav.method.yScale(dialogs[d.source].role)
+            const y2 = itav.method.yScale(dialogs[d.target].role)
+            const r = Math.abs(x2 - x1) / 2;
+            return `M${x1},${y1}A${r},${r / 4} 0,0,${x1 < x2 ? 1 : 0} ${x2},${y2}`;
+        },
+        lineTo: (a, b) => {
+            const p = d3.path()
+            p.moveTo(...a)
+            p.lineTo(b[0], b[1])
+            return p.toString()
+        },
+        formatSecond: value => value + "s",
+        axisBottom: svg => svg.call(d3.axisBottom(itav.method.xScale)
+            .tickFormat(itav.method.formatSecond)
+            .tickSizeOuter(0)
+        )
+            .call(g => g.select(".domain").remove())
+            .call(g => g.attr("font-size", 25)),
+        axisRight: svg => svg.call(d3.axisRight(itav.method.yScale)
+            .tickSize(itav.config.width)
+            .tickSizeOuter(0)
+        )
+            .call(g => g.selectAll(".tick line")
+                .attr("stroke-opacity", 0.5)
+                .attr("stroke-dasharray", "2,2"))
+            .call(g => g.selectAll(".tick text")
+                .attr("x", 4)
+                .attr("dy", -4))
+            .call(g => g.attr("font-size", 25)),
+        CubeBezierTo: d => {
+            const source = d.source
+            const target = d.target
+            const mid_y = (d.source[1] + d.target[1]) / 2
+            const v_source = [d.source[0], mid_y]
+            const v_target = [d.target[0], mid_y]
+            const p = d3.path()
+            p.moveTo(...source)
+            p.bezierCurveTo(...v_source, ...v_target, ...target)
+            return p.toString()
+        },
+        x2: d3.scaleLinear()
+            .domain([0, dialogs[dialogs.length - 1].endTime + 10])
+            .range([0 + itav.config.padding, itav.config.width - itav.config.padding]),
+        y2: d3.scaleLinear()
+            .domain(d3.extent(itav.data.accumulate_dialogs))
+            .range([itav.config.height2, 0]),
+        area: d3.area()
+            .curve(d3.curveMonotoneX)
+            .x((d, i) => itav.method.x2(i))
+            .y0(itav.config.height2)
+            .y1(d => itav.method.y2(d)),
+        brushed: (function () {
+            /* 节流 */
+            let timer = null
+            const delay = 100
+            return (event) => {
+                const {selection, type} = event
+                if (type !== "end" && timer) return
+                timer = setTimeout(() => {
+                    console.log(selection)
+                    const extent = selection ? selection.map(itav.method.x2.invert) : [0, dialogs[dialogs.length - 1].endTime + 10] // 刷选为空则重置展示范围
+                    itav.method.xScale.domain(extent); //设定domain
+                    itav.data = generateInteractionViewData(dialogs, sessions)
+                    drawInteractionView()
+                    timer = null
+                }, delay)
+                //console.log(itav.method.xScale.domain())
+                // d3.select(chart).select(".area").attr("d", area); //更新视图
+                // d3.select(chart).select(".x.axis").call(xAxis);
+            }
+        })(),
+        lineCurveTo: (a, b) => { // 非捆绑曲线
+            const p = d3.path()
+            p.moveTo(...a)
+            const distance = 75
+            if (a[1] < b[1])
+                p.bezierCurveTo(a[0], a[1] + distance, b[0], b[1] - distance, ...b)
+            else
+                p.bezierCurveTo(a[0], a[1] - distance, b[0], b[1] + distance, ...b)
+            return p.toString()
+        }
+
+    }) // assign
+
+    function generateInteractionViewData(dialogs, sessions) {
+        const accumulate_dialogs = (function () {
+            const l = new Array(Math.round(Number(dialogs[dialogs.length - 1].endTime)) + 10).fill(0)
+            dialogs.forEach(v => {
+                for (let i = Math.round(Number(v.startTime)); i <= Math.round(Number(v.endTime)); i++)
+                    l[i] += v.text.length
+            })
+            return l
+        })()
+        const edges = dialogs.map(v => ({
+            source: v.reply_to_id === '-' ? '-' : Number(v.reply_to_id),
+            target: v.id
+        }))
+        const locatedSession = sessions.map(d => {
+            const v = _.cloneDeep(d)
+            if (Object.keys(v['subsessions']).length > 0) {
+                for (let key of Object.keys(v['subsessions'])) {
+                    let speakers = key.split("_")
+                    if (speakers[0] === speakers[1]) //A_A
+                        continue
+                    let xsum = 0
+                    for (let x of v['subsessions'][key]) {
+                        xsum += itav.method.idx2pos(x)[0] // x 坐标系是否会更新
+                    }
+                    let l = v['subsessions'][key]
+                    let y
+                    if (itav.method.yScale(speakers[0]) < itav.method.yScale(speakers[1])) {
+                        y = itav.method.yScale(speakers[0]) + 30 //
+                    } else {
+                        y = itav.method.yScale(speakers[0]) - 30
+                    }
+                    v['subsessions'][key] = {'pos': l, 'vp': [xsum / l.length, y]} // points , virtual point
+                }
+            }
+            return v
+        })
+        const bind_edges = (function () {
+            const edges = []
+            const squares = []
+            const idx2sessionId = {}
+            for (let session of locatedSession) {
+                const speakers_dic = Object.create(null)
+                if (Object.keys(session['subsessions']).length === 0)
+                    continue
+                const visited_subsession_trunk = new Set()
+                for (let subsession_name of Object.keys(session['subsessions'])) {
+                    const speakers = subsession_name.split("_")
+                    if (speakers[0] === speakers[1])
+                        continue
+
+                    for (let id of session['subsessions'][subsession_name]['pos']) {
+                        // idx2sessionId
+                        idx2sessionId[id] = session['session_id']
+
+                        //edge
+                        const source = itav.method.idx2pos(id)
+                        const target = session['subsessions'][subsession_name]['vp']
+                        const weight = 1
+                        const type = "branch"
+                        const edge = {source, target, weight, type, "id": id}
+                        edges.push(edge)
+
+                        //square
+                        const x_start = itav.method.xScale(dialogs[id].startTime)
+                        const x_end = itav.method.xScale(dialogs[id].endTime)
+                        if (!(speakers[0] in speakers_dic)) {
+                            speakers_dic[speakers[0]] = [x_start, x_end]
+                        } else if (speakers_dic[speakers[0]][0] > x_start) // x_start
+                        {
+                            speakers_dic[speakers[0]][0] = x_start
+                        } else if (speakers_dic[speakers[0]][1] < x_end) // x_end
+                        {
+                            speakers_dic[speakers[0]][1] = x_end
+                        }
+                    }
+                    if (!visited_subsession_trunk.has(subsession_name)) {
+                        const another_vp = session['subsessions'][`${speakers[1]}_${speakers[0]}`]['vp']
+                        const edge = {
+                            source: session['subsessions'][subsession_name]['vp'],
+                            target: another_vp,
+                            weight: session['subsessions'][subsession_name]['pos'].length * 5,
+                            type: "trunk",
+                            id: session['session_id'] + '_' + subsession_name
+                        }
+                        visited_subsession_trunk.add(subsession_name)
+                        visited_subsession_trunk.add(`${speakers[1]}_${speakers[0]}`)
+                        edges.push(edge)
+                    }
+                }
+                // create session square
+                for (let [key, pos] of Object.entries(speakers_dic)) {
+                    const role = key
+                    const start = pos[0]
+                    const end = pos[1]
+                    const square = {role, start, end, session_id: session['session_id']}
+                    squares.push(square)
+                }
+            }
+            return {edges, squares, idx2sessionId}
+        })()
+        const circles = dialogs.map(v => {
+            let c = {}
+            let start = itav.method.xScale(v.startTime)
+            let end = itav.method.xScale(v.endTime)
+            c.r = (end - start) / 2// 直径为实际发言时长
+            c.x = start + c.r //圆心在起止时间中间
+            c.y = itav.method.yScale(v.role)
+            return c
+        })
+        return {
+            accumulate_dialogs, edges, bind_edges, locatedSession, circles
+        }
+    }
+
+    var drawInteractionView = (function () {
+        const svg = d3.select(".interaction svg")
+            .attr("viewBox", [0, 0, itav.config.width, itav.config.height])
+            .style("font", "5px sans-serif");
+        const g = svg.append("g")
+            .attr("transform", `translate(0,${itav.config.paddingTop})`)
+        g.append("g")
+            .call(itav.method.axisRight)
+        g.append("g")
+            .attr("class", "axisBottom")
+            .call(itav.method.axisBottom)
+        const storyBoard = g.append("g")
+            .attr("class", "storyBoard")
+        const context = svg.append("g")
+            .attr("class", "context")
+        context.append("path")
+            .datum(itav.data.accumulate_dialogs)
+            .attr("d", (d, i) => itav.method.area(d, i))
+
+        context.append("g")
+            .attr("class", "x brush")
+        const brush = d3.brushX(itav.method.x2).extent([[0, 0], [itav.config.width, itav.config.height2]]).on("brush end", itav.method.brushed);
+        const brushG = context.select('g.brush');
+        brushG.call(brush);
+        const defs = g.append("defs")
+        const unbindEdge = g.append("g")
+        const bindEdge = g.append("g")
+        const bindNode = g.append("g")
+        // 重新渲染部分
+        return function () {
+
+            /* 刷选轴 */
+
+
+            /* 未捆绑发言节点 */
+            const nodes = storyBoard.selectAll("circle")
+                .data(itav.data.circles)
+                .join("circle")
+                .attr("class", (d, i) => `detailSidNode_${itav.data.bind_edges.idx2sessionId[i] ? itav.data.bind_edges.idx2sessionId[i] : 'single'}`)
+                .attr("r", d => d.r)
+                .attr("cx", d => d.x)
+                .attr("cy", d => d.y)
+                .attr("fill", "none")
+                .on("click", itav.method.click)
+
+            // 回复线渐变颜色
+
+            const linearGradients = defs
+                .selectAll("linearGradient")
+                .data(itav.data.edges.filter(v => v.source !== '-'))
+                .join("linearGradient")
+                .attr("id", (d, i) => `BuReGradient${i}`)
+                .attr("gradientUnits", "userSpaceOnUse") //使用真实坐标定义起点终点
+                .attr("x1", d => itav.method.idx2pos(d.source)[0])
+                .attr("y1", d => itav.method.idx2pos(d.source)[1])
+                .attr("x2", d => itav.method.idx2pos(d.target)[0])
+                .attr("y2", d => itav.method.idx2pos(d.target)[1])
+            linearGradients.append("stop")
+                .attr("offset", "0%")
+                .attr("stop-color", d3.interpolateCividis(0))
+            // linearGradients.append("stop")
+            // .attr("offset","50%")
+            // .attr("stop-color",d3.interpolateCividis(0.5))
+            linearGradients.append("stop")
+                .attr("offset", "100%")
+                .attr("stop-color", d3.interpolateCividis(1))
+
+            /* 未捆绑回复线 */
+
+            unbindEdge.selectAll("path")
+                .data(itav.data.edges.filter(v => v.source !== '-'))
+                .join("path")
+                .attr("d", d => {
+                        return dialogs[d.source].role !== dialogs[d.target].role ?
+                            itav.method.lineCurveTo(itav.method.idx2pos(d.source), itav.method.idx2pos(d.target)) : itav.method.arcTo(d)
+                    }
+                )
+                .attr("stroke", (d, i) => `url(#BuReGradient${i})`)
+                .attr("opacity", 0)
+                .attr("stroke-width", "3")
+                .attr("stroke-linecap", "round")
+                .attr("fill", "none")
+                .attr("class", d => {
+                    return `detailSidEge_${itav.data.bind_edges.idx2sessionId[d.source] ? itav.data.bind_edges.idx2sessionId[d.source] : 'single'}`
+                })
+
+
+            /* 捆绑回复线 */
+            bindEdge
+                .selectAll("path")
+                .data(itav.data.bind_edges.edges)
+                .join("path")
+                .attr("d", d => itav.method.CubeBezierTo(d))
+                .attr("stroke", (d, i) => d3.color((d3.interpolateSpectral(Math.random(i)))).darker())
+                .attr("fill", "none")
+                .attr("stroke-width", d => d.weight)
+                .attr("stroke-opacity", "1")
+                .attr("class", d => {
+                    if (d.type === "trunk")
+                        return `sidEge_${d.id.split("_")[0]}`
+                    else
+                        return `sidEge_${itav.data.bind_edges.idx2sessionId[d.id]}`
+                })
+
+            /* 捆绑子会话发言节点 */
+            bindNode
+                .selectAll("rect")
+                .data(itav.data.bind_edges.squares)
+                .join("rect")
+                .attr("x", d => d['start'])
+                .attr("y", d => itav.method.yScale(d['role']) - 10)
+                .attr("height", 20)
+                .attr("width", d => d['end'] - d['start'])
+                .attr("fill-opacity", "0.8")
+                .attr("rx", 10)
+                .attr("ry", 10)
+                .attr("fill", "grey")
+                .attr("class", d => `sidNode_${d["session_id"]}`)
+                .on("click", itav.method.click)
+        }
+
+
+    })()
+    drawInteractionView()
+</script>
+</body>
+</html>
