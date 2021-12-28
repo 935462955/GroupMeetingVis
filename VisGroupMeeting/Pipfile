@@ -9,6 +9,7 @@ verify_ssl = true
 flask = "*"
 flask-dotenv = "*"
 python-dotenv = "*"
+tqdm = "*"
 
 [requires]
 python_version = "3.9"

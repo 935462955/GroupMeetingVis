@@ -1,0 +1,43 @@
+html{
+    font-size:10px;
+    height:99vh;
+    width:99vw;
+}
+div.pav{
+    height:40rem;
+    width:80rem;
+    overflow: hidden;
+    border:solid #999999 1px;
+    border-radius: 0.5rem;
+    display:flex;
+    justify-content: flex-start;
+}
+.defocus{
+    width:15%;
+    display:flex;
+    flex-direction: column;
+}
+
+.focused{
+    border-left:0.1rem dotted #999999;
+    width:85%;
+    display:flex;
+    align-items: center;
+
+}
+.defocus div{
+    border-bottom: dotted 1px #999999;
+    height:33.33%
+}
+div.pav-container{
+    display:flex;
+    flex-direction: column;
+    width:80rem;
+    height: 50rem;
+}
+div.pav-toolbar{
+    width:100%;
+    height:10rem;
+}
+
+

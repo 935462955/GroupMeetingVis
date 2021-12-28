@@ -3,32 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="../static/css/index.css"/>
 </head>
 <body>
-<div class="interaction"
-     style="height:400px;width:800px;border:solid #999999 1px;border-radius: 5px; margin-bottom: 1rem;padding: 1rem 0">
-    {{data}}
+<div class="itav"
+     style="height:40rem;width:80rem;border:solid #999999 1px;border-radius: 5px; margin-bottom: 1rem;padding: 1rem 0">
     <svg>
-
     </svg>
 </div>
-<div style="height:400px;width:800px; overflow: hidden;background-color: lightgrey"></div>
+<div class="pav-container">
+    <div class="pav-toolbar"></div>
+    <div class="pav">
+        <div class="defocus">
+            <div class="defocus_item1">
+                <svg></svg>
+            </div>
+            <div class="defocus_item2">
+                <svg></svg>
+            </div>
+            <div class="defocus_item3">
+                <svg></svg>
+            </div>
+        </div>
+        <div class="focused">
+
+            <svg class="focusRadar"></svg>
+            <svg class="focusDetail"></svg>
+        </div>
+    </div>
+</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.7.0/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.5/d3.layout.cloud.min.js"
+        integrity="sha512-HjKxWye8lJGPu5q1u/ZYkHlJrJdm6KGr89E6tOrXeKm1mItb1xusPU8QPcKVhP8F9LjpZT7vsu1Fa+dQywP4eg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
         referrerpolicy="no-referrer"></script>
 <script>
     const dialogs = JSON.parse(`{{dialogs|safe}}`)
     const sessions = JSON.parse(`{{sessions|safe}}`)
+    const personal_ability = JSON.parse(`{{personal_ability|safe}}`)
     const roles = [...new Set(dialogs.map(v => v.role))]
+    const headPos = JSON.parse(`{{headPos|safe}}`)
+    const keywordsOfPersonal = JSON.parse(`{{keywordsOfPersonal|safe}}`)
+    const agendas = JSON.parse(`{{agendas|safe}}`)
+    console.log(keywordsOfPersonal)
+    // region itav
     const itav = {} //interactionview
     itav.config = {
         width: 1800,
         height: 900,
         padding: 20,
         height2: 50,
-        paddingTop: 100
+        paddingTop: 100,
+        agendaColor: d3.schemeSet2
     }
-    itav.method = {
+    itav.method = { // 这个图比较复杂需要重复绘制为避免性能损失所以把固定函数单独放在method里面了
         xScale: d3.scaleLinear()
             .domain([0, dialogs[dialogs.length - 1].endTime + 10])
             .range([0 + itav.config.padding, itav.config.width - itav.config.padding]),
@@ -125,14 +154,12 @@
                 const {selection, type} = event
                 if (type !== "end" && timer) return
                 timer = setTimeout(() => {
-                    console.log(selection)
                     const extent = selection ? selection.map(itav.method.x2.invert) : [0, dialogs[dialogs.length - 1].endTime + 10] // 刷选为空则重置展示范围
                     itav.method.xScale.domain(extent); //设定domain
                     itav.data = generateInteractionViewData(dialogs, sessions)
                     drawInteractionView()
                     timer = null
                 }, delay)
-                //console.log(itav.method.xScale.domain())
                 // d3.select(chart).select(".area").attr("d", area); //更新视图
                 // d3.select(chart).select(".x.axis").call(xAxis);
             }
@@ -244,7 +271,8 @@
                     const role = key
                     const start = pos[0]
                     const end = pos[1]
-                    const square = {role, start, end, session_id: session['session_id']}
+                    const agenda = session['agenda']
+                    const square = {role, start, end, session_id: session['session_id'], agenda}
                     squares.push(square)
                 }
             }
@@ -265,7 +293,7 @@
     }
 
     var drawInteractionView = (function () {
-        const svg = d3.select(".interaction svg")
+        const svg = d3.select(".itav svg")
             .attr("viewBox", [0, 0, itav.config.width, itav.config.height])
             .style("font", "5px sans-serif");
         const g = svg.append("g")
@@ -291,13 +319,23 @@
         const defs = g.append("defs")
         const unbindEdge = g.append("g")
         const bindEdge = g.append("g")
-        const bindNode = g.append("g")
+        const bindNodeOutline = g.append("g")
+        const bindNodeArea = g.append("g")
+        //Filter for the outside glow
+        let filter = g
+                .append("defs")
+                .append("filter")
+                .attr("id", "glow"),
+            feGaussianBlur = filter
+                .append("feGaussianBlur")
+                .attr("stdDeviation", "2.5")
+                .attr("result", "coloredBlur"),
+            feMerge = filter.append("feMerge"),
+            feMergeNode_1 = feMerge.append("feMergeNode").attr("in", "coloredBlur"),
+            feMergeNode_2 = feMerge.append("feMergeNode").attr("in", "SourceGraphic");
         // 重新渲染部分
         return function () {
-
             /* 刷选轴 */
-
-
             /* 未捆绑发言节点 */
             const nodes = storyBoard.selectAll("circle")
                 .data(itav.data.circles)
@@ -357,7 +395,7 @@
                 .data(itav.data.bind_edges.edges)
                 .join("path")
                 .attr("d", d => itav.method.CubeBezierTo(d))
-                .attr("stroke", (d, i) => d3.color((d3.interpolateSpectral(Math.random(i)))).darker())
+                .attr("stroke", "grey")//(d, i) => d3.color((d3.interpolateSpectral(Math.random(i)))).darker())
                 .attr("fill", "none")
                 .attr("stroke-width", d => d.weight)
                 .attr("stroke-opacity", "1")
@@ -368,8 +406,23 @@
                         return `sidEge_${itav.data.bind_edges.idx2sessionId[d.id]}`
                 })
 
+
             /* 捆绑子会话发言节点 */
-            bindNode
+            // bindNodeOutline
+            //     .selectAll("rect")
+            //     .data(itav.data.bind_edges.squares)
+            //     .join("rect")
+            //     .attr("x", d => d['start'])
+            //     .attr("y", d => itav.method.yScale(d['role']) - 10)
+            //     .attr("height", 20)
+            //     .attr("width", d => d['end'] - d['start'])
+            //     .attr("stroke",d => d['agenda'] !== '-' ? itav.config.agendaColor[Number(d['agenda'])] : "grey")
+            //     .attr("stroke-width","2")
+            //     .attr("rx", 10)
+            //     .attr("ry", 10)
+            //     .attr("fill","none")
+            //     .attr("filter","url(#glow)")
+            bindNodeArea
                 .selectAll("rect")
                 .data(itav.data.bind_edges.squares)
                 .join("rect")
@@ -377,10 +430,12 @@
                 .attr("y", d => itav.method.yScale(d['role']) - 10)
                 .attr("height", 20)
                 .attr("width", d => d['end'] - d['start'])
-                .attr("fill-opacity", "0.8")
+                .attr("fill-opacity", "0.7")
                 .attr("rx", 10)
                 .attr("ry", 10)
-                .attr("fill", "grey")
+                .attr("fill", d => {
+                    return d['agenda'] !== '-' ? itav.config.agendaColor[Number(d['agenda'])] : "grey"
+                })
                 .attr("class", d => `sidNode_${d["session_id"]}`)
                 .on("click", itav.method.click)
         }
@@ -388,6 +443,759 @@
 
     })()
     drawInteractionView()
+    // endregion
+    // region pav
+    const pav = {}
+    pav.config = {
+        focusRadar: {
+            w: document.querySelectorAll(".focused")[0].offsetWidth / 4, //Width of the circle
+            h: document.querySelectorAll(".focused")[0].offsetHeight, //Height of the circle
+            margin: {top: 10, right: 15, bottom: 10, left: 15}, //The margins of the SVG
+            levels: 6, //How many levels or inner circles should there be drawn
+            maxValue: 0.6, //What is the value that the biggest circle will represent
+            labelFactor: 1.1, //How much farther than the radius of the outer circle should the labels be placed
+            wrapWidth: 60, //The number of pixels after which a label needs to be given a new line
+            opacityArea: 0.35, //The opacity of the area of the blob
+            dotRadius: 4, //The size of the colored circles of each blog
+            opacityCircles: 0.1, //The opacity of the circles of each blob
+            strokeWidth: 2, //The width of the stroke around each blob
+            roundStrokes: true, //If true the area and stroke will follow a round path (cardinal-closed)
+            color: d3.scaleOrdinal(d3.schemeCategory10), //Color function
+            toolbar: true,
+        },
+        defocusRadar: {
+            w: document.querySelectorAll(".defocus .defocus_item1")[0].offsetWidth, //Width of the circle
+            h: document.querySelectorAll(".defocus .defocus_item1")[0].offsetHeight, //Height of the circle
+            margin: {top: 0, right: 0, bottom: 0, left: 0}, //The margins of the SVG
+            levels: 6, //How many levels or inner circles should there be drawn
+            maxValue: 0.6, //What is the value that the biggest circle will represent
+            labelFactor: 1, //How much farther than the radius of the outer circle should the labels be placed
+            wrapWidth: 60, //The number of pixels after which a label needs to be given a new line
+            opacityArea: 0.35, //The opacity of the area of the blob
+            dotRadius: 3, //The size of the colored circles of each blog
+            opacityCircles: 0.1, //The opacity of the circles of each blob
+            strokeWidth: 2, //The width of the stroke around each blob
+            roundStrokes: true, //If true the area and stroke will follow a round path (cardinal-closed)
+            color: d3.scaleOrdinal(d3.schemeCategory10) //Color function
+        },
+        activityView: {
+            w: document.querySelectorAll(".focused")[0].offsetWidth * 3 / 4, //Width of the circle
+            h: document.querySelectorAll(".focused")[0].offsetHeight, //Height of the circle
+            margin: {top: 20, right: 20, bottom: 20, left: 50}, // The margins of the SVG
+            strokeLinecap: "round", // stroke line cap of the line
+            strokeLinejoin: "round", // stroke color of line
+            strokeWidth: 1.5, // stroke width of line, in pixels
+            strokeOpacity: 1, // stroke opacity of line
+            color: "steelblue" //stroke color of line
+        }
+    }
+    pav.method = {
+        formatSeconds: function (value) {
+            let result = Number(value)
+            let h = Math.floor(result / 3600) < 10 ? '0' + Math.floor(result / 3600) : Math.floor(result / 3600);
+            let m = Math.floor((result / 60 % 60)) < 10 ? '0' + Math.floor((result / 60 % 60)) : Math.floor((result / 60 % 60));
+            let s = Math.floor((result % 60)) < 10 ? '0' + Math.floor((result % 60)) : Math.floor((result % 60));
+
+            let res = '';
+            if (h !== '00') res += `${h}:`;
+            if (m !== '00') res += `${m}:`;
+            res += `${s}`;
+            return res;
+        }
+    }
+    pav.method.generatePersonalAbilityViewData = function (focusRole) {
+        const focusRadarData = []
+        const temp = []
+        for (let [key, value] of Object.entries(personal_ability.find(v => v['role'] === focusRole))) {
+            if (key !== 'role')
+                temp.push({'axis': key, 'value': value})
+        }
+        focusRadarData.push(temp)
+        const defocusRoleList = []
+        const defocusRadarDataList = personal_ability.filter(v => v.role !== focusRole).map(v => {
+            defocusRoleList.push(v.role)
+            const DefocusData = []
+            const temp = []
+            for (let [key, value] of Object.entries(v)) {
+                if (key !== 'role')
+                    temp.push({'axis': key, 'value': value})
+            }
+            DefocusData.push(temp)
+            return DefocusData
+        })
+
+        const focusRoleActivityData = {}
+        const timeSlice = 30 // second
+        const focusRoleActivityTrend = []
+        let words = 0
+        let curTime = timeSlice
+        for (let i = 0; i < dialogs.length; i++) {
+            while (dialogs[i].startTime >= curTime) {
+                focusRoleActivityTrend.push({'time': curTime - timeSlice / 2, 'value': words})
+                curTime += timeSlice
+                words = 0
+            }
+            if (dialogs[i].role === focusRole) {
+                words += dialogs[i].text.split(" ").length
+            }
+        }
+        focusRoleActivityTrend.push({'time': curTime - timeSlice / 2, '': words})
+
+        focusRoleActivityData['trends'] = focusRoleActivityTrend
+        focusRoleActivityData['headPos'] = headPos[focusRole].slice(0, Math.floor(dialogs[dialogs.length - 1].endTime))
+
+        return {focusRole, focusRadarData, defocusRadarDataList, focusRoleActivityData, defocusRoleList}
+    }
+    pav.data = pav.method.generatePersonalAbilityViewData(roles[0])
+    pav.data.detailView = "Contribution" // default
+    pav.method.drawRadarView = function (data, Role, options, selector) {
+
+        /////////////////////////////////////////////////////////
+        /////////////////// Helper Function /////////////////////
+        /////////////////////////////////////////////////////////
+
+        //Taken from http://bl.ocks.org/mbostock/7555321
+        //Wraps SVG text
+        function wrap(text, width) {
+            text.each(function () {
+                let text = d3.select(this),
+                    words = text
+                        .text()
+                        .split(/\s+/)
+                        .reverse(),
+                    word,
+                    line = [],
+                    lineNumber = 0,
+                    lineHeight = 1.4, // ems
+                    y = text.attr("y"),
+                    x = text.attr("x"),
+                    dy = parseFloat(text.attr("dy")),
+                    tspan = text
+                        .text(null)
+                        .append("tspan")
+                        .attr("x", x)
+                        .attr("y", y)
+                        .attr("dy", dy + "em");
+
+                while ((word = words.pop())) {
+                    line.push(word);
+                    tspan.text(line.join(" "));
+                    if (tspan.node().getComputedTextLength() > width) {
+                        line.pop();
+                        tspan.text(line.join(" "));
+                        line = [word];
+                        tspan = text
+                            .append("tspan")
+                            .attr("x", x)
+                            .attr("y", y)
+                            .attr("dy", ++lineNumber * lineHeight + dy + "em")
+                            .text(word);
+                    }
+                }
+            });
+        } // wrap
+
+        let cfg = {
+            w: 600, //Width of the circle
+            h: 600, //Height of the circle
+            margin: {top: 10, right: 10, bottom: 10, left: 10}, //The margins of the SVG
+            levels: 3, //How many levels or inner circles should there be drawn
+            maxValue: 0, //What is the value that the biggest circle will represent
+            labelFactor: 1.25, //How much farther than the radius of the outer circle should the labels be placed
+            wrapWidth: 60, //The number of pixels after which a label needs to be given a new line
+            opacityArea: 0.35, //The opacity of the area of the blob
+            dotRadius: 4, //The size of the colored circles of each blog
+            opacityCircles: 0.1, //The opacity of the circles of each blob
+            strokeWidth: 2, //The width of the stroke around each blob
+            roundStrokes: false, //If true the area and stroke will follow a round path (cardinal-closed)
+            color: d3.scaleOrdinal(d3.schemeCategory10), //Color function,
+            toolbar: false,// The toolbar upon radar
+        };
+
+        //Put all of the options into a variable called cfg
+        if ("undefined" !== typeof options) {
+            for (var i in options) {
+                if ("undefined" !== typeof options[i]) {
+                    cfg[i] = options[i];
+                }
+            } //for i
+        } //if
+
+        //If the supplied maxValue is smaller than the actual one, replace by the max in the data
+        let maxValue = Math.max(
+            cfg.maxValue,
+            d3.max(data, function (i) {
+                return d3.max(
+                    i.map(function (o) {
+                        return o.value;
+                    })
+                );
+            })
+        );
+
+
+        const allAxis = data[0].map(function (i, j) {
+                return i.axis;
+            }), //Names of each axis
+            total = allAxis.length, //The number of different axes
+            radius = Math.min(cfg.w / 2, cfg.h / 2), //Radius of the outermost circle
+            Format = d3.format(".2%"), //Percentage formatting
+            angleSlice = (Math.PI * 2) / total, //The width in radians of each "slice"
+            angleOffset = angleSlice / 2;
+        //Scale for the radius
+        const rScale = d3
+            .scaleLinear()
+            .range([0, radius])
+            .domain([0, maxValue]);
+
+        /////////////////////////////////////////////////////////
+        //////////// Create the container SVG and g /////////////
+        /////////////////////////////////////////////////////////
+
+        //Calculate width and height
+        let height = cfg.h + cfg.margin.top + cfg.margin.bottom;
+        let width = cfg.w + cfg.margin.left + cfg.margin.right;
+        //Initiate the radar chart SVG
+        let svg = d3
+            .select(selector)
+            .attr("width", width)
+            .attr("height", height)
+        svg.select("g").remove()
+        // Append event listener
+        svg.on('click', () => {
+            if (pav.data.focusRole !== Role) {
+                pav.data = pav.method.generatePersonalAbilityViewData(Role)
+                pav.method.drawPersonalAbilityView()
+            }
+        })
+        //Append a g element
+        if (cfg.toolbar && !document.querySelector(".focused svg foreignObject")) {
+            svg.append("foreignObject")
+                .attr("height", 20)
+                .attr("width", 110)
+                .attr("transform", `translate(${cfg.margin.left},${cfg.margin.top * 2})`)
+                .append("xhtml:select")
+                .attr("class", 'pav-abilitySelector')
+                .on("change", function () {
+                    pav.method.drawDetailView()
+                })
+                .selectAll("option")
+                .data(['Contribution', 'Perplexity', 'Leadership', 'Activity', 'Backchannel'])
+                .join("option")
+                .text(d => d)
+                .attr("value", d => d)
+        }
+        let g = svg
+            .append("g")
+            .attr(
+                "transform",
+                "translate(" +
+                (cfg.w / 2 + cfg.margin.left) +
+                "," +
+                (cfg.h / 2 + cfg.margin.top) +
+                ")"
+            );
+        // region filter
+        /////////////////////////////////////////////////////////
+        ////////// Glow filter for some extra pizzazz ///////////
+        /////////////////////////////////////////////////////////
+
+        //Filter for the outside glow
+        let filter = g
+                .append("defs")
+                .append("filter")
+                .attr("id", "glow"),
+            feGaussianBlur = filter
+                .append("feGaussianBlur")
+                .attr("stdDeviation", "2.5")
+                .attr("result", "coloredBlur"),
+            feMerge = filter.append("feMerge"),
+            feMergeNode_1 = feMerge.append("feMergeNode").attr("in", "coloredBlur"),
+            feMergeNode_2 = feMerge.append("feMergeNode").attr("in", "SourceGraphic");
+// endregion
+        /////////////////////////////////////////////////////////
+        /////////////// Draw the Circular grid //////////////////
+        /////////////////////////////////////////////////////////
+
+        //Wrapper for the grid & axes
+        // region axis
+        let axisGrid = g.append("g").attr("class", "axisWrapper");
+
+        //Draw the background circles
+        axisGrid
+            .selectAll(".levels")
+            .data(d3.range(1, cfg.levels + 1).reverse())
+            .enter()
+            .append("circle")
+            .attr("class", "gridCircle")
+            .attr("r", function (d, i) {
+                return (radius / cfg.levels) * d;
+            })
+            .style("fill", "#CDCDCD")
+            .style("stroke", "#CDCDCD")
+            .style("fill-opacity", cfg.opacityCircles)
+            .style("filter", "url(#glow)");
+
+        //Text indicating at what % each level is
+        axisGrid
+            .selectAll(".axisLabel")
+            .data(d3.range(1, cfg.levels + 1).reverse())
+            .enter()
+            .append("text")
+            .attr("class", "axisLabel")
+            .attr("x", 4)
+            .attr("y", function (d) {
+                return (-d * radius) / cfg.levels;
+            })
+            .attr("dy", "0.4em")
+            .style("font-size", cfg.w / 25)
+            .attr("fill", "#737373")
+            .text(function (d, i) {
+                return Format((maxValue * d) / cfg.levels);
+            });
+
+        /////////////////////////////////////////////////////////
+        //////////////////// Draw the axes //////////////////////
+        /////////////////////////////////////////////////////////
+        //Create the straight lines radiating outward from the center
+        let axis = axisGrid
+            .selectAll(".axis")
+            .data(allAxis)
+            .enter()
+            .append("g")
+            .attr("class", "axis");
+
+        //Append the lines
+        axis
+            .append("line")
+            .attr("x1", 0)
+            .attr("y1", 0)
+            .attr("x2", function (d, i) {
+                return rScale(maxValue * 1.1) * Math.cos(angleSlice * i - Math.PI / 2 + angleOffset);
+            })
+            .attr("y2", function (d, i) {
+                return rScale(maxValue * 1.1) * Math.sin(angleSlice * i - Math.PI / 2 + angleOffset);
+            })
+            .attr("class", "line")
+            .style("stroke", "white")
+            .style("stroke-width", "2px");
+
+        //Append the labels at each axis
+        axis
+            .append("text")
+            .attr("class", "legend")
+            .attr("font-family", "Verdana")
+            .style("font-size", cfg.w / 20)
+            .attr("text-anchor", "middle")
+            .attr("dy", "0.35em")
+            .attr("x", function (d, i) {
+                return (
+                    rScale(maxValue * cfg.labelFactor) *
+                    Math.cos(angleSlice * i - Math.PI / 2 + angleOffset)
+                );
+            })
+            .attr("y", function (d, i) {
+                return (
+                    rScale(maxValue * cfg.labelFactor) *
+                    Math.sin(angleSlice * i - Math.PI / 2 + angleOffset)
+                );
+            })
+            .text(function (d) {
+                return d;
+            })
+            .call(wrap, cfg.wrapWidth);
+//endregion
+        /////////////////////////////////////////////////////////
+        ///////////// Draw the radar chart blobs ////////////////
+        /////////////////////////////////////////////////////////
+
+        //The radial line function
+        let radarLine = d3
+            .lineRadial()
+            .curve(d3.curveLinearClosed)
+            .radius(function (d) {
+
+                return rScale(d.value);
+            })
+            .angle(function (d, i) {
+
+                return i * angleSlice + angleOffset;
+            });
+
+        if (cfg.roundStrokes) {
+            radarLine.curve(d3.curveCardinalClosed);
+        }
+
+        //Create a wrapper for the blobs
+        // region radarWrapper
+        let blobWrapper = g
+            .selectAll(".radarWrapper")
+            .data(data)
+            .enter()
+            .append("g")
+            .attr("class", "radarWrapper");
+//endregion
+        //Append the backgrounds
+        // region radarArea
+        blobWrapper
+            .append("path")
+            .attr("class", "radarArea")
+            .attr("d", function (d, i) {
+                return radarLine(d);
+            })
+            .style("fill", function (d, i) {
+                return cfg.color(i);
+            })
+            .style("fill-opacity", cfg.opacityArea)
+            .on("mouseover", function () {
+                //Dim all blobs
+                d3.selectAll(".radarArea")
+                    .transition()
+                    .duration(200)
+                    .style("fill-opacity", 0.1);
+                //Bring back the hovered over blob
+                d3.select(this)
+                    .transition()
+                    .duration(200)
+                    .style("fill-opacity", 0.7);
+            })
+            .on("mouseout", function () {
+                //Bring back all blobs
+                d3.selectAll(".radarArea")
+                    .transition()
+                    .duration(200)
+                    .style("fill-opacity", cfg.opacityArea);
+            });
+        //endregion
+        //Create the outlines
+        // region radarStroke
+        blobWrapper
+            .append("path")
+            .attr("class", "radarStroke")
+            .attr("d", function (d, i) {
+                return radarLine(d);
+            })
+            .style("stroke-width", cfg.strokeWidth + "px")
+            .style("stroke", function (d, i) {
+                return cfg.color(i);
+            })
+            .style("fill", "none")
+            .style("filter", "url(#glow)");
+        // endregion
+        //Append the circles
+        // region radarCircle
+        blobWrapper
+            .selectAll(".radarCircle")
+            .data(function (d, i) {
+                return d;
+            })
+            .enter()
+            .append("circle")
+            .attr("class", "radarCircle")
+            .attr("r", cfg.dotRadius)
+            .attr("cx", function (d, i) {
+                return rScale(d.value) * Math.cos(angleSlice * i - Math.PI / 2 + angleOffset);
+            })
+            .attr("cy", function (d, i) {
+                return rScale(d.value) * Math.sin(angleSlice * i - Math.PI / 2 + angleOffset);
+            })
+            .style("fill", function (d) {
+                return "#737373";
+            })
+            .style("fill-opacity", 0.8);
+        //endregion
+        /////////////////////////////////////////////////////////
+        //////// Append invisible circles for tooltip ///////////
+        /////////////////////////////////////////////////////////
+
+        //Wrapper for the invisible circles on top
+        let tooltip = g
+            .append("text")
+            .attr("class", "tooltip")
+            .style("opacity", 0);
+        let blobCircleWrapper = g
+            .selectAll(".radarCircleWrapper")
+            .data(data)
+            .enter()
+            .append("g")
+            .attr("class", "radarCircleWrapper");
+
+        //Append a set of invisible circles on top for the mouseover pop-up
+        blobCircleWrapper
+            .selectAll(".radarInvisibleCircle")
+            .data(function (d, i) {
+                return d;
+            })
+            .enter()
+            .append("circle")
+            .attr("class", "radarInvisibleCircle")
+            .attr("r", cfg.dotRadius * 1.5)
+            .attr("cx", function (d, i) {
+                return rScale(d.value) * Math.cos(angleSlice * i - Math.PI / 2 + angleOffset);
+            })
+            .attr("cy", function (d, i) {
+                return rScale(d.value) * Math.sin(angleSlice * i - Math.PI / 2 + angleOffset);
+            })
+            .style("fill", "none")
+            .style("pointer-events", "all")
+            .on("mouseover", function (event, d) {
+                let newX = parseFloat(d3.select(this).attr("cx")) - 10;
+                let newY = parseFloat(d3.select(this).attr("cy")) - 10;
+                tooltip
+                    .attr("x", newX)
+                    .attr("y", newY)
+                    .text(Format(d.value))
+                    .transition()
+                    .duration(200)
+                    .style("opacity", 1);
+            })
+            .on("mouseout", function () {
+                tooltip
+                    .transition()
+                    .duration(200)
+                    .style("opacity", 0);
+            });
+
+        //Set up the small tooltip for when you hover over a circle
+
+    } //RadarChart
+    pav.method.drawDetailView = function () {
+        const value = document.querySelector(".pav-abilitySelector").value
+        if (value === "Contribution" || value === "Leadership" || value === "Perplexity")
+            drawPersonalFocusCloud(keywordsOfPersonal[pav.data.focusRole][value], pav.config.activityView)
+        else if (value === "Activity")
+            drawPersonalFocusActivityTrend(pav.data.focusRoleActivityData, pav.config.activityView)
+
+        function drawPersonalFocusActivityTrend({trends, headPos}, cfg) {
+            const trendHeight = cfg.h / 3
+            // Compute default domains.
+            const xDomain = [0, Math.floor(dialogs[dialogs.length - 1].endTime)]
+            const yDomain = [0, d3.max(trends, d => d.value)];
+
+            // Construct scales and axes.
+            const xScale = d3.scaleLinear(xDomain, [cfg.margin.left, cfg.w - cfg.margin.right]);
+            const yScale = d3.scaleLinear(yDomain, [trendHeight - cfg.margin.bottom, cfg.margin.top]);
+            const xAxis = d3.axisBottom(xScale).ticks(cfg.w / 80).tickFormat(d => d + 's').tickSizeOuter(0);
+            const yAxis = d3.axisLeft(yScale).ticks(trendHeight / 40);
+            const barWidth = (cfg.w - cfg.margin.left - cfg.margin.right) / headPos.length
+            const barHeight = 15
+            const yScale_headPos = d3.scaleOrdinal()
+                .range(['#1f77b4', '#d11a2d', '#fecc11'])
+                .domain(['up', 'down', 'miss'])
+
+            // Construct a line generator.
+            const line = d3.line()
+                .curve(d3.curveStep)
+                .x(d => xScale(d.time))
+                .y(d => yScale(d.value));
+
+            const svg = d3.select(".focused .focusDetail")
+                .attr("width", cfg.w)
+                .attr("height", cfg.h)
+                .attr("viewBox", [0, 0, cfg.w, cfg.h])
+                .attr("style", "max-width: 100%; height: auto; height: intrinsic;");
+
+            svg.selectAll("*").remove() // 移除残留的元素
+
+            let filter = svg
+                    .append("defs")
+                    .append("filter")
+                    .attr("id", "glow"),
+                feGaussianBlur = filter
+                    .append("feGaussianBlur")
+                    .attr("stdDeviation", "2.5")
+                    .attr("result", "coloredBlur"),
+                feMerge = filter.append("feMerge"),
+                feMergeNode_1 = feMerge.append("feMergeNode").attr("in", "coloredBlur"),
+                feMergeNode_2 = feMerge.append("feMergeNode").attr("in", "SourceGraphic");
+            const lineChart = svg.append("g")
+                .attr("transform", `translate(0,${cfg.margin.top})`)
+            //.attr("transform", `translate(0,${cfg.h / 3 - cfg.margin.bottom})`)
+
+            lineChart.append("g")
+                .attr("opacity", "0.8")
+                .attr("transform", `translate(0,${trendHeight - cfg.margin.bottom})`)
+                .call(xAxis);
+
+            lineChart.append("g")
+                .attr("transform", `translate(${cfg.margin.left},0)`)
+                .attr("opacity", "0.8")
+                .call(yAxis)
+                .call(g => g.select(".domain").remove())
+                .call(g => g.selectAll(".tick line").clone()
+                    .attr("x2", cfg.w - cfg.margin.left - cfg.margin.right)
+                    .attr("stroke-opacity", 0.1))
+                .call(g => g.append("text")
+                    .attr("x", -30)
+                    .attr("y", 10)
+                    .attr("fill", "currentColor")
+                    .attr("text-anchor", "start")
+                    .text("Words"));
+
+            lineChart.append("path")
+                .attr("fill", "none")
+                .attr("stroke", cfg.color)
+                .attr("stroke-width", cfg.strokeWidth)
+                .attr("stroke-linecap", cfg.strokeLinecap)
+                .attr("stroke-linejoin", cfg.strokeLinejoin)
+                .attr("stroke-opacity", cfg.strokeOpacity)
+                .attr("d", line(trends))
+                .attr("filter", "url(#glow)")
+            const barchart = svg.append("g")
+                .attr("transform", `translate(0,${trendHeight + cfg.margin.top})`)
+            const legend = svg.append("g")
+                .attr("transform", `translate(0,${trendHeight + cfg.margin.top / 2})`)
+            legend.selectAll("rect")
+                .data(['up', 'down', 'miss'])
+                .join("rect")
+                .attr("x", (d, i) => i * 100 + 80)
+                .attr("y", cfg.margin.top)
+                .attr("height", barHeight)
+                .attr("width", barHeight * 2)
+                .attr("fill", d => yScale_headPos(d))
+                .attr("opacity", 0.8)
+            legend.selectAll("text")
+                .data(['up', 'down', 'miss'])
+                .join("text")
+                .attr("x", (d, i) => i * 100 + 80 - barHeight * 2)
+                .attr("y", cfg.margin.top + barHeight * 3 / 4)
+                .text(d => d)
+                .attr("font-size", 12)
+            barchart.selectAll("rect")
+                .data(headPos)
+                .join("rect")
+                .attr("x", d => xScale(d.time))
+                .attr("y", cfg.margin.top * 2)
+                // .attr("stroke-width",0.2)
+                // .attr("stroke","#fff")
+                .attr("height", barHeight)
+                .attr("width", barWidth)
+                .attr("fill", d => yScale_headPos(d.facePos))
+
+
+        }
+
+        function drawPersonalFocusCloud(data, cfg) {
+            const trendHeight = cfg.h / 3
+            const fontFamilies = ['Open Sans', 'Pacifico', 'impact']
+            const fonts = d3.scaleLinear()
+                .domain([1, d3.max(data.map(d => d.cnt))])
+                .range([0, 2]);
+            const s = d3.scaleSqrt()
+                .domain([1, d3.max(data.map(d => d.cnt))])
+                .range([10, 30]);
+            const wordColors = d3.scaleOrdinal()
+                .domain(agendas.map((v,i)=>i))
+                .range(d3.schemeSet2)
+                .unknown('black')
+            const sentenceFontSize = 16
+            // Compute default domains.
+            // Construct a line generator.
+            const svg = d3.select(".focused .focusDetail")
+                .attr("width", cfg.w)
+                .attr("height", cfg.h)
+                .attr("viewBox", [0, 0, cfg.w, cfg.h])
+                .attr("text-anchor", "middle")
+                .attr("style", "max-width: 100%; height: auto; height: intrinsic;");
+            svg.selectAll("*").remove() // 移除残留的元素s
+            const sentence = svg.append("g")
+                .attr("transform", `translate(${cfg.margin.left},${cfg.h / 3})`)
+
+            const layout = d3.layout.cloud()
+                .size([cfg.w, cfg.h / 3])
+                .words(data)
+                .padding(0)
+                .rotate(() => 0)
+                .font(d => fontFamilies[fonts(d.cnt)])
+                .fontSize(d => s(d.cnt))
+                .on("word", ({size, x, y, rotate, word, cnt, sentences, agenda}) => {
+                    sentences = [...new Set(sentences)]
+                    const texttext = svg.append("text")
+                        .attr("font-size", size)
+                        .attr("transform", `translate(${x},${y}) rotate(${rotate})`)
+                        .text(word)
+                        .style('fill', wordColors(agenda))
+                        .classed("click-only-text", true)
+                        .classed("word-default", true)
+                        .on("mouseover", handleMouseOver)
+                        .on("mouseout", handleMouseOut)
+                        .on("click", handleClick);
+
+                    texttext.append("title").text(agenda);
+
+                    function handleMouseOver(d) {
+                        d3.select(this)
+                            .classed("word-hovered", true)
+                            .transition(`mouseover-${word}`).duration(200).ease(d3.easeLinear)
+                            .attr("font-size", size + 2)
+                            .attr("font-weight", "bold");
+                    }
+
+                    function handleMouseOut(d) {
+                        d3.select(this)
+                            .classed("word-hovered", false)
+                            .interrupt(`mouseover-${word}`)
+                            .attr("font-size", size)
+                            .attr("font-weight", "none")
+                    }
+
+                    function handleClick(event) {
+                        sentence.selectAll("*").remove()
+                        sentence.append("foreignObject")
+                            .attr("width", cfg.w - cfg.margin.right - cfg.margin.left)
+                            .attr("height", cfg.h * 2 / 3 - cfg.margin.top)
+                            .style("overflow", "scroll")
+                            .style("overflow-x", "hidden")
+                            .attr("font-size", sentenceFontSize)
+                            .attr("font-family", 'Verdana')
+                            .selectAll("p")
+                            .data(sentences)
+                            .join("xhtml:p")
+                            .attr("style", "margin-bottom:10px")
+                            .selectAll("span")
+                            .data(d => {
+                                const outPut = []
+                                outPut.push(pav.method.formatSeconds(dialogs[d].startTime) + ": ")
+                                d = dialogs[d].text
+                                const wl = word.length
+                                const indexs = []
+                                const w = word.toLowerCase()
+                                d = d.toLowerCase()
+                                let start = 0
+                                let i = d.indexOf(w, start)
+                                while (i !== -1) {
+                                    indexs.push(i)
+                                    start = i + wl
+                                    i = d.indexOf(w, start)
+                                }
+                                let pre = 0
+                                for (let i of indexs) {
+                                    if (i !== pre) {
+                                        outPut.push(d.slice(pre, i))
+                                    }
+                                    pre = i + wl
+                                    outPut.push(d.slice(i, pre))
+                                }
+                                outPut.push(d.slice(pre))
+                                return outPut
+                            })
+                            .join("span")
+                            .text(d => d)
+                            .attr("style", d => `color:${d.toLowerCase() === word.toLowerCase() ? wordColors(agenda) : "none"}`)
+
+
+                    }
+                });
+            layout.start();
+        }
+    }
+    pav.method.drawPersonalAbilityView = function () {
+        pav.method.drawRadarView(pav.data.focusRadarData, pav.data.focusRole, pav.config.focusRadar, '.focused .focusRadar')
+        pav.data.defocusRadarDataList.forEach((v, i) => pav.method.drawRadarView(v, pav.data.defocusRoleList[i], pav.config.defocusRadar, `.defocus .defocus_item${i + 1} svg`))
+        pav.method.drawDetailView()
+    }
+    pav.method.drawPersonalAbilityView()
+    // endregion
 </script>
 </body>
 </html>
