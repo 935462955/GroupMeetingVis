@@ -30,6 +30,8 @@ for role in roles:
     path = os.path.join(app.config['DATA_PATH'], 'headPose/{}/{}.json'.format(meetingName, role))
     with open(path, 'r', encoding='utf-8') as f:
         headPos[role] = json.load(f)
+        print(headPos[role][59],headPos[role][60])
+#print(headPos)
 trees = []  # 下标索引树节点
 roots = []  # 所有子会话的根
 for index, item in enumerate(reply_relation):
@@ -93,10 +95,6 @@ def getKeyWords(sentences):
                     wordsOfAgenda[agenda_id][tokIdx]['sentences'].append(s)
     for index, num in enumerate(agenda_sentence_num):
         agenda_sentence_num[index] = round(num / len(sentences) * total)  # 每个议题可展示关键词席位
-    for s in sentences:
-        if s == 28:
-            print(agenda_sentence_num)
-            print(wordsOfAgenda)
     out = []
     for index, _ in enumerate(wordsOfAgenda): # 选择每个议题下的高频词输出
         wordsOfAgenda[index] = sorted(wordsOfAgenda[index], key=lambda x: x['cnt'], reverse=True)
@@ -185,14 +183,7 @@ def calContribution(role):
 
     for root in roots:
         dfs(root)
-    print(role)
-    if role == 'C':
-        print(keySentences)
-        #for i in keySentences:
-         #   print(dialogs[i])
     keywords = getKeyWords(keySentences)
-    if role == 'C':
-        print(keywords)
     return round(contribute / totalUtr, 2), keywords
 
 
