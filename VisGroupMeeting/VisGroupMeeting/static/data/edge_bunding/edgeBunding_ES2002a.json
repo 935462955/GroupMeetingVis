@@ -1,1 +1,762 @@
-[{"session_id": 0, "subsessions": {}, "agenda": "-", "agenda_similiarity": "-"}, {"session_id": 1, "subsessions": {}, "agenda": "-", "agenda_similiarity": "-"}, {"session_id": 2, "subsessions": {"D_B": [3, 4, 7], "B_D": [2, 2, 2], "A_B": [5, 5], "B_A": [2, 6], "C_B": [8], "B_C": [2]}, "agenda": 0, "agenda_similiarity": 0.21955385764175592}, {"session_id": 3, "subsessions": {"B_B": [10, 9]}, "agenda": 3, "agenda_similiarity": 0.21052426560715892}, {"session_id": 4, "subsessions": {"A_B": [12, 12, 12], "B_A": [11, 13, 16], "D_A": [14, 15], "A_D": [12, 12], "C_B": [17, 27, 28], "B_C": [16, 16, 29], "D_B": [18, 19, 19], "B_D": [16, 16, 20], "C_C": [28, 27], "A_C": [30, 31], "C_A": [28, 28], "B_B": [36, 16]}, "agenda": 1, "agenda_similiarity": 0.22188848510190115}, {"session_id": 5, "subsessions": {"B_D": [22, 22, 22, 25, 26], "D_B": [21, 23, 24, 24, 24]}, "agenda": 1, "agenda_similiarity": 0.35627469070745854}, {"session_id": 6, "subsessions": {"A_B": [33], "B_A": [32], "D_B": [34, 34], "B_D": [32, 35]}, "agenda": 0, "agenda_similiarity": 0.17642399439062015}, {"session_id": 7, "subsessions": {}, "agenda": "-", "agenda_similiarity": "-"}, {"session_id": 8, "subsessions": {"B_A": [39, 43, 43], "A_B": [38, 42, 44], "A_A": [40, 38, 41, 40, 42, 40, 45, 44], "D_A": [46], "A_D": [45], "D_D": [47, 46]}, "agenda": 1, "agenda_similiarity": 0.15950529210077397}, {"session_id": 9, "subsessions": {"D_B": [49, 52, 55, 55, 57], "B_D": [48, 51, 53, 56, 56], "A_B": [50, 50], "B_A": [48, 51], "B_B": [53, 51, 54, 53]}, "agenda": 1, "agenda_similiarity": 0.2880213045076271}, {"session_id": 10, "subsessions": {}, "agenda": "-", "agenda_similiarity": "-"}, {"session_id": 11, "subsessions": {"B_D": [60, 60, 60, 66, 107, 108, 108, 108, 108], "D_B": [59, 61, 65, 65, 65, 65, 109, 110, 111], "A_B": [63, 63], "B_A": [60, 64], "B_B": [67, 66]}, "agenda": 0, "agenda_similiarity": 0.1739773837181985}, {"session_id": 12, "subsessions": {}, "agenda": "-", "agenda_similiarity": "-"}, {"session_id": 13, "subsessions": {"B_B": [69, 68], "D_B": [70, 71, 71], "B_D": [69, 69, 72]}, "agenda": 2, "agenda_similiarity": 0.22893564042470535}, {"session_id": 14, "subsessions": {}, "agenda": "-", "agenda_similiarity": "-"}, {"session_id": 15, "subsessions": {"B_D": [75, 76, 76, 78, 78], "D_B": [74, 74, 77, 77, 79]}, "agenda": 2, "agenda_similiarity": 0.5357301816498307}, {"session_id": 16, "subsessions": {}, "agenda": "-", "agenda_similiarity": "-"}, {"session_id": 17, "subsessions": {"B_D": [82, 82, 84, 84], "D_B": [81, 83, 83, 85]}, "agenda": 2, "agenda_similiarity": 0.17046931316543884}, {"session_id": 18, "subsessions": {}, "agenda": "-", "agenda_similiarity": "-"}, {"session_id": 19, "subsessions": {}, "agenda": "-", "agenda_similiarity": "-"}, {"session_id": 20, "subsessions": {"B_D": [89, 91, 91, 91, 91, 100, 101, 102, 102], "D_B": [88, 88, 92, 93, 94, 99, 99, 99, 103], "A_D": [90, 95, 98], "D_A": [88, 97, 99], "A_B": [95, 95, 98], "B_A": [91, 96, 91]}, "agenda": 3, "agenda_similiarity": 0.25776533628240555}, {"session_id": 21, "subsessions": {"B_D": [105, 106], "D_B": [104, 104]}, "agenda": 2, "agenda_similiarity": 0.2167909857468998}, {"session_id": 22, "subsessions": {"D_B": [113, 114, 116], "B_D": [112, 112, 115], "B_B": [115, 112]}, "agenda": 3, "agenda_similiarity": 0.2770152784502575}, {"session_id": 23, "subsessions": {"B_B": [118, 117, 123, 120], "D_B": [119, 119, 122], "B_D": [118, 120, 120], "A_B": [121], "B_A": [120]}, "agenda": 2, "agenda_similiarity": 0.18921711804071958}, {"session_id": 24, "subsessions": {"B_D": [125], "D_B": [124]}, "agenda": 2, "agenda_similiarity": 0.27996985308972394}, {"session_id": 25, "subsessions": {}, "agenda": "-", "agenda_similiarity": "-"}, {"session_id": 26, "subsessions": {}, "agenda": "-", "agenda_similiarity": "-"}, {"session_id": 27, "subsessions": {"C_D": [129, 131, 131], "D_C": [128, 128, 132], "A_D": [130, 146, 146, 143], "D_A": [128, 147, 148, 145], "B_D": [134, 134, 134, 137, 138, 139, 140, 141, 142, 149, 149, 149, 149], "D_B": [132, 135, 136, 136, 136, 136, 136, 136, 136, 148, 150, 151, 153], "A_B": [143, 143, 146, 152], "B_A": [142, 144, 144, 149], "B_C": [133], "C_B": [131]}, "agenda": 3, "agenda_similiarity": 0.22885891127983163}, {"session_id": 28, "subsessions": {"B_D": [155], "D_B": [154]}, "agenda": 3, "agenda_similiarity": 0.18791363349634702}, {"session_id": 29, "subsessions": {}, "agenda": "-", "agenda_similiarity": "-"}, {"session_id": 30, "subsessions": {}, "agenda": "-", "agenda_similiarity": "-"}, {"session_id": 31, "subsessions": {"B_B": [160, 158], "D_B": [161, 161, 161, 161], "B_D": [160, 163, 164, 165]}, "agenda": 3, "agenda_similiarity": 0.20235644531201774}, {"session_id": 32, "subsessions": {}, "agenda": "-", "agenda_similiarity": "-"}, {"session_id": 33, "subsessions": {}, "agenda": "-", "agenda_similiarity": "-"}, {"session_id": 34, "subsessions": {"A_B": [167], "B_A": [166], "D_B": [168], "B_D": [166]}, "agenda": 0, "agenda_similiarity": 0.2192508636824206}, {"session_id": 35, "subsessions": {}, "agenda": "-", "agenda_similiarity": "-"}, {"session_id": 36, "subsessions": {"B_B": [171, 170, 172, 171], "D_B": [173], "B_D": [172]}, "agenda": 0, "agenda_similiarity": 0.16842486800290984}, {"session_id": 37, "subsessions": {"B_D": [175, 177, 177, 177, 188], "D_B": [174, 174, 178, 179, 189], "A_D": [176, 180, 182, 182], "D_A": [174, 181, 183, 185], "A_B": [180, 182, 182, 187], "B_A": [177, 184, 186, 188], "A_A": [182, 180, 187, 182]}, "agenda": 0, "agenda_similiarity": 0.1835147150353203}]
+[
+  {
+    "session_id": 0,
+    "subsessions": {},
+    "single": 0,
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "session_id": 1,
+    "subsessions": {},
+    "single": 1,
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "session_id": 2,
+    "subsessions": {
+      "D_B": [
+        3,
+        4,
+        7
+      ],
+      "B_D": [
+        2,
+        2,
+        2
+      ],
+      "A_B": [
+        5,
+        5
+      ],
+      "B_A": [
+        2,
+        6
+      ],
+      "C_B": [
+        8
+      ],
+      "B_C": [
+        2
+      ]
+    },
+    "agenda": 0,
+    "agenda_similiarity": 0.21955385764175592
+  },
+  {
+    "session_id": 3,
+    "subsessions": {
+      "B_B": [
+        10,
+        9
+      ]
+    },
+    "agenda": 3,
+    "agenda_similiarity": 0.21052426560715892
+  },
+  {
+    "session_id": 4,
+    "subsessions": {
+      "A_B": [
+        12,
+        12,
+        12
+      ],
+      "B_A": [
+        11,
+        13,
+        16
+      ],
+      "D_A": [
+        14,
+        15
+      ],
+      "A_D": [
+        12,
+        12
+      ],
+      "C_B": [
+        17,
+        27,
+        28
+      ],
+      "B_C": [
+        16,
+        16,
+        29
+      ],
+      "D_B": [
+        18,
+        19,
+        19
+      ],
+      "B_D": [
+        16,
+        16,
+        20
+      ],
+      "C_C": [
+        28,
+        27
+      ],
+      "A_C": [
+        30,
+        31
+      ],
+      "C_A": [
+        28,
+        28
+      ],
+      "B_B": [
+        36,
+        16
+      ]
+    },
+    "agenda": 1,
+    "agenda_similiarity": 0.22188848510190115
+  },
+  {
+    "session_id": 5,
+    "subsessions": {
+      "B_D": [
+        22,
+        22,
+        22,
+        25,
+        26
+      ],
+      "D_B": [
+        21,
+        23,
+        24,
+        24,
+        24
+      ]
+    },
+    "agenda": 1,
+    "agenda_similiarity": 0.35627469070745854
+  },
+  {
+    "session_id": 6,
+    "subsessions": {
+      "A_B": [
+        33
+      ],
+      "B_A": [
+        32
+      ],
+      "D_B": [
+        34,
+        34
+      ],
+      "B_D": [
+        32,
+        35
+      ]
+    },
+    "agenda": 0,
+    "agenda_similiarity": 0.17642399439062015
+  },
+  {
+    "session_id": 7,
+    "subsessions": {},
+    "single": 37,
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "session_id": 8,
+    "subsessions": {
+      "B_A": [
+        39,
+        43,
+        43
+      ],
+      "A_B": [
+        38,
+        42,
+        44
+      ],
+      "A_A": [
+        40,
+        38,
+        41,
+        40,
+        42,
+        40,
+        45,
+        44
+      ],
+      "D_A": [
+        46
+      ],
+      "A_D": [
+        45
+      ],
+      "D_D": [
+        47,
+        46
+      ]
+    },
+    "agenda": 1,
+    "agenda_similiarity": 0.15950529210077397
+  },
+  {
+    "session_id": 9,
+    "subsessions": {
+      "D_B": [
+        49,
+        52,
+        55,
+        55,
+        57
+      ],
+      "B_D": [
+        48,
+        51,
+        53,
+        56,
+        56
+      ],
+      "A_B": [
+        50,
+        50
+      ],
+      "B_A": [
+        48,
+        51
+      ],
+      "B_B": [
+        53,
+        51,
+        54,
+        53
+      ]
+    },
+    "agenda": 1,
+    "agenda_similiarity": 0.2880213045076271
+  },
+  {
+    "session_id": 10,
+    "subsessions": {},
+    "single": 58,
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "session_id": 11,
+    "subsessions": {
+      "B_D": [
+        60,
+        60,
+        60,
+        66,
+        107,
+        108,
+        108,
+        108,
+        108
+      ],
+      "D_B": [
+        59,
+        61,
+        65,
+        65,
+        65,
+        65,
+        109,
+        110,
+        111
+      ],
+      "A_B": [
+        63,
+        63
+      ],
+      "B_A": [
+        60,
+        64
+      ],
+      "B_B": [
+        67,
+        66
+      ]
+    },
+    "agenda": 0,
+    "agenda_similiarity": 0.1739773837181985
+  },
+  {
+    "session_id": 12,
+    "subsessions": {},
+    "single": 62,
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "session_id": 13,
+    "subsessions": {
+      "B_B": [
+        69,
+        68
+      ],
+      "D_B": [
+        70,
+        71,
+        71
+      ],
+      "B_D": [
+        69,
+        69,
+        72
+      ]
+    },
+    "agenda": 2,
+    "agenda_similiarity": 0.22893564042470535
+  },
+  {
+    "session_id": 14,
+    "subsessions": {},
+    "single": 73,
+    "agenda": 2,
+    "agenda_similiarity": 0.11054476336301995
+  },
+  {
+    "session_id": 15,
+    "subsessions": {
+      "B_D": [
+        75,
+        76,
+        76,
+        78,
+        78
+      ],
+      "D_B": [
+        74,
+        74,
+        77,
+        77,
+        79
+      ]
+    },
+    "agenda": 2,
+    "agenda_similiarity": 0.5357301816498307
+  },
+  {
+    "session_id": 16,
+    "subsessions": {},
+    "single": 80,
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "session_id": 17,
+    "subsessions": {
+      "B_D": [
+        82,
+        82,
+        84,
+        84
+      ],
+      "D_B": [
+        81,
+        83,
+        83,
+        85
+      ]
+    },
+    "agenda": 2,
+    "agenda_similiarity": 0.17046931316543884
+  },
+  {
+    "session_id": 18,
+    "subsessions": {},
+    "single": 86,
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "session_id": 19,
+    "subsessions": {},
+    "single": 87,
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "session_id": 20,
+    "subsessions": {
+      "B_D": [
+        89,
+        91,
+        91,
+        91,
+        91,
+        100,
+        101,
+        102,
+        102
+      ],
+      "D_B": [
+        88,
+        88,
+        92,
+        93,
+        94,
+        99,
+        99,
+        99,
+        103
+      ],
+      "A_D": [
+        90,
+        95,
+        98
+      ],
+      "D_A": [
+        88,
+        97,
+        99
+      ],
+      "A_B": [
+        95,
+        95,
+        98
+      ],
+      "B_A": [
+        91,
+        96,
+        91
+      ]
+    },
+    "agenda": 3,
+    "agenda_similiarity": 0.25776533628240555
+  },
+  {
+    "session_id": 21,
+    "subsessions": {
+      "B_D": [
+        105,
+        106
+      ],
+      "D_B": [
+        104,
+        104
+      ]
+    },
+    "agenda": 2,
+    "agenda_similiarity": 0.2167909857468998
+  },
+  {
+    "session_id": 22,
+    "subsessions": {
+      "D_B": [
+        113,
+        114,
+        116
+      ],
+      "B_D": [
+        112,
+        112,
+        115
+      ],
+      "B_B": [
+        115,
+        112
+      ]
+    },
+    "agenda": 3,
+    "agenda_similiarity": 0.2770152784502575
+  },
+  {
+    "session_id": 23,
+    "subsessions": {
+      "B_B": [
+        118,
+        117,
+        123,
+        120
+      ],
+      "D_B": [
+        119,
+        119,
+        122
+      ],
+      "B_D": [
+        118,
+        120,
+        120
+      ],
+      "A_B": [
+        121
+      ],
+      "B_A": [
+        120
+      ]
+    },
+    "agenda": 2,
+    "agenda_similiarity": 0.18921711804071958
+  },
+  {
+    "session_id": 24,
+    "subsessions": {
+      "B_D": [
+        125
+      ],
+      "D_B": [
+        124
+      ]
+    },
+    "agenda": 2,
+    "agenda_similiarity": 0.27996985308972394
+  },
+  {
+    "session_id": 25,
+    "subsessions": {},
+    "single": 126,
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "session_id": 26,
+    "subsessions": {},
+    "single": 127,
+    "agenda": 3,
+    "agenda_similiarity": 0.12864483989878292
+  },
+  {
+    "session_id": 27,
+    "subsessions": {
+      "C_D": [
+        129,
+        131,
+        131
+      ],
+      "D_C": [
+        128,
+        128,
+        132
+      ],
+      "A_D": [
+        130,
+        146,
+        146,
+        143
+      ],
+      "D_A": [
+        128,
+        147,
+        148,
+        145
+      ],
+      "B_D": [
+        134,
+        134,
+        134,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        149,
+        149,
+        149,
+        149
+      ],
+      "D_B": [
+        132,
+        135,
+        136,
+        136,
+        136,
+        136,
+        136,
+        136,
+        136,
+        148,
+        150,
+        151,
+        153
+      ],
+      "A_B": [
+        143,
+        143,
+        146,
+        152
+      ],
+      "B_A": [
+        142,
+        144,
+        144,
+        149
+      ],
+      "B_C": [
+        133
+      ],
+      "C_B": [
+        131
+      ]
+    },
+    "agenda": 3,
+    "agenda_similiarity": 0.22885891127983163
+  },
+  {
+    "session_id": 28,
+    "subsessions": {
+      "B_D": [
+        155
+      ],
+      "D_B": [
+        154
+      ]
+    },
+    "agenda": 3,
+    "agenda_similiarity": 0.18791363349634702
+  },
+  {
+    "session_id": 29,
+    "subsessions": {},
+    "single": 156,
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "session_id": 30,
+    "subsessions": {},
+    "single": 157,
+    "agenda": 3,
+    "agenda_similiarity": 0.16198693700262623
+  },
+  {
+    "session_id": 31,
+    "subsessions": {
+      "B_B": [
+        160,
+        158
+      ],
+      "D_B": [
+        161,
+        161,
+        161,
+        161
+      ],
+      "B_D": [
+        160,
+        163,
+        164,
+        165
+      ]
+    },
+    "agenda": 3,
+    "agenda_similiarity": 0.20235644531201774
+  },
+  {
+    "session_id": 32,
+    "subsessions": {},
+    "single": 159,
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "session_id": 33,
+    "subsessions": {},
+    "single": 162,
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "session_id": 34,
+    "subsessions": {
+      "A_B": [
+        167
+      ],
+      "B_A": [
+        166
+      ],
+      "D_B": [
+        168
+      ],
+      "B_D": [
+        166
+      ]
+    },
+    "agenda": 0,
+    "agenda_similiarity": 0.2192508636824206
+  },
+  {
+    "session_id": 35,
+    "subsessions": {},
+    "single": 169,
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "session_id": 36,
+    "subsessions": {
+      "B_B": [
+        171,
+        170,
+        172,
+        171
+      ],
+      "D_B": [
+        173
+      ],
+      "B_D": [
+        172
+      ]
+    },
+    "agenda": 0,
+    "agenda_similiarity": 0.16842486800290984
+  },
+  {
+    "session_id": 37,
+    "subsessions": {
+      "B_D": [
+        175,
+        177,
+        177,
+        177,
+        188
+      ],
+      "D_B": [
+        174,
+        174,
+        178,
+        179,
+        189
+      ],
+      "A_D": [
+        176,
+        180,
+        182,
+        182
+      ],
+      "D_A": [
+        174,
+        181,
+        183,
+        185
+      ],
+      "A_B": [
+        180,
+        182,
+        182,
+        187
+      ],
+      "B_A": [
+        177,
+        184,
+        186,
+        188
+      ],
+      "A_A": [
+        182,
+        180,
+        187,
+        182
+      ]
+    },
+    "agenda": 0,
+    "agenda_similiarity": 0.1835147150353203
+  }
+]

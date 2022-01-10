@@ -6,31 +6,59 @@
     <link rel="stylesheet" href="../static/css/index.css"/>
 </head>
 <body>
-<div class="itav"
-     style="height:40rem;width:80rem;border:solid #999999 1px;border-radius: 5px; margin-bottom: 1rem;padding: 1rem 0">
-    <svg>
-    </svg>
-</div>
-<div class="pav-container">
-    <div class="pav-toolbar"></div>
-    <div class="pav">
-        <div class="defocus">
-            <div class="defocus_item1">
-                <svg></svg>
-            </div>
-            <div class="defocus_item2">
-                <svg></svg>
-            </div>
-            <div class="defocus_item3">
-                <svg></svg>
-            </div>
+<div class="views">
+    <div class="itav">
+        <svg>
+        </svg>
+    </div>
+    <div class="adv">
+        <div class="adv-toolbar">
+            <span>time slice</span>
+            <select onchange="adv.method.changeSelectorValue(this)">
+                <option value="50">50</option>
+                <option value="60" selected>60</option>
+                <option value="70">70</option>
+                <option value="80">80</option>
+                <option value="90">90</option>
+                <option value="100">100</option>
+                <option value="110">110</option>
+                <option value="120">120</option>
+            </select>
         </div>
-        <div class="focused">
+        <svg>
+        </svg>
+    </div>
+    <div class="ctxv">
+     <svg></svg>
+    </div>
+    <div class="pav-container">
+        <!--    <div class="pav-toolbar"></div>-->
+        <div class="pav">
+            <div class="defocus">
+                <div class="defocus_item1">
+                    <svg></svg>
+                </div>
+                <div class="defocus_item2">
+                    <svg></svg>
+                </div>
+                <div class="defocus_item3">
+                    <svg></svg>
+                </div>
+            </div>
+            <div class="focused">
 
-            <svg class="focusRadar"></svg>
-            <svg class="focusDetail"></svg>
+                <svg class="focusRadar"></svg>
+                <svg class="focusDetail"></svg>
+            </div>
         </div>
     </div>
+    <div class="video">
+        <video controls="controls" muted>
+            <source src="../static/data/video/ES2002a/ES2002a.Closeup1A.mp4" type="video/mp4">
+        </video>
+
+    </div>
+    <div class="control-view"></div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.7.0/d3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.5/d3.layout.cloud.min.js"
@@ -43,11 +71,13 @@
     const sessions = JSON.parse(`{{sessions|safe}}`)
     const personal_ability = JSON.parse(`{{personal_ability|safe}}`)
     const roles = [...new Set(dialogs.map(v => v.role))]
+    //const roles = JSON.parse(`{{roles|safe}}`)
     const headPos = JSON.parse(`{{headPos|safe}}`)
     const keywordsOfPersonal = JSON.parse(`{{keywordsOfPersonal|safe}}`)
     const agendas = JSON.parse(`{{agendas|safe}}`)
-    console.log(keywordsOfPersonal)
-    // region itav
+    const chordData = JSON.parse(`{{chordData|safe}}`)
+    const stopwords = new Set(JSON.parse(`{{stopwords|safe}}`))
+    // region itav(interaction view)
     const itav = {} //interactionview
     itav.config = {
         width: 1800,
@@ -219,8 +249,8 @@
             if (Object.keys(v['subsessions']).length > 0) {
                 for (let key of Object.keys(v['subsessions'])) {
                     let speakers = key.split("_")
-                    if (speakers[0] === speakers[1]) //A_A
-                        continue
+                    // if (speakers[0] === speakers[1]) //A_A
+                    //     continue
                     let xsum = 0
                     for (let x of v['subsessions'][key]) {
                         xsum += itav.method.idx2pos(x)[0] // x 坐标系是否会更新
@@ -428,13 +458,48 @@
             const midText = []
             for (let session of locatedSession) {
                 const speakers_dic = Object.create(null)
-                if (Object.keys(session['subsessions']).length === 0)
+                if (Object.keys(session['subsessions']).length === 0) {
                     continue
+                    // if(session['agenda'] != "-")
+                    // {
+                    //         let id = session['single']
+                    //        //square
+                    //         idx2sessionId[id] = session['session_id']
+                    //         const x_start = itav.method.xScale(dialogs[id].startTime)
+                    //         const x_end = itav.method.xScale(dialogs[id].endTime)
+                    //         let speaker = dialogs[id].role
+                    //         if (!(speaker in speakers_dic)) {
+                    //             speakers_dic[speaker] = [x_start, x_end]
+                    //         } else if (speakers_dic[speaker][0] > x_start) // x_start
+                    //         {
+                    //             speakers_dic[speaker][0] = x_start
+                    //         } else if (speakers_dic[speaker][1] < x_end) // x_end
+                    //         {
+                    //             speakers_dic[speaker][1] = x_end
+                    //         }
+                    // }
+                }
                 const visited_subsession_trunk = new Set()
                 for (let subsession_name of Object.keys(session['subsessions'])) {
                     const speakers = subsession_name.split("_")
-                    if (speakers[0] === speakers[1])
+                    if (speakers[0] === speakers[1]) { //A_A 无需边捆绑
+                        for (let id of session['subsessions'][subsession_name]['pos']) {
+                            //square
+                            idx2sessionId[id] = session['session_id']
+                            const x_start = itav.method.xScale(dialogs[id].startTime)
+                            const x_end = itav.method.xScale(dialogs[id].endTime)
+                            if (!(speakers[0] in speakers_dic)) {
+                                speakers_dic[speakers[0]] = [x_start, x_end]
+                            } else if (speakers_dic[speakers[0]][0] > x_start) // x_start
+                            {
+                                speakers_dic[speakers[0]][0] = x_start
+                            } else if (speakers_dic[speakers[0]][1] < x_end) // x_end
+                            {
+                                speakers_dic[speakers[0]][1] = x_end
+                            }
+                        }
                         continue
+                    }
 
                     for (let id of session['subsessions'][subsession_name]['pos']) {
                         // idx2sessionId
@@ -496,10 +561,11 @@
             }
             return {edges, squares, idx2sessionId, midText}
         })();
-        const circles = dialogs.map(v => {
+        const circles = dialogs.map((v, i) => {
             let c = {}
             let start = itav.method.xScale(v.startTime)
             let end = itav.method.xScale(v.endTime)
+            c.id = i
             c.r = (end - start) / 2// 直径为实际发言时长
             c.x = start + c.r //圆心在起止时间中间
             c.y = itav.method.yScale(v.role)
@@ -540,6 +606,7 @@
         const bindNodeArea = g.append("g").attr("class", "bindNodeArea")
         //const anchor = g.append("g").attr("class", "anchor")
         const bindEdgeTitle = g.append("g")
+        const singleNode = g.append("g")
         //Filter for the outside glow,
         let filter = g
                 .append("defs")
@@ -556,6 +623,7 @@
         return function () {
             /* 刷选轴 */
             /* 未捆绑发言节点 */
+
             const nodes = storyBoard.selectAll("ellipse")
                 .data(itav.data.circles)
                 .join("ellipse")
@@ -566,6 +634,21 @@
                 .attr("cy", d => d.y)
                 .attr("fill", "none")
                 .on("click", itav.method.click)
+
+            singleNode.selectAll("ellipse")
+                .data(itav.data.locatedSession.filter(v => {
+                    return v.single != undefined
+                }).map(v => itav.data.circles[v.single]))
+                .join("ellipse")
+                .attr("class", (d, i) => `detailSidNode_${itav.data.bind_edges.idx2sessionId[i] ? itav.data.bind_edges.idx2sessionId[i] : 'single'}`)
+                .attr("rx", d => d.r)
+                .attr("ry", d => Math.min(d.r, 30))
+                .attr("cx", d => d.x)
+                .attr("cy", d => d.y)
+                .attr("fill", d => {
+                    return dialogs[d.id]['agenda'] !== '-' ? itav.config.agendaColor[Number(dialogs[d.id]['agenda'])] : "grey"
+                })
+
 
             // 回复线渐变颜色
 
@@ -731,7 +814,7 @@
     })()
     drawInteractionView()
     // endregion
-    // region pav
+    // region pav(personal ability view)
     const pav = {}
     pav.config = {
         focusRadar: {
@@ -791,6 +874,7 @@
         }
     }
     pav.method.generatePersonalAbilityViewData = function (focusRole) {
+        // 生成雷达图所需数据
         const focusRadarData = []
         const temp = []
         for (let [key, value] of Object.entries(personal_ability.find(v => v['role'] === focusRole))) {
@@ -810,7 +894,7 @@
             DefocusData.push(temp)
             return DefocusData
         })
-
+        // 生成绘制活跃度视图所需数据
         const focusRoleActivityData = {}
         const timeSlice = 30 // second
         const focusRoleActivityTrend = []
@@ -830,8 +914,24 @@
 
         focusRoleActivityData['trends'] = focusRoleActivityTrend
         focusRoleActivityData['headPos'] = headPos[focusRole].slice(0, Math.floor(dialogs[dialogs.length - 1].endTime))
+        // 生成绘制弦图所需数据
+        const focusRoleChordData = new Array(roles.length).fill(0).map(v => new Array(roles.length).fill(0))
+        for (let role in chordData) {
+            const i = roles.indexOf(role)
+            for (let innerRole in chordData[role]) {
+                const j = roles.indexOf(innerRole)
+                focusRoleChordData[i][j] = chordData[role][innerRole]
+            }
+        }
 
-        return {focusRole, focusRadarData, defocusRadarDataList, focusRoleActivityData, defocusRoleList}
+        return {
+            focusRole,
+            focusRadarData,
+            defocusRadarDataList,
+            focusRoleActivityData,
+            defocusRoleList,
+            focusRoleChordData
+        }
     }
     pav.data = pav.method.generatePersonalAbilityViewData(roles[0])
     pav.data.detailView = "Contribution" // default
@@ -1252,6 +1352,8 @@
             drawPersonalFocusCloud(keywordsOfPersonal[pav.data.focusRole][value], pav.config.activityView)
         else if (value === "Activity")
             drawPersonalFocusActivityTrend(pav.data.focusRoleActivityData, pav.config.activityView)
+        else if (value === "Backchannel")
+            drawPersonalFocusChordView(pav.data.focusRoleChordData, pav.config.activityView)
 
         function drawPersonalFocusActivityTrend({trends, headPos}, cfg) {
             const trendHeight = cfg.h / 3
@@ -1358,8 +1460,6 @@
                 .attr("height", barHeight)
                 .attr("width", barWidth)
                 .attr("fill", d => yScale_headPos(d.facePos))
-
-
         }
 
         function drawPersonalFocusCloud(data, cfg) {
@@ -1475,6 +1575,99 @@
                 });
             layout.start();
         }
+
+        function drawPersonalFocusChordView(data, cfg) {
+            const w = cfg.w * 3 / 4
+            const h = cfg.h * 3 / 4
+            const outerRadius = Math.min(w, h) * 0.5 - 30
+            const innerRadius = outerRadius - 20
+            const activityColor = d3.schemeCategory10[0]
+            const chord = d3.chord()
+                .padAngle(0.05)
+                .sortSubgroups(d3.descending)
+            const arc = d3.arc()
+                .innerRadius(innerRadius)
+                .outerRadius(outerRadius)
+            const ribbon = d3.ribbon()
+                .radius(innerRadius)
+            const groupTicks = function (d, step) {
+                const k = (d.endAngle - d.startAngle) / d.value;
+                return d3.range(0, d.value, step).map(value => {
+                    return {value: value, angle: value * k + d.startAngle};
+                });
+            }
+
+            const svg = d3.select(".focused .focusDetail")
+                .attr("width", w)
+                .attr("height", h)
+                .style("margin-left", cfg.margin.left)
+                .attr("viewBox", [-w / 2, -h / 2, w, h])
+                .attr("font-size", 10)
+                .attr("font-family", "sans-serif");
+            svg.selectAll("*").remove() // 移除残留的元素s
+            let filter = svg
+                    .append("defs")
+                    .append("filter")
+                    .attr("id", "glow"),
+                feGaussianBlur = filter
+                    .append("feGaussianBlur")
+                    .attr("stdDeviation", "2.5")
+                    .attr("result", "coloredBlur"),
+                feMerge = filter.append("feMerge"),
+                feMergeNode_1 = feMerge.append("feMergeNode").attr("in", "coloredBlur"),
+                feMergeNode_2 = feMerge.append("feMergeNode").attr("in", "SourceGraphic");
+            const chords = chord(data);
+            const focusIndex = roles.indexOf(pav.data.focusRole)
+            const group = svg.append("g")
+                .selectAll("g")
+                .data(chords.groups)
+                .join("g");
+            group.append("path")
+                .attr("fill", d => d.index === focusIndex ? activityColor : "lightgrey")
+                .attr("stroke", d => d3.color(d.index === focusIndex ? activityColor : "lightgrey").darker())
+                .attr("filter", "url(#glow)")
+                .attr("d", arc)
+                .attr("opacity", 0.7)
+            svg.append("g")
+                .selectAll("path")
+                .data(chords)
+                .join("path")
+                .attr("opacity", d => (d.source.index === focusIndex || d.target.index === focusIndex) ? 0.67 : 0.3)
+                .attr("d", d => ribbon(d))
+                .attr("fill", d => (d.source.index === focusIndex || d.target.index === focusIndex) ? activityColor : "lightgrey")
+                .attr("stroke", d => d3.color((d.source.index === focusIndex || d.target.index === focusIndex) ? activityColor : "lightgrey").darker())
+                .attr("filter", "url(#glow)")
+                .append("title")
+                .text(d => `${roles[d.source.index]} :${d.source.value}\n${roles[d.target.index]} :${d.target.value}`)
+            svg.append("g")
+                .selectAll("g")
+                .data(chords.groups)
+                .join("g")
+                .attr("transform", d => `rotate(${(d.startAngle + d.endAngle) / 2 * 180 / Math.PI - 90}) translate(${(outerRadius + innerRadius) / 2},0)`)
+                .append("text")
+                .attr("dy", "0.35em")
+                .attr("transform", d => (d.startAngle + d.endAngle) / 2 > Math.PI ? "rotate(180)" : null)
+                .text(d => roles[d.index])
+
+            const groupTick = group.append("g")
+                .selectAll("g")
+                .data(d => groupTicks(d, 5))
+                .join("g")
+                .attr("transform", d => `rotate(${d.angle * 180 / Math.PI - 90}) translate(${outerRadius},0)`);
+
+            groupTick.append("line")
+                .attr("stroke", "#000")
+                .attr("x2", 6);
+
+            groupTick
+                .filter(d => d.value % 10 === 0)
+                .append("text")
+                .attr("x", 15)
+                .attr("dy", ".35em")
+                .attr("transform", d => d.angle > Math.PI ? "rotate(180) translate(-26)" : null)
+                .attr("text-anchor", d => d.angle > Math.PI ? "end" : null)
+                .text(d => d.value);
+        }
     }
     pav.method.drawPersonalAbilityView = function () {
         pav.method.drawRadarView(pav.data.focusRadarData, pav.data.focusRole, pav.config.focusRadar, '.focused .focusRadar')
@@ -1482,6 +1675,175 @@
         pav.method.drawDetailView()
     }
     pav.method.drawPersonalAbilityView()
+    // endregion
+    // region adv(agenda detail view)
+    const adv = {} // agenda detail view
+    // config
+    adv.config = {
+        timeSilce: 60,
+        rownum: 5,
+        w: "70rem",
+        h: "48rem",
+        innerRadius: 40,
+        outerRadius: 50,
+        circlePadding: 20
+
+    }
+    adv.method = {}
+    adv.method.dataGenerator = function () {
+        const data = []
+        let start = 0
+        let circle = {start: 0, end: adv.config.timeSilce, sentences: [], words: [], agenda_rate: []}
+        let words_dic = {}
+        let agenda_sentence = {}
+        for (let i = 0; i < dialogs.length;) {
+            if (Number(dialogs[i].startTime) < start + adv.config.timeSilce) {
+                circle.sentences.push(i)
+                dialogs[i].text.split(" ").forEach(w => {
+                    if (w[w.length - 1] == '.' || w[w.length - 1] == '?' || w[w.length - 1] == '!' || w[w.length - 1] == ',')
+                        w = w.slice(0, w.length - 1)
+                    if (!stopwords.has(w.toLowerCase()))
+                        words_dic[w] = (words_dic[w] || 0) + 1
+                })
+                if (dialogs[i].agenda === undefined)
+                    dialogs[i].agenda = "-"
+                agenda_sentence[dialogs[i].agenda] = (agenda_sentence[dialogs[i].agenda] || 0) + 1
+                i++
+            } else {
+                for (let [key, value] of Object.entries(words_dic)) {
+                    circle.words.push({word: key, cnt: value})
+                }
+                for (let [key, value] of Object.entries(agenda_sentence)) {
+                    circle.agenda_rate.push({id: key, value: value})
+                }
+                data.push(circle)
+                words_dic = {}
+                start = start + adv.config.timeSilce
+                agenda_sentence = {}
+                circle = {start, end: start + adv.config.timeSilce, sentences: [], words: [], agenda_rate: []}
+            }
+        }
+        // last timewww
+        for (let [key, value] of Object.entries(words_dic)) {
+            circle.words.push({word: key, cnt: value})
+        }
+        for (let [key, value] of Object.entries(agenda_sentence)) {
+            circle.agenda_rate.push({id: key, value: value})
+        }
+        data.push(circle)
+        // end
+        return {circles: data}
+    }
+    adv.data = adv.method.dataGenerator()
+    adv.method.changeSelectorValue = function (v) {
+        //console.log(v.value)
+        adv.config.timeSilce = Number(v.value)
+        adv.data = adv.method.dataGenerator()
+           console.log(adv.data)
+        adv.method.drawView()
+    }
+    adv.method.drawView = function () {
+
+        const canvas1 = document.createElement("canvas")
+        const canvas2 = document.createElement("canvas")
+        const canvas3 = document.createElement("canvas")
+
+        const ctxs = [canvas1.getContext("2d"), canvas2.getContext("2d"), canvas3.getContext("2d")]
+        ctxs[0].font = '18px sans-serif'
+        ctxs[1].font = '10px sans-serif'
+        ctxs[2].font = '8px sans-serif'
+        const fontsize = ctxs.map(v => Number(v.font.slice(0, v.font.indexOf('px'))))
+        const color = d3.schemeSet2
+        const Textoffset = adv.config.outerRadius - adv.config.innerRadius + 5
+        const svg = d3.select('.adv svg')
+            .attr("width", adv.config.w)
+            .attr("height", adv.config.h)
+            .attr("style", "max-width: 100%; margin: 0 5rem;height: auto; height: intrinsic;");
+        svg.selectAll("*").remove()
+        adv.data.circles.forEach((v, i) => {
+            drawTitle((i % adv.config.rownum) * (adv.config.outerRadius * 2 + adv.config.circlePadding) + adv.config.outerRadius, Math.floor(i / adv.config.rownum) * (adv.config.outerRadius * 2 + adv.config.circlePadding), i * adv.config.timeSilce + '-' + (i + 1) * adv.config.timeSilce)
+            drawCircle(v, (i % adv.config.rownum) * (adv.config.outerRadius * 2 + adv.config.circlePadding) + adv.config.outerRadius, Math.floor(i / adv.config.rownum) * (adv.config.outerRadius * 2 + adv.config.circlePadding) + adv.config.outerRadius + Textoffset)
+        })
+
+        function drawTitle(x, y, text) {
+            const g = svg.append("g")
+                .attr("font-family", "sans-serif")
+                .attr("transform", `translate(${x},${y})`)
+            g.append("text")
+                .attr("alignment-baseline", "before-edge")
+                .attr("text-anchor", "middle")
+                .text(text)
+        }
+
+        function drawCircle({words, agenda_rate}, x, y, topk = 10) {
+
+            const topWords = words.slice(0, topk)
+            const arcs = d3.pie().padAngle(0).sort(null).value(d => d.value)(agenda_rate);
+            const arc = d3.arc().innerRadius(adv.config.innerRadius).outerRadius(adv.config.outerRadius);
+            const svg = d3.select('.adv svg')
+
+            const g = svg.append("g")
+                .attr("font-family", "sans-serif")
+                .attr("transform", `translate(${x},${y})`)
+            g.selectAll("path")
+                .data(arcs)
+                .join("path")
+                .attr("fill", d => agenda_rate[d.index].id === '-' ? 'grey' : color[agenda_rate[d.index].id])
+                .attr("d", arc)
+            const y_pos = []
+            const r = adv.config.innerRadius
+            const wordPadding = 2
+            let offset = r - 1
+            for (let i in topWords) {
+                const w = topWords[i].word
+                let canPlace = couldPlace(offset, w, r)
+                while (canPlace < 0 && Math.abs(offset) < r) {
+                    offset -= 2
+                    canPlace = couldPlace(offset, w, r)
+                }
+                if (Math.abs(offset) >= r)
+                    break
+                y_pos.push({font: fontsize[canPlace], y: -offset, word: w})
+                offset -= fontsize[canPlace]
+            }
+            g.selectAll("text")
+                .data(y_pos)
+                .join("text")
+                .attr("text-anchor", "middle")
+                .attr("alignment-baseline", "before-edge")
+                .attr("font-size", d => d.font)
+                //    .attr("textLength",r)
+                .attr("y", d => d.y)
+                .text(d => d.word)
+        }
+
+        function calTextWidth(r, dis) {
+            return Math.sqrt(Math.pow(r, 2) - Math.pow(dis, 2)) * 2
+        }
+
+        function couldPlace(offset, word, r) {
+            for (let i in fontsize) {
+                let need = ctxs[i].measureText(word).width
+                let real = 0
+                if (offset < 0) {
+                    if (Math.abs(offset - fontsize[i]) < r)
+                        real = calTextWidth(r, offset - fontsize[i])
+                } else {
+                    real = calTextWidth(r, offset)
+                }
+                if (real >= need)
+                    return i
+            }
+            return -1
+        }
+    }
+    adv.method.drawView()
+
+    // endregion
+    // region ctxv(context view)
+    const ctxv = {}
+    ctxv.method = {}
+    ctxv.method.draw
     // endregion
 </script>
 </body>

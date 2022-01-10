@@ -30,7 +30,6 @@ for role in roles:
     path = os.path.join(app.config['DATA_PATH'], 'headPose/{}/{}.json'.format(meetingName, role))
     with open(path, 'r', encoding='utf-8') as f:
         headPos[role] = json.load(f)
-        print(headPos[role][59],headPos[role][60])
 #print(headPos)
 trees = []  # 下标索引树节点
 roots = []  # 所有子会话的根
@@ -53,7 +52,7 @@ with open(os.path.join(app.config['DATA_PATH'], 'agreeWords.txt'), 'r') as f:  #
     agreeWords = set([word.lower() for word in f.read().split(",")])
 with open(os.path.join(app.config['DATA_PATH'], 'stopwords.txt'), 'r', encoding='utf-8') as f:  # 附和词
     stopwords = set([word.lower() for word in f.read().split("\n")])
-
+stopwords.remove("\"") # 传到前端会报错
 
 def mystrip(s, l):
     for i in l:
@@ -78,7 +77,7 @@ def getKeyWords(sentences):
     if len(sentences) == 0:
         return wordsOfAgenda
     for s in sentences:
-        if 'agenda' not in dialogs[s]:  # TODO 需要更好的方式处理没有分配议程的句子
+        if 'agenda' not in dialogs[s] or dialogs[s]['agenda'] == "-":  # TODO 需要更好的方式处理没有分配议程的句子
             continue
         agenda_id = dialogs[s]['agenda']
         agenda_sentence_num[agenda_id] += 1
@@ -142,6 +141,11 @@ def calBackchannel(role):
             rate = backchannel_num / len(dialog['text'].split(" ")) * 100
             if rate >= 50:
                 back += 1
+                # backchannel graph data
+                if dialog['reply_to_id'] == '-' or dialogs[int(dialog['reply_to_id'])]['role'] == role:
+                    chordData[role][role] += 1
+                else:
+                    chordData[role][dialogs[int(dialog['reply_to_id'])]['role']] += 1
     return round(back / totalUtr, 2) if totalUtr != 0 else 0
 
 
@@ -189,6 +193,11 @@ def calContribution(role):
 
 personal_ability = []
 keywordsOfPersonal = {}
+chordData = {}
+for role in roles:
+    chordData[role] = {}
+    for innerRole in roles:
+        chordData[role][innerRole] = 0 # #初始化
 for role in roles:
     activity = calActivity(role)
     contribution, keywordsOfContribution = calContribution(role)
