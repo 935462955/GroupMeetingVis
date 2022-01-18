@@ -1,6 +1,7 @@
-import json, os
+import base64
+import json, os,time
 from VisGroupMeeting import app
-
+import cv2
 
 class Node():
     def __init__(self, id, parent, children, speaker):
@@ -9,12 +10,32 @@ class Node():
         self.parent = parent
         self.children = children
 
+def get_key_frame(desire_frames, file):  # file 从会议名称开始
+    path = os.path.join(app.config['DATA_PATH'], 'video/' + file)
+    vidcap = cv2.VideoCapture(path)
+    if not vidcap.isOpened():
+        print("open video failed")
+        return []
+    start = time.time()
+    result = []
+    for i in desire_frames:
+        vidcap.set(1, i - 1)
+        success, image = vidcap.read()
+        # RBG矩阵转 base64图片
+        res_b = cv2.imencode('.jpg', image)[1].tostring()
+        res_bs64 = base64.b64encode(res_b)
+        result.append({'frame':i,'img':"data:image/jpg;base64,{}".format(res_bs64.decode())})
+    #  cv2.imwrite("frame%d.jpg" % count, image)     # save frame as JPEG file
+    vidcap.release()
+    print(time.time() - start)
+    return result
 
 meetingName = "ES2002a"
 path = os.path.join(app.config['DATA_PATH'], 'merged/ES2002a.json')
 dialogs = None
 reply_relation = None
 sessions = None
+agendas = ['xxx', 'xxx', 'xxx', 'xxx']
 with open(path, 'r', encoding='utf-8') as f:
     dialogs = json.load(f)
 roles = list(set([dialog['role'] for dialog in dialogs]))
@@ -24,12 +45,35 @@ with open(path, 'r', encoding='utf-8') as f:
 path = os.path.join(app.config['DATA_PATH'], 'edge_bunding/edgeBunding_ES2002a.json')
 with open(path, 'r', encoding='utf-8') as f:
     sessions = json.load(f)
+path = os.path.join(app.config['DATA_PATH'],'agendas/ES2002a.json')
+with open(path, 'r', encoding='utf-8') as f:
+    agendas = json.load(f)
 headPos = {}
-agendas = ['xxx', 'xxx', 'xxx', 'xxx']
+key_frames = {}
 for role in roles:
     path = os.path.join(app.config['DATA_PATH'], 'headPose/{}/{}.json'.format(meetingName, role))
     with open(path, 'r', encoding='utf-8') as f:
         headPos[role] = json.load(f)
+        # 以下为读取关键帧图像
+        fps = 25
+        require_frame = []
+        left = headPos[role][0]
+        right = left
+        for i,pos in enumerate(headPos[role]):
+            if pos['facePos'] == left['facePos']:
+                right = pos
+            else:
+                if left['facePos'] != 'up':
+                    j = (int(left['time']) + int(headPos[role][i]['time']))//2
+                    require_frame.append(j * 25)
+                left = pos
+                right = left
+        key_frames[role] = require_frame
+# print(key_frames)
+temp = {}
+for role in roles:
+   temp[role] =  get_key_frame(key_frames[role],meetingName+'/'+role+'.mp4')
+key_frames = temp
 #print(headPos)
 trees = []  # 下标索引树节点
 roots = []  # 所有子会话的根
@@ -216,3 +260,4 @@ for role in roles:
                                 "Leadership": keywordsOfLeadership}
 
 # endregion
+

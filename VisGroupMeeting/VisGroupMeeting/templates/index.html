@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -8,8 +8,9 @@
 <body>
 <div class="views">
     <div class="itav">
-        <svg>
+        <svg class="up">
         </svg>
+        <svg class="down"></svg>
     </div>
     <div class="adv">
         <div class="adv-toolbar">
@@ -29,7 +30,7 @@
         </svg>
     </div>
     <div class="ctxv">
-     <svg></svg>
+        <svg></svg>
     </div>
     <div class="pav-container">
         <!--    <div class="pav-toolbar"></div>-->
@@ -53,12 +54,14 @@
         </div>
     </div>
     <div class="video">
-        <video controls="controls" muted>
-            <source src="../static/data/video/ES2002a/ES2002a.Closeup1A.mp4" type="video/mp4">
+        <video controls="controls" muted preload="auto">
+            <source src="../static/data/video/ES2002a/B.mp4" type="video/mp4">
         </video>
 
     </div>
-    <div class="control-view"></div>
+    <div class="control-view">
+        <img id="test">
+    </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.7.0/d3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.5/d3.layout.cloud.min.js"
@@ -77,6 +80,9 @@
     const agendas = JSON.parse(`{{agendas|safe}}`)
     const chordData = JSON.parse(`{{chordData|safe}}`)
     const stopwords = new Set(JSON.parse(`{{stopwords|safe}}`))
+    const keyframes = JSON.parse(`{{keyframes|safe}}`)
+    const meetingName = `{{meetingName}}`
+    document.getElementById('test').src = keyframes['A'][0]['img']
     // region itav(interaction view)
     const itav = {} //interactionview
     itav.config = {
@@ -577,7 +583,7 @@
     }
 
     var drawInteractionView = (function () {
-        const svg = d3.select(".itav svg")
+        const svg = d3.select(".itav svg.up")
             .attr("viewBox", [0, 0, itav.config.width, itav.config.height])
             .style("font", "5px sans-serif");
         const g = svg.append("g")
@@ -607,6 +613,31 @@
         //const anchor = g.append("g").attr("class", "anchor")
         const bindEdgeTitle = g.append("g")
         const singleNode = g.append("g")
+        const svg2 = d3.select('.itav svg.down')
+        const legendRectWidth = 15
+        const xOffset = 400
+        const yOffset = 20
+        const agendaG = svg2.append("g")
+            .attr("transform", `translate(50,50)`)
+            .attr("font-size", 15)
+        agendaG.append("g").attr("class", "title")
+            .append("text")
+            .attr("stroke", "black")
+            .attr("font-weight", 1)
+            .text("Agenda Legends:")
+            .attr("transform", `translate(0,-20)`)
+        agendaG.selectAll("g").data(agendas).join("g").append("text")
+            .attr("y", (d, i) => Math.floor(i / 2) * yOffset)
+            .attr("x", (d, i) => (i % 2) * xOffset)
+            .text(d => d)
+
+        agendaG.selectAll("g")
+            .append("rect")
+            .attr("x", (d, i) => (i % 2) * xOffset - legendRectWidth - 5)
+            .attr("y", (d, i) => Math.floor(i / 2) * 20 - legendRectWidth / 1.25)
+            .attr("width", legendRectWidth)
+            .attr("height", legendRectWidth)
+            .attr("fill", (d, i) => itav.config.agendaColor[i])
         //Filter for the outside glow,
         let filter = g
                 .append("defs")
@@ -832,6 +863,8 @@
             roundStrokes: true, //If true the area and stroke will follow a round path (cardinal-closed)
             color: d3.scaleOrdinal(d3.schemeCategory10), //Color function
             toolbar: true,
+            roleNameFontSize: 20,
+            roleNameYOffset: 80
         },
         defocusRadar: {
             w: document.querySelectorAll(".defocus .defocus_item1")[0].offsetWidth, //Width of the circle
@@ -911,9 +944,9 @@
             }
         }
         focusRoleActivityTrend.push({'time': curTime - timeSlice / 2, '': words})
-
+        const endTime = Math.floor(dialogs[dialogs.length - 1].endTime)
         focusRoleActivityData['trends'] = focusRoleActivityTrend
-        focusRoleActivityData['headPos'] = headPos[focusRole].slice(0, Math.floor(dialogs[dialogs.length - 1].endTime))
+        focusRoleActivityData['headPos'] = headPos[focusRole].slice(0, endTime)
         // 生成绘制弦图所需数据
         const focusRoleChordData = new Array(roles.length).fill(0).map(v => new Array(roles.length).fill(0))
         for (let role in chordData) {
@@ -923,7 +956,12 @@
                 focusRoleChordData[i][j] = chordData[role][innerRole]
             }
         }
-
+        const focusRoleKeyFrame = keyframes[focusRole].filter(v => v.frame / 25 <= endTime)
+        focusRoleActivityData['keyframe'] = focusRoleKeyFrame
+        console.log(document.querySelector('.video video source').getAttribute("src"))
+        document.querySelector('.video video').setAttribute("src", `../static/data/video/${meetingName}/${focusRole}.mp4`)
+        document.querySelector('.video video').pause()
+        console.log(document.querySelector('.video video source').getAttribute("src"))
         return {
             focusRole,
             focusRadarData,
@@ -997,6 +1035,8 @@
             roundStrokes: false, //If true the area and stroke will follow a round path (cardinal-closed)
             color: d3.scaleOrdinal(d3.schemeCategory10), //Color function,
             toolbar: false,// The toolbar upon radar
+            roleNameFontSize: 10,
+            roleNameYOffset: 10
         };
 
         //Put all of the options into a variable called cfg
@@ -1047,7 +1087,7 @@
             .select(selector)
             .attr("width", width)
             .attr("height", height)
-        svg.select("g").remove()
+        svg.selectAll("*").remove()
         // Append event listener
         svg.on('click', () => {
             if (pav.data.focusRole !== Role) {
@@ -1055,6 +1095,11 @@
                 pav.method.drawPersonalAbilityView()
             }
         })
+        svg.append("text")
+            .text(Role)
+            .attr("font-size", cfg.roleNameFontSize)
+            .attr("y", cfg.roleNameYOffset)
+            .attr("x", 2)
         //Append a g element
         if (cfg.toolbar && !document.querySelector(".focused svg foreignObject")) {
             svg.append("foreignObject")
@@ -1355,7 +1400,7 @@
         else if (value === "Backchannel")
             drawPersonalFocusChordView(pav.data.focusRoleChordData, pav.config.activityView)
 
-        function drawPersonalFocusActivityTrend({trends, headPos}, cfg) {
+        function drawPersonalFocusActivityTrend({trends, headPos, keyframe}, cfg) {
             const trendHeight = cfg.h / 3
             // Compute default domains.
             const xDomain = [0, Math.floor(dialogs[dialogs.length - 1].endTime)]
@@ -1460,6 +1505,35 @@
                 .attr("height", barHeight)
                 .attr("width", barWidth)
                 .attr("fill", d => yScale_headPos(d.facePos))
+            barchart.selectAll("image")
+                .data(keyframe)
+                .join("image")
+                .attr("x", d => xScale(d.frame / 25) - 35)
+                .attr("y", (d, i) => (i % 3 + 1) * cfg.margin.top * 3)
+                .attr("height", 70)
+                .attr("width", 70)
+                .attr("xlink:href", d => d.img)
+                .attr("class", "keyframe")
+                .on("mouseover", (e, d) => {
+                    barchart.selectAll(".line").attr("opacity", 0.1)
+                    barchart.selectAll(".keyframe").attr("opacity", 0.1)
+                    d3.select(e.currentTarget).attr("opacity", 1)
+                    d3.selectAll(`.l${d.frame}`).attr("opacity", 1)
+                })
+                .on("mouseleave", (e) => {
+                    barchart.selectAll(".keyframe").attr("opacity", 1)
+                    barchart.selectAll(".line").attr("opacity", 1)
+                })
+            barchart.selectAll('line')
+                .data(keyframe)
+                .join('line')
+                .attr("class", d => `line l${d.frame}`)
+                .attr("x1", d => xScale(d.frame / 25))
+                .attr("y1", d => cfg.margin.top * 2 + barHeight)
+                .attr("x2", d => xScale(d.frame / 25))
+                .attr("y2", (d, i) => (i % 3 + 1) * cfg.margin.top * 3 + 5)
+                .attr("stroke", "grey")
+
         }
 
         function drawPersonalFocusCloud(data, cfg) {
@@ -1739,7 +1813,7 @@
         //console.log(v.value)
         adv.config.timeSilce = Number(v.value)
         adv.data = adv.method.dataGenerator()
-           console.log(adv.data)
+
         adv.method.drawView()
     }
     adv.method.drawView = function () {
@@ -1842,8 +1916,146 @@
     // endregion
     // region ctxv(context view)
     const ctxv = {}
+    ctxv.config = {
+        w: "27rem",
+        h: 530,
+        lineHeight: 16,
+        textWidth: "20rem",
+        overviewWidth: 70
+    }
     ctxv.method = {}
-    ctxv.method.draw
+    ctxv.method.draw = function () {
+        const svg = d3.select(".ctxv svg")
+            .attr("width", ctxv.config.w)
+            .attr("height", ctxv.config.h)
+            .attr("style", "max-width: 100%;height: auto; height: intrinsic;");
+        svg.selectAll("*").remove()
+        svg.append("foreignObject")
+            .attr("id", "ctxForeignObject")
+            .attr("width", ctxv.config.textWidth)
+            .attr("height", ctxv.config.h)
+            .attr("transform", `translate(${ctxv.config.overviewWidth},0)`)
+            .style("overflow", "scroll")
+            .style("overflow-x", "hidden")
+            .append("xhtml:div")
+            //.attr("style",`width:100%,height:100%,overflow:scroll`)
+            .selectAll("p")
+            .data(dialogs)
+            .join("p")
+            .attr("class", (d, i) => `ctxv-p ${i}`)
+
+            .text(d => d.text)
+        // .on("click", function (e, d) {
+        //     // console.log(this.offsetTop, this.offsetTop - ctxv.config.h, this.parentNode.parentNode.scrollTop, e, d)
+        //     //this.parentNode.parentNode.scrollTo(0,0)
+        //
+        // })
+
+    }
+    ctxv.method.generateData = function () {
+        const ps = document.querySelectorAll('.ctxv-p')
+        const rects = []
+        const canvas = document.createElement("canvas")
+        const ctx = canvas.getContext("2d")
+        ctx.font = "10px sans-serif"
+        ps.forEach((v, i) => {
+            //   console.log(ctx.measureText(v.innerText).width / v.clientWidth)
+            rects.push({
+                id: i,
+                rows: v.clientHeight / ctxv.config.lineHeight,
+                scrollTop: v.offsetTop,
+                width: Number("0." + ("" + ctx.measureText(v.innerText).width / v.clientWidth).split(".")[1])
+            })
+        })
+
+        return {rects}
+    }
+    ctxv.method.drawOverview = function () {
+        const row2id = {}
+        const rows = ctxv.data.rects.reduce((total, rect) => {
+            for (let i = total; i < total + rect.rows; i++)
+                row2id[i] = rect.id
+            return total + rect.rows
+        }, 0)
+        ctxv.config.rectHeight = ctxv.config.h / rows
+        const yscale = d3.scaleLinear() // Map a continuous, quantitative domain to a discrete range
+            .domain([0, rows])
+            .range([0, ctxv.config.h])
+        const brush = d3.brushY(yscale).extent([[0, 0], [ctxv.config.overviewWidth, ctxv.config.h]]).on("start brush end", brushed);
+
+        const svg = d3.select(".ctxv svg")
+            .attr("width", ctxv.config.w)
+            .attr("height", ctxv.config.h)
+            .attr("style", "max-width: 100%;height: auto; height: intrinsic;");
+        const overview = svg.append("g")
+        let sum = 0
+        overview.selectAll("g")
+            .data(ctxv.data.rects)
+            .join("g")
+            .each(function (p) {
+                d3.select(this)
+                    .selectAll("rect")
+                    .data(new Array(p.rows).fill(0))
+                    .join("rect")
+                    .attr("x", 0)
+                    .attr("y", (d, i) => yscale(sum + i))
+                    .attr("width", (d, i) => i === p.rows - 1 ? p.width * ctxv.config.overviewWidth : ctxv.config.overviewWidth)
+                    .attr("height", ctxv.config.rectHeight)
+                    .attr("fill", dialogs[p.id].agenda == "-" ? "grey" : d3.schemeSet2[dialogs[p.id].agenda])
+                sum += p.rows
+            })
+        const initalHeight = 30
+        overview.append("g")
+            .attr("class", "y brush")
+        const brushG = overview.select('g.brush')
+         // d3.select("#ctxForeignObject")
+         //    .on("scroll", (e) => {
+         //        const y0 = e.currentTarget.scrollTop
+         //        const [_, Y1] = yscale.range();
+         //        const dy = yscale(initalHeight)
+         //        d3.select(".y.brush")
+         //            .call(brush.move, y0 + dy > Y1 ? [Y1 - dy, Y1] : [y0, y0 + dy]);
+         //        console.log(e.currentTarget.scrollTop)
+         //    })
+
+        brushG.call(brush)
+            .call(brush.move, [0, initalHeight].map(yscale)) // 默认选择框
+            .call(g => g.select(".overlay")
+                .datum({type: "selection"})
+                .on("mousedown touchstart", beforebrushstarted));
+        brushG.select(".selection").attr("fill-opacity", 0.7)
+        brushG.selectAll(".handle").remove()
+
+        function beforebrushstarted(event) {
+            const dy = yscale(initalHeight) - yscale(0); // Use a fixed width when recentering.
+            const cy = d3.pointers(event)[0][1];
+
+            const [y0, y1] = [cy - dy / 2, cy + dy / 2];
+            const [Y0, Y1] = yscale.range();
+            d3.select('.y.brush')
+                .call(brush.move, y1 > Y1 ? [Y1 - dy, Y1]
+                    : y0 < Y0 ? [Y0, Y0 + dy]
+                        : [y0, y1]);
+        }
+
+        function brushed(event) {
+            const selection = event.selection;
+
+            if (selection === null) {
+
+            } else {
+                const [y0, y1] = selection.map(yscale.invert);
+                // console.log('y0',y0,'id',row2id[Math.floor(y0)],dialogs[row2id[Math.floor(y0)]].text,dialogs[row2id[Math.floor(y0)]].agenda)
+                document.querySelector('#ctxForeignObject').scrollTo(0, ctxv.data.rects[row2id[Math.floor(y0)]].scrollTop)
+
+            }
+        }
+
+    }
+    ctxv.method.draw()
+    ctxv.data = ctxv.method.generateData()
+    ctxv.method.drawOverview()
+
     // endregion
 </script>
 </body>

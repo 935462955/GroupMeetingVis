@@ -17,6 +17,8 @@ div.itav {
     border-radius: 5px;
     margin-bottom: 1rem;
     padding: 1rem 0;
+    display:flex;
+    flex-direction: column;
 }
 
 div.adv {
@@ -37,12 +39,16 @@ div.adv div.adv-toolbar{
 }
 
 div.ctxv {
-    height: 53rem;
+    height: 55rem;
     width: 27rem;
     border: solid #999999 1px;
     border-radius: 5px;
     margin-bottom: 1rem;
-    padding: 1rem 0;
+    padding: 0;
+}
+div.ctxv svg{
+    display:flex;
+    justify-content: flex-end;
 }
 
 div.pav {
