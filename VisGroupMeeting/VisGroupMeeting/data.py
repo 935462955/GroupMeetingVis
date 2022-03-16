@@ -4,11 +4,12 @@ from VisGroupMeeting import app
 import cv2
 
 class Node():
-    def __init__(self, id, parent, children, speaker):
+    def __init__(self, id, parent, children, speaker,session_id = None):
         self.id = id
         self.speaker = speaker
         self.parent = parent
         self.children = children
+        self.session_id = session_id
 
 def get_key_frame(desire_frames, file):  # file 从会议名称开始
     path = os.path.join(app.config['DATA_PATH'], 'video/' + file)
@@ -29,9 +30,33 @@ def get_key_frame(desire_frames, file):  # file 从会议名称开始
     vidcap.release()
     print(time.time() - start)
     return result
+def class2json(root):
+    session_id = root.session_id
+    idx2treenode = {}
+    nodelist = []
+    def traver(pynode):
+        result = get_key_frame([int((float(dialogs[pynode.id]['startTime']) + float(dialogs[pynode.id]['endTime']))/2) * 25],meetingName+'/'+dialogs[pynode.id]['role']+'.mp4')
+        nodelist.append({
+        "id" : pynode.id,
+        "parent": pynode.parent.id if pynode.parent else -1,
+        "children": [node.id for node in pynode.children],
+        "session_id": session_id,
+        "img":result[0]['img']
+    })
+        idx2treenode[pynode.id] = len(nodelist) - 1
+        for node in pynode.children:
+            traver(node)
+    traver(root)
+    return {"nodelist":nodelist,"idx2treenode":idx2treenode}
+
+
+def getReplyTree(session_id):
+    for root in roots:
+        if root.session_id == session_id:
+            return class2json(root)
 
 meetingName = "ES2002a"
-path = os.path.join(app.config['DATA_PATH'], 'merged/ES2002a.json')
+path = os.path.join(app.config['DATA_PATH'], 'merged/'+meetingName+'.json')
 dialogs = None
 reply_relation = None
 sessions = None
@@ -39,13 +64,13 @@ agendas = ['xxx', 'xxx', 'xxx', 'xxx']
 with open(path, 'r', encoding='utf-8') as f:
     dialogs = json.load(f)
 roles = list(set([dialog['role'] for dialog in dialogs]))
-path = os.path.join(app.config['DATA_PATH'], 'reply_relation/reply_ES2002a.json')
+path = os.path.join(app.config['DATA_PATH'], 'reply_relation/reply_'+meetingName+'.json')
 with open(path, 'r', encoding='utf-8') as f:
     reply_relation = json.load(f)
-path = os.path.join(app.config['DATA_PATH'], 'edge_bunding/edgeBunding_ES2002a.json')
+path = os.path.join(app.config['DATA_PATH'], 'edge_bunding/edgeBunding_'+meetingName+'.json')
 with open(path, 'r', encoding='utf-8') as f:
     sessions = json.load(f)
-path = os.path.join(app.config['DATA_PATH'],'agendas/ES2002a.json')
+path = os.path.join(app.config['DATA_PATH'],'agendas/'+meetingName+'.json')
 with open(path, 'r', encoding='utf-8') as f:
     agendas = json.load(f)
 headPos = {}
@@ -77,12 +102,14 @@ key_frames = temp
 #print(headPos)
 trees = []  # 下标索引树节点
 roots = []  # 所有子会话的根
+session_id = 0
 for index, item in enumerate(reply_relation):
     if item['reply_to_id'] != '-':
         node = Node(index, trees[int(item['reply_to_id'])], [], item['speaker'])
         trees[int(item['reply_to_id'])].children.append(node)
     else:
-        node = Node(index, None, [], item['speaker'])
+        node = Node(index, None, [], item['speaker'],session_id)
+        session_id += 1
         roots.append(node)
     trees.append(node)
 for index, item in enumerate(reply_relation):
@@ -97,6 +124,8 @@ with open(os.path.join(app.config['DATA_PATH'], 'agreeWords.txt'), 'r') as f:  #
 with open(os.path.join(app.config['DATA_PATH'], 'stopwords.txt'), 'r', encoding='utf-8') as f:  # 附和词
     stopwords = set([word.lower() for word in f.read().split("\n")])
 stopwords.remove("\"") # 传到前端会报错
+
+
 
 def mystrip(s, l):
     for i in l:

@@ -12,22 +12,8 @@
         </svg>
         <svg class="down"></svg>
     </div>
-    <div class="adv">
-        <div class="adv-toolbar">
-            <span>time slice</span>
-            <select onchange="adv.method.changeSelectorValue(this)">
-                <option value="50">50</option>
-                <option value="60" selected>60</option>
-                <option value="70">70</option>
-                <option value="80">80</option>
-                <option value="90">90</option>
-                <option value="100">100</option>
-                <option value="110">110</option>
-                <option value="120">120</option>
-            </select>
-        </div>
-        <svg>
-        </svg>
+    <div class="rv" style="overflow-y: scroll">
+        <svg></svg>
     </div>
     <div class="ctxv">
         <svg></svg>
@@ -53,15 +39,31 @@
             </div>
         </div>
     </div>
+    <div class="adv">
+        <div class="adv-toolbar">
+            <span>time slice</span>
+            <select onchange="adv.method.changeSelectorValue(this)">
+                <option value="50">50</option>
+                <option value="60" selected>60</option>
+                <option value="70">70</option>
+                <option value="80">80</option>
+                <option value="90">90</option>
+                <option value="100">100</option>
+                <option value="110">110</option>
+                <option value="120">120</option>
+            </select>
+        </div>
+        <svg>
+        </svg>
+    </div>
     <div class="video">
         <video controls="controls" muted preload="auto">
             <source src="../static/data/video/ES2002a/B.mp4" type="video/mp4">
         </video>
 
     </div>
-    <div class="control-view">
-        <img id="test">
-    </div>
+
+
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.7.0/d3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-cloud/1.2.5/d3.layout.cloud.min.js"
@@ -70,8 +72,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
         referrerpolicy="no-referrer"></script>
 <script>
-    const dialogs = JSON.parse(`{{dialogs|safe}}`)
+    const dialogs = JSON.parse(`{{dialogs|safe}}`).map(v => {
+        if (v.agenda === undefined)
+            v.agenda = '-'
+        return v
+    })
     const sessions = JSON.parse(`{{sessions|safe}}`)
+    console.log('sessions', sessions, dialogs)
     const personal_ability = JSON.parse(`{{personal_ability|safe}}`)
     const roles = [...new Set(dialogs.map(v => v.role))]
     //const roles = JSON.parse(`{{roles|safe}}`)
@@ -82,17 +89,19 @@
     const stopwords = new Set(JSON.parse(`{{stopwords|safe}}`))
     const keyframes = JSON.parse(`{{keyframes|safe}}`)
     const meetingName = `{{meetingName}}`
-    document.getElementById('test').src = keyframes['A'][0]['img']
+    const personColor = d3.scaleOrdinal(d3.schemeTableau10.slice(4, 4 + roles.length))
+    personColor.domain(roles)
     // region itav(interaction view)
     const itav = {} //interactionview
     itav.config = {
         width: 1800,
         height: 900,
         padding: 20,
-        height2: 50,
+        height2: 100,
         paddingTop: 100,
-        agendaColor: d3.schemeSet2,
+        agendaColor: d3.schemeSet2,// ['#3FC846','#FF606F','#BDBDBD','#4666CB'],
         maxRy: 100,
+        timeSlice: 10,
     }
     itav.method = { // 这个图比较复杂需要重复绘制为避免性能损失所以把固定函数单独放在method里面了
         xScale: d3.scaleLinear()
@@ -132,19 +141,30 @@
             const session_id = d.session_id ? d.session_id : d3.select(this).attr("class").split("_")[1]
             if (session_id === 'single')
                 return
+            // 更新 rv视图
+            if (d.session_id) {
+                rv.data = rv.method.generateData(d.session_id)
+                rv.method.drawReplyTree()
+            }
             if (d.session_id) //捆绑
             {
                 d3.selectAll(`.sidNode_${session_id}`).attr("fill", "none")
-                d3.selectAll(`.sidEge_${session_id}`).attr("opacity", 0)
+                //d3.selectAll(`.sidEge_${session_id}`).attr("opacity", 0)
+                d3.selectAll(`.sidEge_${session_id}`).attr("stroke", "none")
                 d3.selectAll(`.detailSidEge_${session_id}`).attr("opacity", 0.7)
-                d3.selectAll(`.detailSidNode_${session_id}`).attr("fill", "grey")
+                d3.selectAll(`.detailSidNode_${session_id}`).attr("fill", d => {
+                    return d['agenda'] !== '-' ? itav.config.agendaColor[Number(dialogs[d['id']]['agenda'])] : "grey"
+                })
             } else //未捆绑
             {
                 d3.selectAll(`.sidNode_${session_id}`).attr("fill", d => {
                     return d['agenda'] !== '-' ? itav.config.agendaColor[Number(d['agenda'])] : "grey"
                 })
                 d3.selectAll(`.sidText_${session_id}`).attr("fill", "white")
-                d3.selectAll(`.sidEge_${session_id}`).attr("opacity", 0.7)
+                //d3.selectAll(`.sidEge_${session_id}`).attr("opacity", 0.7)
+                d3.selectAll(`.sidEge_${session_id}`).attr("stroke", d => {
+                    return d['agenda'] !== '-' ? itav.config.agendaColor[Number(d['agenda'])] : "grey"
+                })
                 d3.selectAll(`.detailSidEge_${session_id}`).attr("opacity", 0)
                 d3.selectAll(`.detailSidNode_${session_id}`).attr("fill", "none")
             }
@@ -192,17 +212,32 @@
             p.bezierCurveTo(...v_source, ...v_target, ...target)
             return p.toString()
         },
-        x2: d3.scaleLinear()
+        // x2: d3.scaleLinear()
+        //     .domain([0, dialogs[dialogs.length - 1].endTime + 10])
+        //     .range([0 + itav.config.padding, itav.config.width - itav.config.padding]),
+        // y2: d3.scaleLinear()
+        //     .domain(d3.extent(itav.data.accumulate_dialogs))
+        //     .range([itav.config.height2, 0]),
+        x3: d3.scaleLinear()
             .domain([0, dialogs[dialogs.length - 1].endTime + 10])
             .range([0 + itav.config.padding, itav.config.width - itav.config.padding]),
-        y2: d3.scaleLinear()
-            .domain(d3.extent(itav.data.accumulate_dialogs))
+        y3: d3.scaleLinear()
+            .domain(d3.extent(itav.data.overviewData.total_interact))
             .range([itav.config.height2, 0]),
-        area: d3.area()
+        // area: d3.area()
+        //     .curve(d3.curveMonotoneX)
+        //     .x((d, i) => itav.method.x2(i))
+        //     .y0(itav.config.height2)
+        //     .y1(d => itav.method.y2(d)),
+        area3: d3.area()
             .curve(d3.curveMonotoneX)
-            .x((d, i) => itav.method.x2(i))
+            .x((d, i) => itav.method.x3(i * itav.config.timeSlice))
             .y0(itav.config.height2)
-            .y1(d => itav.method.y2(d)),
+            .y1(d => itav.method.y3(d)),
+        line: d3.line()
+            .curve(d3.curveLinear)
+            .x((d, i) => itav.method.x3(i * itav.config.timeSlice))
+            .y(d => itav.method.y3(d)),
         brushed: (function () {
             /* 节流 */
             let timer = null
@@ -211,7 +246,7 @@
                 const {selection, type} = event
                 if (type !== "end" && timer) return
                 timer = setTimeout(() => {
-                    const extent = selection ? selection.map(itav.method.x2.invert) : [0, dialogs[dialogs.length - 1].endTime + 10] // 刷选为空则重置展示范围
+                    const extent = selection ? selection.map(itav.method.x3.invert) : [0, dialogs[dialogs.length - 1].endTime + 10] // 刷选为空则重置展示范围
                     itav.method.xScale.domain(extent); //设定domain
                     itav.data = generateInteractionViewData(dialogs, sessions)
                     drawInteractionView()
@@ -219,9 +254,6 @@
                         .call(itav.method.axisBottom)
                     timer = null
                 }, delay)
-
-                // d3.select(chart).select(".area").attr("d", area); //更新视图
-                // d3.select(chart).select(".x.axis").call(xAxis);
             }
         })(),
         lineCurveTo: (a, b) => { // 非捆绑曲线
@@ -238,6 +270,24 @@
     }) // assign
 
     function generateInteractionViewData(dialogs, sessions) {
+        const overviewData = (function () {
+            const timeSlice = itav.config.timeSlice
+            const total_interact = new Array(Math.floor((Number(dialogs[dialogs.length - 1].endTime) + 10) / timeSlice) + 1).fill(0)
+            const person_interact = roles.map(v => ({
+                role: v,
+                interact: new Array(Math.floor((Number(dialogs[dialogs.length - 1].endTime) + 10) / timeSlice) + 1).fill(0)
+            }))
+            dialogs.forEach(v => {
+                if (v.reply_to_id !== '-') {
+                    const index = Math.floor(Number(v.startTime) / timeSlice)
+                    total_interact[index] += 1
+                    person_interact[roles.indexOf(v.role)].interact[index] += 1
+                }
+            })
+            return {total_interact, person_interact}
+        })()
+        //console.log('!', total_interact, person_interact)
+
         const accumulate_dialogs = (function () {
             const l = new Array(Math.round(Number(dialogs[dialogs.length - 1].endTime)) + 10).fill(0)
             dialogs.forEach(v => {
@@ -353,7 +403,7 @@
                     for (let id of session['subsessions'][reverse_subsession_name]['pos']) {
                         // idx2sessionId
                         idx2sessionId[id] = session['session_id']
-                        // 计算 startSpeaker0 endSpeaker0
+                        // 计算 startSpeaker1 endSpeaker1
                         const x_start = itav.method.xScale(dialogs[id].startTime)
                         const x_end = itav.method.xScale(dialogs[id].endTime)
                         if (start_end_range.length === 0) { // 计算最早发言和最晚发言节点的X坐标
@@ -465,6 +515,7 @@
             for (let session of locatedSession) {
                 const speakers_dic = Object.create(null)
                 if (Object.keys(session['subsessions']).length === 0) {
+                    idx2sessionId[session['single']] = session['session_id']
                     continue
                     // if(session['agenda'] != "-")
                     // {
@@ -578,7 +629,7 @@
             return c
         })
         return {
-            accumulate_dialogs, edges, bind_edges, locatedSession, circles, bind_edges2
+            edges, bind_edges, locatedSession, circles, bind_edges2, overviewData
         }
     }
 
@@ -595,24 +646,42 @@
             .call(itav.method.axisBottom)
         const storyBoard = g.append("g")
             .attr("class", "storyBoard")
+        /** 概览
+         const context = svg.append("g")
+         .attr("class", "context")
+         context.append("path")
+         .datum(itav.data.accumulate_dialogs)
+         .attr("d", (d, i) => itav.method.area(d, i))
+         **/
         const context = svg.append("g")
             .attr("class", "context")
         context.append("path")
-            .datum(itav.data.accumulate_dialogs)
-            .attr("d", (d, i) => itav.method.area(d, i))
-
+            .datum(itav.data.overviewData.total_interact)
+            .attr("fill", "grey")
+            .attr("opacity", "0.3")
+            .attr("d", (d, i) => itav.method.area3(d, i))
+        context.selectAll(".roleGiveWordNum")
+            .data(itav.data.overviewData.person_interact)
+            .join("g")
+            .append("path")
+            .attr("stroke", d => personColor(d.role))
+            .attr("opacity", 0.8)
+            .attr("stroke-width", 4)
+            .attr("fill", "none")
+            .datum(d => d.interact)
+            .attr("d", itav.method.line)
         context.append("g")
             .attr("class", "x brush")
-        const brush = d3.brushX(itav.method.x2).extent([[0, 0], [itav.config.width, itav.config.height2]]).on("brush end", itav.method.brushed);
+        const brush = d3.brushX(itav.method.x3).extent([[0, 0], [itav.config.width, itav.config.height2]]).on("brush end", itav.method.brushed);
         const brushG = context.select('g.brush');
         brushG.call(brush);
         const defs = g.append("defs")
-        const unbindEdge = g.append("g")
-        const bindEdge = g.append("g")
+        const unbindEdge = g.append("g").attr("class", "unbindEdge")
+        const bindEdge = g.append("g").attr("class", "bindEdge")
         const bindNodeArea = g.append("g").attr("class", "bindNodeArea")
         //const anchor = g.append("g").attr("class", "anchor")
-        const bindEdgeTitle = g.append("g")
-        const singleNode = g.append("g")
+        const bindEdgeTitle = g.append("g").attr("class", "bindEdgeTitle")
+        const singleNode = g.append("g").attr("class", "singleNode")
         const svg2 = d3.select('.itav svg.down')
         const legendRectWidth = 15
         const xOffset = 400
@@ -676,6 +745,7 @@
                 .attr("ry", d => Math.min(d.r, 30))
                 .attr("cx", d => d.x)
                 .attr("cy", d => d.y)
+                .attr("opacity", 1)
                 .attr("fill", d => {
                     return dialogs[d.id]['agenda'] !== '-' ? itav.config.agendaColor[Number(dialogs[d.id]['agenda'])] : "grey"
                 })
@@ -713,7 +783,8 @@
                             itav.method.lineCurveTo(itav.method.idx2pos(d.source), itav.method.idx2pos(d.target)) : itav.method.arcTo(d)
                     }
                 )
-                .attr("stroke", (d, i) => `url(#BuReGradient${i})`)
+                //.attr("stroke", (d, i) => `url(#BuReGradient${i})`)
+                .attr("stroke", d => itav.config.agendaColor[Number(dialogs[d.source]['agenda'])])
                 .attr("opacity", 0)
                 .attr("stroke-width", "3")
                 .attr("stroke-linecap", "round")
@@ -734,7 +805,7 @@
                 })//(d, i) => d3.color((d3.interpolateSpectral(Math.random(i)))).darker())
                 .attr("fill", "none")
                 .attr("stroke-width", d => d.type === "trunk" ? 4 : 1)
-                .attr("opacity", "1")
+                .attr("opacity", "0.7")
                 .attr("class", d => {
                     if (d.type === "trunk")
                         return `sidEge_${d.id.split("_")[0]}`
@@ -748,6 +819,7 @@
                 .attr("cx", d => d.x)
                 .attr("cy", d => d.y)
                 .attr("r", 12)
+                .attr("opacity", 1)
                 .attr("fill", d => {
                     return d['agenda'] !== '-' ? itav.config.agendaColor[Number(d['agenda'])] : "grey"
                 })
@@ -761,6 +833,7 @@
                 .attr("dy", 7)
                 .attr("text-anchor", "middle")
                 .attr("font-size", 20)
+                .attr("opacity", 1)
                 .attr("fill", "white")
                 // .attr("stroke","white")
                 .text(d => d.weight)
@@ -775,7 +848,7 @@
                 .attr("y", d => itav.method.yScale(d['role']) - 10)
                 .attr("height", 20)
                 .attr("width", d => d['end'] - d['start'])
-                .attr("fill-opacity", "0.7")
+                .attr("opacity", "0.7")
                 .attr("rx", 10)
                 .attr("ry", 10)
                 .attr("fill", d => {
@@ -1498,6 +1571,15 @@
             barchart.selectAll("rect")
                 .data(headPos)
                 .join("rect")
+                .style("cursor","pointer")
+                .on("mouseover",(ev)=> d3.select(ev.currentTarget).attr("fill","black"))
+                .on("mouseleave",(ev,d)=> d3.select(ev.currentTarget).attr("fill",yScale_headPos(d.facePos)))
+                .on("click",(ev,d,i)=>{
+                    const video = document.querySelector(".video video")
+                    // video.play()
+                    video.currentTime = Number(d.time)
+                    //document.querySelector(".video video").setAttribute("currentTime",d.time)
+                })
                 .attr("x", d => xScale(d.time))
                 .attr("y", cfg.margin.top * 2)
                 // .attr("stroke-width",0.2)
@@ -1756,56 +1838,198 @@
     adv.config = {
         timeSilce: 60,
         rownum: 5,
-        w: "70rem",
-        h: "48rem",
+        w: "63rem",
+        h: "58rem",
         innerRadius: 40,
         outerRadius: 50,
-        circlePadding: 20
-
+        circlePadding: 20,
+        marginLeft: 10,
+        marginTop: 3,
+        barWidth: 3,
+        barPadding: 1,
     }
     adv.method = {}
+    adv.method.updateData = function (circle_index, selected_agenda) {
+        const old_circle = adv.data.circles[circle_index]
+        const circle = {
+            circle_id: old_circle.circle_id,
+            start: old_circle.start,
+            end: old_circle.end,
+            sentences: old_circle.sentences,
+            words: [],
+            agenda_rate: old_circle.agenda_rate,
+            personGiveWordNum: {},
+            clickTag: old_circle.clickTag,
+        }
+        let words_dic = {} // 单词在各议题出现次数
+        let wordMapSentence = {}  // 所有包含这个单词的句子
+        let agenda_sentence = {} // 在一个时间段内出现的句子
+        roles.forEach(v => circle.personGiveWordNum[v] = 0) // 每个人的发言数（词数）
+        if (circle.clickTag == true) { // 单个议题切换为多个议题
+            console.log(1)
+            circle.clickTag = false
+            circle.sentences.forEach(i => {
+                const words = dialogs[i].text.split(" ")
+                circle.personGiveWordNum[dialogs[i].role] += words.length
+                words.forEach(w => {
+                    if (w[w.length - 1] == '.' || w[w.length - 1] == '?' || w[w.length - 1] == '!' || w[w.length - 1] == ',')
+                        w = w.slice(0, w.length - 1)
+                    w = w.toLowerCase()
+                    if (!stopwords.has(w)) {
+                        if (!words_dic.hasOwnProperty(w)) {
+                            words_dic[w] = {}
+                            wordMapSentence[w] = []
+                            agendas.forEach((d, i) => words_dic[w][i] = 0)
+                            words_dic[w]['-'] = 0
+                        }
+                        wordMapSentence[w].push(i)
+                        words_dic[w][dialogs[i].agenda] += 1
+                    }
+                })
+                agenda_sentence[dialogs[i].agenda] = (agenda_sentence[dialogs[i].agenda] || 0) + 1
+            })
+            for (let [key, value] of Object.entries(words_dic)) {
+                circle.words.push({
+                    word: key, //单词
+                    cnt: Object.values(value).reduce((a, b) => a + b), //单词在此时间段出现几次
+                    agenda_distribution: value,  // 单词在每个议题出现几次
+                    sentenceContainThisWord: wordMapSentence[key] // 包含该单词的所有句子的id
+                })
+            }
+            // for (let [key, value] of Object.entries(agenda_sentence)) {
+            //     circle.agenda_rate.push({id: key, value: value})
+            // }
+
+        } else { //多个议题切换为指定议题
+            circle.clickTag = true
+            circle.highlightArc = selected_agenda
+            circle.sentences.forEach(i => {
+                console.log(dialogs[i].agenda, selected_agenda)
+                if (dialogs[i].agenda === selected_agenda) {
+                    const words = dialogs[i].text.split(" ")
+                    circle.personGiveWordNum[dialogs[i].role] += words.length
+                    words.forEach(w => {
+                        if (w[w.length - 1] == '.' || w[w.length - 1] == '?' || w[w.length - 1] == '!' || w[w.length - 1] == ',')
+                            w = w.slice(0, w.length - 1)
+                        w = w.toLowerCase()
+                        if (!stopwords.has(w)) {
+                            if (!words_dic.hasOwnProperty(w)) {
+                                words_dic[w] = {}
+                                wordMapSentence[w] = []
+                                agendas.forEach((d, i) => words_dic[w][i] = 0)
+                                words_dic[w]['-'] = 0
+                            }
+                            wordMapSentence[w].push(i)
+                            words_dic[w][dialogs[i].agenda] += 1
+                        }
+                    })
+                    agenda_sentence[dialogs[i].agenda] = (agenda_sentence[dialogs[i].agenda] || 0) + 1
+                }
+            })
+            for (let [key, value] of Object.entries(words_dic)) { //
+                circle.words.push({
+                    word: key, //单词
+                    cnt: Object.values(value).reduce((a, b) => a + b), //单词在此时间段出现几次
+                    agenda_distribution: value,  // 单词在每个议题出现几次
+                    sentenceContainThisWord: wordMapSentence[key] // 包含该单词的所有句子的id
+                })
+            }
+            // for (let [key, value] of Object.entries(agenda_sentence)) {
+            //     circle.agenda_rate.push({id: key, value: value})
+            // }
+        }
+        adv.data.circles[circle_index] = circle
+    }
     adv.method.dataGenerator = function () {
         const data = []
         let start = 0
-        let circle = {start: 0, end: adv.config.timeSilce, sentences: [], words: [], agenda_rate: []}
-        let words_dic = {}
-        let agenda_sentence = {}
+        let circle_id = 0
+        let circle = {
+            circle_id,
+            start: 0,
+            end: adv.config.timeSilce,
+            sentences: [],
+            words: [],
+            agenda_rate: [],
+            personGiveWordNum: {},
+            clickTag: false,
+        }
+        let words_dic = {} // 单词在各议题出现次数
+        let wordMapSentence = {}  // 所有包含这个单词的句子
+        let agenda_sentence = {} // 在一个时间段内出现的句子
+        let maxWordNum = 0 // 统计 personGiveWordNum 中的最大值，用于设定比例尺上限
+        roles.forEach(v => circle.personGiveWordNum[v] = 0) // 每个人的发言数（词数）
         for (let i = 0; i < dialogs.length;) {
             if (Number(dialogs[i].startTime) < start + adv.config.timeSilce) {
                 circle.sentences.push(i)
-                dialogs[i].text.split(" ").forEach(w => {
+                const words = dialogs[i].text.split(" ")
+                circle.personGiveWordNum[dialogs[i].role] += words.length
+                words.forEach(w => {
                     if (w[w.length - 1] == '.' || w[w.length - 1] == '?' || w[w.length - 1] == '!' || w[w.length - 1] == ',')
                         w = w.slice(0, w.length - 1)
-                    if (!stopwords.has(w.toLowerCase()))
-                        words_dic[w] = (words_dic[w] || 0) + 1
+                    w = w.toLowerCase()
+                    if (!stopwords.has(w)) {
+                        if (!words_dic.hasOwnProperty(w)) {
+                            words_dic[w] = {}
+                            wordMapSentence[w] = []
+                            agendas.forEach((d, i) => words_dic[w][i] = 0)
+                            words_dic[w]['-'] = 0
+                        }
+                        wordMapSentence[w].push(i)
+                        words_dic[w][dialogs[i].agenda] += 1
+                    }
                 })
-                if (dialogs[i].agenda === undefined)
-                    dialogs[i].agenda = "-"
                 agenda_sentence[dialogs[i].agenda] = (agenda_sentence[dialogs[i].agenda] || 0) + 1
                 i++
             } else {
                 for (let [key, value] of Object.entries(words_dic)) {
-                    circle.words.push({word: key, cnt: value})
+                    circle.words.push({
+                        word: key,
+                        cnt: Object.values(value).reduce((a, b) => a + b),
+                        agenda_distribution: value,
+                        sentenceContainThisWord: wordMapSentence[key]
+                    })
                 }
                 for (let [key, value] of Object.entries(agenda_sentence)) {
                     circle.agenda_rate.push({id: key, value: value})
                 }
                 data.push(circle)
                 words_dic = {}
+                wordMapSentence = {}
                 start = start + adv.config.timeSilce
                 agenda_sentence = {}
-                circle = {start, end: start + adv.config.timeSilce, sentences: [], words: [], agenda_rate: []}
+                circle_id += 1
+                Object.values(circle.personGiveWordNum).forEach(value => maxWordNum < value ? maxWordNum = value : null)
+                circle = {
+                    circle_id,
+                    start,
+                    end: start + adv.config.timeSilce,
+                    sentences: [],
+                    words: [],
+                    agenda_rate: [],
+                    personGiveWordNum: {},
+                    clickTag: false
+                }
+                roles.forEach(v => circle.personGiveWordNum[v] = 0)
             }
         }
-        // last timewww
+        // 处理最后一次循环结束
         for (let [key, value] of Object.entries(words_dic)) {
-            circle.words.push({word: key, cnt: value})
+            circle.words.push({
+                word: key,
+                cnt: Object.values(value).reduce((a, b) => a + b),
+                agenda_distribution: value
+            })
         }
         for (let [key, value] of Object.entries(agenda_sentence)) {
             circle.agenda_rate.push({id: key, value: value})
         }
+        Object.values(circle.personGiveWordNum).forEach(value => maxWordNum < value ? maxWordNum = value : null)
         data.push(circle)
         // end
+        adv.method.x = d3.scaleLinear()
+            .domain([0, maxWordNum * 1.05])
+            .range([1 / 4 * Math.PI, 1.25 * Math.PI])
         return {circles: data}
     }
     adv.data = adv.method.dataGenerator()
@@ -1813,9 +2037,16 @@
         //console.log(v.value)
         adv.config.timeSilce = Number(v.value)
         adv.data = adv.method.dataGenerator()
-
         adv.method.drawView()
     }
+    // adv.method.largeOneCircle = function (circle, agenda) {
+    //     console.log(circle, agenda)
+    //     const svg = d3.select('.adv svg')
+    //         .attr("width", adv.config.w)
+    //         .attr("height", adv.config.h)
+    //         .attr("style", "max-width: 100%; margin: 0 1rem;height: auto; height: intrinsic;");
+    //     svg.selectAll("*").remove()
+    // }
     adv.method.drawView = function () {
 
         const canvas1 = document.createElement("canvas")
@@ -1829,14 +2060,19 @@
         const fontsize = ctxs.map(v => Number(v.font.slice(0, v.font.indexOf('px'))))
         const color = d3.schemeSet2
         const Textoffset = adv.config.outerRadius - adv.config.innerRadius + 5
+        const barchart_arc = (d, i) => d3.arc()
+            .innerRadius(adv.config.outerRadius + adv.config.barPadding + (adv.config.barWidth + adv.config.barPadding) * i)
+            .outerRadius(adv.config.outerRadius + adv.config.barPadding + (adv.config.barWidth + adv.config.barPadding) * i + adv.config.barWidth)
+            .startAngle(1 / 4 * Math.PI)
+            .endAngle(adv.method.x(d.num))()
         const svg = d3.select('.adv svg')
             .attr("width", adv.config.w)
             .attr("height", adv.config.h)
-            .attr("style", "max-width: 100%; margin: 0 5rem;height: auto; height: intrinsic;");
+            .attr("style", "max-width: 100%; margin: 0 1rem;height: auto; height: intrinsic;");
         svg.selectAll("*").remove()
         adv.data.circles.forEach((v, i) => {
-            drawTitle((i % adv.config.rownum) * (adv.config.outerRadius * 2 + adv.config.circlePadding) + adv.config.outerRadius, Math.floor(i / adv.config.rownum) * (adv.config.outerRadius * 2 + adv.config.circlePadding), i * adv.config.timeSilce + '-' + (i + 1) * adv.config.timeSilce)
-            drawCircle(v, (i % adv.config.rownum) * (adv.config.outerRadius * 2 + adv.config.circlePadding) + adv.config.outerRadius, Math.floor(i / adv.config.rownum) * (adv.config.outerRadius * 2 + adv.config.circlePadding) + adv.config.outerRadius + Textoffset)
+            drawTitle(adv.config.marginLeft + (i % adv.config.rownum) * (adv.config.outerRadius * 2 + adv.config.circlePadding) + adv.config.outerRadius, Math.floor(i / adv.config.rownum) * (adv.config.outerRadius * 2 + adv.config.circlePadding + adv.config.marginTop), i * adv.config.timeSilce + '-' + (i + 1) * adv.config.timeSilce)
+            drawCircle(v, adv.config.marginLeft + (i % adv.config.rownum) * (adv.config.outerRadius * 2 + adv.config.circlePadding) + adv.config.outerRadius, Math.floor(i / adv.config.rownum) * (adv.config.outerRadius * 2 + adv.config.circlePadding + adv.config.marginTop) + adv.config.outerRadius + Textoffset)
         })
 
         function drawTitle(x, y, text) {
@@ -1849,9 +2085,10 @@
                 .text(text)
         }
 
-        function drawCircle({words, agenda_rate}, x, y, topk = 10) {
-
-            const topWords = words.slice(0, topk)
+        function drawCircle(circle, x, y, topk = 10) {
+            const {sentences, words, agenda_rate, personGiveWordNum, highlightArc} = circle
+            const personGiveWordNumList = roles.map(role => ({role: role, num: personGiveWordNum[role]}))
+            const topWords = calTopWords(words, topk)
             const arcs = d3.pie().padAngle(0).sort(null).value(d => d.value)(agenda_rate);
             const arc = d3.arc().innerRadius(adv.config.innerRadius).outerRadius(adv.config.outerRadius);
             const svg = d3.select('.adv svg')
@@ -1859,11 +2096,28 @@
             const g = svg.append("g")
                 .attr("font-family", "sans-serif")
                 .attr("transform", `translate(${x},${y})`)
+
             g.selectAll("path")
                 .data(arcs)
                 .join("path")
                 .attr("fill", d => agenda_rate[d.index].id === '-' ? 'grey' : color[agenda_rate[d.index].id])
                 .attr("d", arc)
+                .style("cursor", "pointer")
+                .attr("stroke", d => '' + d.data.id === '' + highlightArc ? "yellow" : "none")
+                .attr("stroke-width", d => '' + d.data.id === '' + highlightArc ? 3 : "none")
+                .on("click", function (e, d) { // 点击圆环的交互
+                    adv.method.updateData(circle.circle_id, d.data.id !== '-' ? Number(d.data.id) : d.data.id)
+                    adv.method.drawView()
+                })
+
+            // 外层彩带
+            const bar = g.append("g")
+            bar.selectAll("path")
+                .data(personGiveWordNumList)
+                .join("path")
+                .attr("fill", d => personColor(d.role))
+                .attr("d", barchart_arc)
+            //
             const y_pos = []
             const r = adv.config.innerRadius
             const wordPadding = 2
@@ -1877,7 +2131,7 @@
                 }
                 if (Math.abs(offset) >= r)
                     break
-                y_pos.push({font: fontsize[canPlace], y: -offset, word: w})
+                y_pos.push({font: fontsize[canPlace], y: -offset, word: topWords[i]})
                 offset -= fontsize[canPlace]
             }
             g.selectAll("text")
@@ -1888,7 +2142,27 @@
                 .attr("font-size", d => d.font)
                 //    .attr("textLength",r)
                 .attr("y", d => d.y)
-                .text(d => d.word)
+                .text(d => d.word.word)
+                .style("cursor", "pointer")
+                .on("click", function (e, d) {  // 交互：在itav视图中高亮选中关键词相关句子
+                    const {word, sentenceContainThisWord} = d.word
+                    d3.select(".itav svg .bindNodeArea").selectAll("rect").attr("opacity", 0.1)
+                    const bindEdgeTitle = d3.select(".itav svg .bindEdgeTitle")
+                    bindEdgeTitle.selectAll("circle").attr("opacity", 0.1)
+                    bindEdgeTitle.selectAll("text").attr("opacity", 0.1)
+                    d3.select(".itav svg .bindEdge").selectAll("path").attr("opacity", 0.1)
+                    d3.select(".itav svg .singleNode").selectAll("ellipse").attr("opacity", 0.1)
+                    const highlightSession = [...new Set(sentenceContainThisWord.map(v => itav.data.bind_edges.idx2sessionId[v]))]
+                    highlightSession.forEach(v => {
+                        d3.selectAll(`.sidNode_${v}`).attr("opacity", 1)
+                        d3.selectAll(`.sidEge_${v}`).attr("opacity", 0.7)
+                    })
+                })
+        }
+
+        function calTopWords(words, k) {
+            const topWords = words.sort((a, b) => b.cnt - a.cnt).slice(0, k)
+            return topWords
         }
 
         function calTextWidth(r, dis) {
@@ -1917,11 +2191,12 @@
     // region ctxv(context view)
     const ctxv = {}
     ctxv.config = {
-        w: "27rem",
-        h: 530,
+        w: 420,
+        h: 580,
         lineHeight: 16,
-        textWidth: "20rem",
-        overviewWidth: 70
+        textWidth: "35rem",
+        overviewWidth: 70,
+        initalHeight: 30,
     }
     ctxv.method = {}
     ctxv.method.draw = function () {
@@ -1972,17 +2247,22 @@
     }
     ctxv.method.drawOverview = function () {
         const row2id = {}
+        const id2row = {}
         const rows = ctxv.data.rects.reduce((total, rect) => {
             for (let i = total; i < total + rect.rows; i++)
                 row2id[i] = rect.id
+            id2row[rect.id] = total
             return total + rect.rows
         }, 0)
+        ctxv.data.row2id = row2id
+        ctxv.data.id2row = id2row
         ctxv.config.rectHeight = ctxv.config.h / rows
         const yscale = d3.scaleLinear() // Map a continuous, quantitative domain to a discrete range
             .domain([0, rows])
             .range([0, ctxv.config.h])
+        ctxv.method.yscale = yscale
         const brush = d3.brushY(yscale).extent([[0, 0], [ctxv.config.overviewWidth, ctxv.config.h]]).on("start brush end", brushed);
-
+        ctxv.method.brush = brush
         const svg = d3.select(".ctxv svg")
             .attr("width", ctxv.config.w)
             .attr("height", ctxv.config.h)
@@ -1992,6 +2272,7 @@
         overview.selectAll("g")
             .data(ctxv.data.rects)
             .join("g")
+            .attr("class", (d, i) => `gid_${i}`)
             .each(function (p) {
                 d3.select(this)
                     .selectAll("rect")
@@ -2004,19 +2285,19 @@
                     .attr("fill", dialogs[p.id].agenda == "-" ? "grey" : d3.schemeSet2[dialogs[p.id].agenda])
                 sum += p.rows
             })
-        const initalHeight = 30
+        const initalHeight = ctxv.config.initalHeight
         overview.append("g")
             .attr("class", "y brush")
         const brushG = overview.select('g.brush')
-         // d3.select("#ctxForeignObject")
-         //    .on("scroll", (e) => {
-         //        const y0 = e.currentTarget.scrollTop
-         //        const [_, Y1] = yscale.range();
-         //        const dy = yscale(initalHeight)
-         //        d3.select(".y.brush")
-         //            .call(brush.move, y0 + dy > Y1 ? [Y1 - dy, Y1] : [y0, y0 + dy]);
-         //        console.log(e.currentTarget.scrollTop)
-         //    })
+        // d3.select("#ctxForeignObject")
+        //    .on("scroll", (e) => {
+        //        const y0 = e.currentTarget.scrollTop
+        //        const [_, Y1] = yscale.range();
+        //        const dy = yscale(initalHeight)
+        //        d3.select(".y.brush")
+        //            .call(brush.move, y0 + dy > Y1 ? [Y1 - dy, Y1] : [y0, y0 + dy]);
+        //        console.log(e.currentTarget.scrollTop)
+        //    })
 
         brushG.call(brush)
             .call(brush.move, [0, initalHeight].map(yscale)) // 默认选择框
@@ -2055,6 +2336,190 @@
     ctxv.method.draw()
     ctxv.data = ctxv.method.generateData()
     ctxv.method.drawOverview()
+
+    // endregion
+    // region Reply view
+    const rv = {}
+    rv.config = {
+        w: 800,
+        h: 530,
+        yoffset: 30,
+        xoffset: 40,
+        padding: 20,
+        radius: 15
+    }
+    rv.method = {}
+    rv.method.generateData = function (session_id) {
+        console.log(session_id)
+        const xhr = new XMLHttpRequest()
+        xhr.open("get", '/replyTree?' + `session_id=${session_id}`, false)
+        xhr.send()
+        const data = JSON.parse(xhr.response)
+        const nodelist = data.nodelist
+        const idx2treenode = data.idx2treenode
+        const lines = []
+        const root = nodelist[0]
+        const pos = []
+        let x = 0
+        let y = 0
+        const ctx = document.createElement("canvas").getContext("2d")
+        ctx.font = "13px Microsoft YaHei"
+        const rects = []
+        const img = []
+
+        function dfs(n) {
+            pos.push({id: n.id, x: x * rv.config.xoffset, y: y * rv.config.yoffset})
+            img.push({id: n.id, x: x * rv.config.xoffset - rv.config.radius, y: y * rv.config.yoffset, img: n.img})
+            let textlength = ctx.measureText(dialogs[n.id].text).width
+            if (textlength + x * rv.config.xoffset >= 560)
+                textlength = 560 - x * rv.config.xoffset
+            rects.push({
+                id: n.id,
+                x: x * rv.config.xoffset,
+                y: y * rv.config.yoffset - 7.5,
+                width: textlength,
+                height: 15
+            })
+            const init_y = y
+            if (n.parent != -1)
+                lines.push({
+                    x1: x * rv.config.xoffset,
+                    y1: y * rv.config.yoffset,
+                    x2: (x - 1) * rv.config.xoffset + 5,
+                    y2: y * rv.config.yoffset
+                })
+            x = x + 1
+            let last_y
+            for (let i of n.children) {
+                y = y + 1
+                last_y = y
+                dfs(nodelist[idx2treenode[i]])
+            }
+            x = x - 1
+            if (n.children.length > 0) {
+                lines.push({
+                    x1: x * rv.config.xoffset + 5,
+                    y1: init_y * rv.config.yoffset,
+                    x2: x * rv.config.xoffset + 5,
+                    y2: last_y * rv.config.yoffset
+                })
+            }
+        }
+
+        dfs(root)
+        return {pos, lines, rects, img}
+    }
+
+    rv.method.drawReplyTree = (function () {
+        const svg = d3.select('.rv svg')
+            .attr("width", "100%")
+            .attr("height", rv.config.h * 3)
+        //  .attr("style", "max-width: 100%;height: auto; height: intrinsic;")
+        const xOffset = 300
+        const yOffset = 20
+        const legendRectWidth = 15
+
+        const legend = svg.append("g")
+            .attr("transform", `translate(50,50)`)
+            .attr("font-size", 15)
+        // legend.append("g").attr("class", "title")
+        //     .append("text")
+        //     .attr("stroke", "black")
+        //     .attr("font-weight", 1)
+        //     .text(" Legends:")
+        //     .attr("transform", `translate(0,-20)`)
+        legend.selectAll("g").data(roles).join("g").append("text")
+            .attr("y", (d, i) => Math.floor(i / 2) * yOffset)
+            .attr("x", (d, i) => (i % 2) * xOffset)
+            .text(d => d)
+
+        legend.selectAll("g")
+            .append("rect")
+            .attr("x", (d, i) => (i % 2) * xOffset - legendRectWidth - 5)
+            .attr("y", (d, i) => Math.floor(i / 2) * 20 - legendRectWidth / 1.25)
+            .attr("width", legendRectWidth)
+            .attr("height", legendRectWidth)
+            .attr("fill", d => personColor(d))
+        return function (session_id) {
+            svg.selectAll("#tree").remove()
+
+            const g = svg.append("g")
+                .attr("id", "tree")
+                .attr("transform", `translate(40,100)`)
+                .attr("width", "560")
+                .attr("height", 550)
+                .style("overflow", "scroll")
+                .attr("font-size", 13)
+            g.selectAll("line")
+                .data(rv.data.lines)
+                .join("line")
+                .attr("x1", d => d.x1)
+                .attr("x2", d => d.x2)
+                .attr("y1", d => d.y1)
+                .attr("y2", d => d.y2)
+                .attr("stroke", "grey")
+            g.selectAll("rect")
+                .data(rv.data.rects)
+                .join("rect")
+                .attr("x", d => d.x)
+                .attr("y", d => d.y)
+                .attr("width", d => d.width)
+                .attr("height", d => d.height)
+                .attr("fill", d => personColor(dialogs[d.id].role))
+            g.selectAll("clipPath")
+                .data(rv.data.rects)
+                .join("clipPath")
+                .attr("id", d => "clip" + d.id)
+                .append("rect")
+                .attr("x", d => d.x)
+                .attr("y", d => d.y)
+                .attr("width", d => d.width)
+                .attr("height", d => d.height)
+
+            g.selectAll("text")
+                .data(rv.data.pos)
+                .join("text")
+                .attr("clip-path", d => `url(#clip${d.id})`)
+                .attr("alignment-baseline", "middle")
+                .attr("x", d => d.x)
+                .attr("y", d => d.y)
+                .text(d => dialogs[d.id].text)
+                .on('click', (event, d) => {
+                    const dy = ctxv.method.yscale(ctxv.config.initalHeight) - ctxv.method.yscale(0); // Use a fixed width when recentering.
+                    const cy = ctxv.method.yscale(ctxv.data.id2row[d.id])
+                    const [y0, y1] = [cy, cy + dy];
+                    const [Y0, Y1] = ctxv.method.yscale.range();
+                    console.log( d3.select('.y.brush'))
+                    d3.select('.y.brush')
+                        .call(ctxv.method.brush.move, y1 > Y1 ? [Y1 - dy, Y1]
+                            : y0 < Y0 ? [Y0, Y0 + dy]
+                                : [y0, y1]);
+                })
+                .append("title")
+                .text(d => dialogs[d.id].text.split(".").join(".\n"))
+
+            const img = g.selectAll("g")
+                .data(rv.data.img)
+                .join("g")
+            img.append("circle")
+                .attr("fill", d => `url(#avatar_${d.id})`)
+                .attr("cx", d => d.x)
+                .attr("cy", d => d.y)
+                .attr("r", rv.config.radius);
+            img.append("svg:defs").append("svg:pattern")
+                .attr("id", d => `avatar_${d.id}`)
+                .attr("width", rv.config.radius * 2)
+                .attr("height", rv.config.radius * 2)
+                .attr("patternUnits", "objectBoundingBox")
+                .append("svg:image")
+                .attr("xlink:href", d => d.img)
+                .attr("width", rv.config.radius * 2)
+                .attr("height", rv.config.radius * 2)
+                .attr("preserveAspectRatio", "xMidYMid slice")
+
+
+        }
+    })()
 
     // endregion
 </script>

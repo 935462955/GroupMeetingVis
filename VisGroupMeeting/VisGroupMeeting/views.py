@@ -13,3 +13,8 @@ def index():
                            stopwords = json.dumps(list(data.stopwords)),
                            keyframes = json.dumps(data.key_frames),
                            meetingName = data.meetingName)
+@app.route('/replyTree',methods=['GET'])
+def replyTree():
+    if request.method == "GET":
+        session_id = request.args['session_id']
+        return json.dumps(data.getReplyTree(int(session_id)))
