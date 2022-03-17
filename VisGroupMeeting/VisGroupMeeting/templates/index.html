@@ -3,23 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="../static/css/index.css"/>
 </head>
 <body>
 <div class="views">
     <div class="itav">
+        <div class="itav-toolbar">
+            <div class="viewName">Interaction View</div>
+        </div>
         <svg class="up">
         </svg>
         <svg class="down"></svg>
     </div>
-    <div class="rv" style="overflow-y: scroll">
-        <svg></svg>
+    <div class="rv-container">
+        <div class="rv-toolbar">
+            <div class="rv-toolbar">
+                <div class="viewName">Detail View</div>
+            </div>
+        </div>
+        <div class="rv" style="overflow-y: scroll">
+            <svg></svg>
+        </div>
     </div>
-    <div class="ctxv">
-        <svg></svg>
+    <div class="ctxv-container">
+        <div class="ctxv-toolbar">
+            <div class="ctxv-toolbar">
+                <div class="viewName">Context View</div>
+            </div>
+        </div>
+        <div class="ctxv">
+            <svg></svg>
+        </div>
+        <div class="video">
+            <video controls="controls" muted preload="auto">
+                <source src="../static/data/video/ES2002a/B.mp4" type="video/mp4">
+            </video>
+
+        </div>
     </div>
     <div class="pav-container">
-        <!--    <div class="pav-toolbar"></div>-->
+        <div class="pav-toolbar">
+            <div class="pav-toolbar">
+                <div class="viewName">Person View</div>
+                <div class="pav-selector">
+                    <span>Features: </span>
+                    <select class="pav-abilitySelector" onchange="pav.method.drawDetailView()">
+                        <option value="Contribution">Contribution</option>
+                        <option value="Perplexity">Perplexity</option>
+                        <option value="Leadership">Leadership</option>
+                        <option value="Activity">Activity</option>
+                        <option value="Backchannel">Backchannel</option>
+                    </select>
+                </div>
+                <div class="pav-selector">
+                    <span>Select a student: </span>
+                    <select class="pav-studentSelector" onchange="pav.method.changePerson(this.value)">
+                        <option value="A">A</option>
+                        <option value="B" selected="true">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                    </select>
+                </div>
+            </div>
+        </div>
         <div class="pav">
             <div class="defocus">
                 <div class="defocus_item1">
@@ -41,26 +89,30 @@
     </div>
     <div class="adv">
         <div class="adv-toolbar">
-            <span>time slice</span>
-            <select onchange="adv.method.changeSelectorValue(this)">
-                <option value="50">50</option>
-                <option value="60" selected>60</option>
-                <option value="70">70</option>
-                <option value="80">80</option>
-                <option value="90">90</option>
-                <option value="100">100</option>
-                <option value="110">110</option>
-                <option value="120">120</option>
-            </select>
+            <div class="adv-toolbar">
+                <div class="viewName">Agenda View</div>
+                <div class="adv-range"><span>TimeSlice: [50~120]: 60s</span><input type="range"
+                                                                                   oninput="adv.method.changeText(this.value)"
+                                                                                   onchange="adv.method.changeSelectorValue(this.value)"
+                                                                                   value="60" min="50" max="120"
+                                                                                   step="10" class="form-range">
+                </div>
+
+            </div>
+            <!--            <span>time slice</span>-->
+            <!--            <select onchange="adv.method.changeSelectorValue(this)">-->
+            <!--                <option value="50">50</option>-->
+            <!--                <option value="60" selected>60</option>-->
+            <!--                <option value="70">70</option>-->
+            <!--                <option value="80">80</option>-->
+            <!--                <option value="90">90</option>-->
+            <!--                <option value="100">100</option>-->
+            <!--                <option value="110">110</option>-->
+            <!--                <option value="120">120</option>-->
+            <!--            </select>-->
         </div>
         <svg>
         </svg>
-    </div>
-    <div class="video">
-        <video controls="controls" muted preload="auto">
-            <source src="../static/data/video/ES2002a/B.mp4" type="video/mp4">
-        </video>
-
     </div>
 
 
@@ -71,6 +123,9 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
         referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 <script>
     const dialogs = JSON.parse(`{{dialogs|safe}}`).map(v => {
         if (v.agenda === undefined)
@@ -78,7 +133,6 @@
         return v
     })
     const sessions = JSON.parse(`{{sessions|safe}}`)
-    console.log('sessions', sessions, dialogs)
     const personal_ability = JSON.parse(`{{personal_ability|safe}}`)
     const roles = [...new Set(dialogs.map(v => v.role))]
     //const roles = JSON.parse(`{{roles|safe}}`)
@@ -1031,10 +1085,8 @@
         }
         const focusRoleKeyFrame = keyframes[focusRole].filter(v => v.frame / 25 <= endTime)
         focusRoleActivityData['keyframe'] = focusRoleKeyFrame
-        console.log(document.querySelector('.video video source').getAttribute("src"))
         document.querySelector('.video video').setAttribute("src", `../static/data/video/${meetingName}/${focusRole}.mp4`)
         document.querySelector('.video video').pause()
-        console.log(document.querySelector('.video video source').getAttribute("src"))
         return {
             focusRole,
             focusRadarData,
@@ -1046,6 +1098,15 @@
     }
     pav.data = pav.method.generatePersonalAbilityViewData(roles[0])
     pav.data.detailView = "Contribution" // default
+    pav.method.changePerson = function (role) {
+        pav.data = pav.method.generatePersonalAbilityViewData(role)
+        pav.method.drawPersonalAbilityView()
+        const opt = document.querySelectorAll('.pav-studentSelector option')
+        opt.forEach(option => {
+            if(option.value === role)
+                option.selected = true
+        })
+    }
     pav.method.drawRadarView = function (data, Role, options, selector) {
 
         /////////////////////////////////////////////////////////
@@ -1164,8 +1225,7 @@
         // Append event listener
         svg.on('click', () => {
             if (pav.data.focusRole !== Role) {
-                pav.data = pav.method.generatePersonalAbilityViewData(Role)
-                pav.method.drawPersonalAbilityView()
+             pav.method.changePerson(Role)
             }
         })
         svg.append("text")
@@ -1173,23 +1233,7 @@
             .attr("font-size", cfg.roleNameFontSize)
             .attr("y", cfg.roleNameYOffset)
             .attr("x", 2)
-        //Append a g element
-        if (cfg.toolbar && !document.querySelector(".focused svg foreignObject")) {
-            svg.append("foreignObject")
-                .attr("height", 20)
-                .attr("width", 110)
-                .attr("transform", `translate(${cfg.margin.left},${cfg.margin.top * 2})`)
-                .append("xhtml:select")
-                .attr("class", 'pav-abilitySelector')
-                .on("change", function () {
-                    pav.method.drawDetailView()
-                })
-                .selectAll("option")
-                .data(['Contribution', 'Perplexity', 'Leadership', 'Activity', 'Backchannel'])
-                .join("option")
-                .text(d => d)
-                .attr("value", d => d)
-        }
+
         let g = svg
             .append("g")
             .attr(
@@ -1571,10 +1615,10 @@
             barchart.selectAll("rect")
                 .data(headPos)
                 .join("rect")
-                .style("cursor","pointer")
-                .on("mouseover",(ev)=> d3.select(ev.currentTarget).attr("fill","black"))
-                .on("mouseleave",(ev,d)=> d3.select(ev.currentTarget).attr("fill",yScale_headPos(d.facePos)))
-                .on("click",(ev,d,i)=>{
+                .style("cursor", "pointer")
+                .on("mouseover", (ev) => d3.select(ev.currentTarget).attr("fill", "black"))
+                .on("mouseleave", (ev, d) => d3.select(ev.currentTarget).attr("fill", yScale_headPos(d.facePos)))
+                .on("click", (ev, d, i) => {
                     const video = document.querySelector(".video video")
                     // video.play()
                     video.currentTime = Number(d.time)
@@ -1849,6 +1893,9 @@
         barPadding: 1,
     }
     adv.method = {}
+    adv.method.changeText = function (val) {
+        document.querySelector(".adv-range span").innerHTML = `TimeSlice: [10~120]: ${val}s`
+    }
     adv.method.updateData = function (circle_index, selected_agenda) {
         const old_circle = adv.data.circles[circle_index]
         const circle = {
@@ -1866,7 +1913,6 @@
         let agenda_sentence = {} // 在一个时间段内出现的句子
         roles.forEach(v => circle.personGiveWordNum[v] = 0) // 每个人的发言数（词数）
         if (circle.clickTag == true) { // 单个议题切换为多个议题
-            console.log(1)
             circle.clickTag = false
             circle.sentences.forEach(i => {
                 const words = dialogs[i].text.split(" ")
@@ -1904,7 +1950,6 @@
             circle.clickTag = true
             circle.highlightArc = selected_agenda
             circle.sentences.forEach(i => {
-                console.log(dialogs[i].agenda, selected_agenda)
                 if (dialogs[i].agenda === selected_agenda) {
                     const words = dialogs[i].text.split(" ")
                     circle.personGiveWordNum[dialogs[i].role] += words.length
@@ -2033,9 +2078,8 @@
         return {circles: data}
     }
     adv.data = adv.method.dataGenerator()
-    adv.method.changeSelectorValue = function (v) {
-        //console.log(v.value)
-        adv.config.timeSilce = Number(v.value)
+    adv.method.changeSelectorValue = function (value) {
+        adv.config.timeSilce = Number(value)
         adv.data = adv.method.dataGenerator()
         adv.method.drawView()
     }
@@ -2217,8 +2261,8 @@
             .selectAll("p")
             .data(dialogs)
             .join("p")
+            .style('Font', "10px sans-serif")
             .attr("class", (d, i) => `ctxv-p ${i}`)
-
             .text(d => d.text)
         // .on("click", function (e, d) {
         //     // console.log(this.offsetTop, this.offsetTop - ctxv.config.h, this.parentNode.parentNode.scrollTop, e, d)
@@ -2350,7 +2394,6 @@
     }
     rv.method = {}
     rv.method.generateData = function (session_id) {
-        console.log(session_id)
         const xhr = new XMLHttpRequest()
         xhr.open("get", '/replyTree?' + `session_id=${session_id}`, false)
         xhr.send()
@@ -2489,7 +2532,6 @@
                     const cy = ctxv.method.yscale(ctxv.data.id2row[d.id])
                     const [y0, y1] = [cy, cy + dy];
                     const [Y0, Y1] = ctxv.method.yscale.range();
-                    console.log( d3.select('.y.brush'))
                     d3.select('.y.brush')
                         .call(ctxv.method.brush.move, y1 > Y1 ? [Y1 - dy, Y1]
                             : y0 < Y0 ? [Y0, Y0 + dy]
@@ -2520,8 +2562,8 @@
 
         }
     })()
-
     // endregion
+
 </script>
 </body>
 </html>
