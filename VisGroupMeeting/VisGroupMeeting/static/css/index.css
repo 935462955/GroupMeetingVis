@@ -3,6 +3,7 @@ html {
     height: 99vh;
     width: 100vw;
     overflow-x: hidden;
+    /*overflow-y: hidden;*/
     /*font-family: "Microsoft YaHei UI";*/
     font-family: "sans-serif";
 }
@@ -42,8 +43,25 @@ div.itav-toolbar {
     border-radius: 0.5rem;
     background: #F7F7F7;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color:#5C6A76;
 }
-
+div.itav-toolbar button{
+    margin-right:1rem;
+}
+div.itav-toolbar-right-component{
+    width:50%;
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+div.itav-selector{
+    margin-right:1rem;
+}
+div.itav-selector select{
+    height:2.5rem;
+}
 div.itav svg.up {
     width: 800px;
     height: 385px;
@@ -87,7 +105,10 @@ div.adv-range {
     white-space: nowrap;
     margin-right: 1rem;
 }
-
+div.adv-searchbar{
+    display:flex;
+    align-items: center;
+}
 div.ctxv-container {
     height: calc(58rem + 34rem + 4rem);
     width: 42rem;
@@ -104,8 +125,14 @@ div.ctxv-toolbar {
     border-radius: 0.5rem;
     background: #F7F7F7;
     display: flex;
+    justify-content: space-between;
 }
-
+div.ctxv-searchbar{
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+    width:30%;
+}
 div.ctxv {
     height: 58rem;
     width: 42rem;

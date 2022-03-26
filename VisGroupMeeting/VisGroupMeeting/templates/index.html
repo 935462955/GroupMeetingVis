@@ -12,6 +12,19 @@
     <div class="itav">
         <div class="itav-toolbar">
             <div class="viewName">Interaction View</div>
+            <div class="itav-toolbar-right-component">
+                <div class="itav-selector">
+                    <span>Select a Group: </span>
+                    <select onchange="">
+                        <option value="A">ES2001A</option>
+                        <option value="B" selected="true">ES2002A</option>
+                        <option value="C">ES2003A</option>
+                        <option value="D">ES2004A</option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-outline-secondary">Edit Agenda</button>
+                <button type="button" class="btn btn-outline-secondary">Recalculate</button>
+            </div>
         </div>
         <svg class="up">
         </svg>
@@ -31,6 +44,8 @@
         <div class="ctxv-toolbar">
             <div class="ctxv-toolbar">
                 <div class="viewName">Context View</div>
+                <div class="ctxv-searchbar"><input class="form-control" type="text" placeholder="Search and Filter">
+                </div>
             </div>
         </div>
         <div class="ctxv">
@@ -91,25 +106,15 @@
         <div class="adv-toolbar">
             <div class="adv-toolbar">
                 <div class="viewName">Agenda View</div>
+                <div class="adv-searchbar"><input class="form-control" type="text" placeholder="Search and Filter">
+                </div>
                 <div class="adv-range"><span>TimeSlice: [50~120]: 60s</span><input type="range"
                                                                                    oninput="adv.method.changeText(this.value)"
                                                                                    onchange="adv.method.changeSelectorValue(this.value)"
                                                                                    value="60" min="50" max="120"
                                                                                    step="10" class="form-range">
                 </div>
-
             </div>
-            <!--            <span>time slice</span>-->
-            <!--            <select onchange="adv.method.changeSelectorValue(this)">-->
-            <!--                <option value="50">50</option>-->
-            <!--                <option value="60" selected>60</option>-->
-            <!--                <option value="70">70</option>-->
-            <!--                <option value="80">80</option>-->
-            <!--                <option value="90">90</option>-->
-            <!--                <option value="100">100</option>-->
-            <!--                <option value="110">110</option>-->
-            <!--                <option value="120">120</option>-->
-            <!--            </select>-->
         </div>
         <svg>
         </svg>
@@ -134,7 +139,8 @@
     })
     const sessions = JSON.parse(`{{sessions|safe}}`)
     const personal_ability = JSON.parse(`{{personal_ability|safe}}`)
-    const roles = [...new Set(dialogs.map(v => v.role))]
+     const roles = [...new Set(dialogs.map(v => v.role))]
+    //const roles = ['D','B','A','C']
     //const roles = JSON.parse(`{{roles|safe}}`)
     const headPos = JSON.parse(`{{headPos|safe}}`)
     const keywordsOfPersonal = JSON.parse(`{{keywordsOfPersonal|safe}}`)
@@ -155,7 +161,7 @@
         paddingTop: 100,
         agendaColor: d3.schemeSet2,// ['#3FC846','#FF606F','#BDBDBD','#4666CB'],
         maxRy: 100,
-        timeSlice: 10,
+        timeSlice: 30,
     }
     itav.method = { // 这个图比较复杂需要重复绘制为避免性能损失所以把固定函数单独放在method里面了
         xScale: d3.scaleLinear()
@@ -354,6 +360,7 @@
             source: v.reply_to_id === '-' ? '-' : Number(v.reply_to_id),
             target: v.id
         }))
+
         const locatedSession = sessions.map(d => {
             const v = _.cloneDeep(d)
             if (Object.keys(v['subsessions']).length > 0) {
@@ -393,174 +400,174 @@
             const y = a * p0[1] + b * p1[1] + c * p2[1] + d * p3[1]
             return [x, y]
         }
-        const bind_edges2 = (function () {
-            // const edges = [] // 边
-            // const squares = [] // 捆绑节点
-            const idx2sessionId = {} // 节点id 到 sessionId 的映射
-            const pathStringList = []
-            const outlineStringList = []
-            const squares = []
-            const square_height = 10 // TODO 可调节参数
-            for (let session of locatedSession) {
-                if (Object.keys(session['subsessions']).length === 0)
-                    continue
-                const durationOfSpeakingPerRole = Object.create(null)
-                const visited_subsession = new Set()
-                for (let subsession_name of Object.keys(session['subsessions'])) {
-                    const speakers = subsession_name.split("_")
-                    const reverse_subsession_name = speakers[1] + '_' + speakers[0]
-                    if (speakers[0] === speakers[1] || visited_subsession.has(subsession_name))
-                        continue
-                    visited_subsession.add(subsession_name) // speaker[0]_speaker[1],speaker[1]_speaker[0]双向两个subsession都需要标记为已使用
-                    visited_subsession.add(reverse_subsession_name)
-                    let startSpeaker0
-                    let startVp0
-                    let startVp1
-                    let startSpeaker1
-                    let endSpeaker1
-                    let endVp1
-                    let endVp0
-                    let endSpeaker0
-                    let start_end_range = []
-                    for (let id of session['subsessions'][subsession_name]['pos']) {
-                        // idx2sessionId
-                        idx2sessionId[id] = session['session_id']
-                        // 计算 startSpeaker0 endSpeaker0
-                        const x_start = itav.method.xScale(dialogs[id].startTime)
-                        const x_end = itav.method.xScale(dialogs[id].endTime)
-                        if (start_end_range.length === 0) { // 计算最早发言和最晚发言节点的X坐标
-                            start_end_range[0] = x_start // 初始化
-                            start_end_range[1] = x_end
-                        } else if (start_end_range[0] > x_start) // x_start
-                        {
-                            start_end_range[0] = x_start
-                        } else if (start_end_range[1] < x_end) // x_end
-                        {
-                            start_end_range[1] = x_end
-                        }
-                    }
-                    // region update durationOfSpeakingPerRole
-                    if (!(speakers[0] in durationOfSpeakingPerRole))
-                        durationOfSpeakingPerRole[speakers[0]] = [...start_end_range]
-                    else if (durationOfSpeakingPerRole[speakers[0]][0] > start_end_range[0]) // x_start
-                    {
-                        durationOfSpeakingPerRole[speakers[0]][0] = start_end_range[0]
-                    } else if (durationOfSpeakingPerRole[speakers[0]][1] < start_end_range[1]) // x_end
-                    {
-                        durationOfSpeakingPerRole[speakers[0]][1] = start_end_range[1]
-                    }
-                    //endregion
-                    const offset = itav.method.yScale(speakers[0]) > itav.method.yScale(speakers[1]) ? -square_height / 2 : square_height / 2
-                    startSpeaker0 = {x: start_end_range[0], y: itav.method.yScale(speakers[0]) + offset}
-                    endSpeaker0 = {x: start_end_range[1], y: itav.method.yScale(speakers[0]) + offset}
-                    start_end_range = []
-                    for (let id of session['subsessions'][reverse_subsession_name]['pos']) {
-                        // idx2sessionId
-                        idx2sessionId[id] = session['session_id']
-                        // 计算 startSpeaker1 endSpeaker1
-                        const x_start = itav.method.xScale(dialogs[id].startTime)
-                        const x_end = itav.method.xScale(dialogs[id].endTime)
-                        if (start_end_range.length === 0) { // 计算最早发言和最晚发言节点的X坐标
-                            start_end_range[0] = x_start // 初始化
-                            start_end_range[1] = x_end
-                        } else if (start_end_range[0] > x_start) // x_start
-                        {
-                            start_end_range[0] = x_start
-                        } else if (start_end_range[1] < x_end) // x_end
-                        {
-                            start_end_range[1] = x_end
-                        }
-                    }
-                    // region update durationOfSpeakingPerRole
-                    if (!(speakers[1] in durationOfSpeakingPerRole))
-                        durationOfSpeakingPerRole[speakers[1]] = [...start_end_range]
-                    else if (durationOfSpeakingPerRole[speakers[1]][0] > start_end_range[0]) // x_start
-                    {
-                        durationOfSpeakingPerRole[speakers[1]][0] = start_end_range[0]
-                    } else if (durationOfSpeakingPerRole[speakers[1]][1] < start_end_range[1]) // x_end
-                    {
-                        durationOfSpeakingPerRole[speakers[1]][1] = start_end_range[1]
-                    }
-                    //endregion
-                    startSpeaker1 = {x: start_end_range[0], y: itav.method.yScale(speakers[1]) - offset}
-                    endSpeaker1 = {x: start_end_range[1], y: itav.method.yScale(speakers[1]) - offset}
-
-                    const width = 5 * session['subsessions'][subsession_name]['pos'].length
-                    if (!session['subsessions'][subsession_name]['vp'] || !session['subsessions'][reverse_subsession_name]['vp'])
-                        console.log("err")
-                    //console.log(subsession_name,reverse_subsession_name)
-                    startVp0 = {
-                        x: session['subsessions'][subsession_name]['vp'][0] - width / 2,
-                        y: session['subsessions'][subsession_name]['vp'][1] + offset
-                    }
-                    endVp0 = {
-                        x: session['subsessions'][subsession_name]['vp'][0] + width / 2,
-                        y: session['subsessions'][subsession_name]['vp'][1] + offset
-                    }
-                    startVp1 = {
-                        x: session['subsessions'][reverse_subsession_name]['vp'][0] - width / 2,
-                        y: session['subsessions'][reverse_subsession_name]['vp'][1] - offset
-                    }
-                    endVp1 = {
-                        x: session['subsessions'][reverse_subsession_name]['vp'][0] + width / 2,
-                        y: session['subsessions'][reverse_subsession_name]['vp'][1] - offset
-                    }
-                    let path = ""
-                    //path
-                    path += itav.method.CubeBezierTo1(startSpeaker0, startVp0)
-                    path += itav.method.CubeBezierTo1(startVp0, startVp1, false)
-                    path += itav.method.CubeBezierTo1(startVp1, startSpeaker1, false)
-                    path += itav.method.lineTo1(startSpeaker1, endSpeaker1, false)
-                    path += itav.method.CubeBezierTo1(endSpeaker1, endVp1, false)
-                    path += itav.method.CubeBezierTo1(endVp1, endVp0, false)
-                    path += itav.method.CubeBezierTo1(endVp0, endSpeaker0, false)
-                    path += itav.method.lineTo1(endSpeaker0, startSpeaker0, false)
-
-                    pathStringList.push({
-                        'path': path,
-                        'session_id': session['session_id'],
-                        'agenda': session['agenda']
-                    })
-                    let outLine = ""
-                    outLine += itav.method.CubeBezierTo1(startSpeaker0, startVp0)
-                    outLine += itav.method.CubeBezierTo1(startVp0, startVp1, false)
-                    outLine += itav.method.CubeBezierTo1(startVp1, startSpeaker1, false)
-                    outLine += itav.method.CubeBezierTo1(endSpeaker1, endVp1)
-                    outLine += itav.method.CubeBezierTo1(endVp1, endVp0, false)
-                    outLine += itav.method.CubeBezierTo1(endVp0, endSpeaker0, false)
-                    outlineStringList.push({
-                        'path': outLine,
-                        'session_id': session['session_id'],
-                        'agenda': session['agenda']
-                    })
-                    // nodes = nodes.concat(startSpeaker0,startSpeaker1,endSpeaker1,endSpeaker0)
-                    //   console.log(startVp0.x == startVp1.x && startVp0.y == startVp1.y)
-                    // if (!visited_subsession_trunk.has(subsession_name)) {
-                    //     const another_vp = session['subsessions'][`${speakers[1]}_${speakers[0]}`]['vp']
-                    //     const edge = {
-                    //         source: session['subsessions'][subsession_name]['vp'],
-                    //         target: another_vp,
-                    //         weight: session['subsessions'][subsession_name]['pos'].length * 5,
-                    //         type: "trunk",
-                    //         id: session['session_id'] + '_' + subsession_name
-                    //     }
-                    //     visited_subsession_trunk.add(subsession_name)
-                    //     visited_subsession_trunk.add(`${speakers[1]}_${speakers[0]}`)
-                    //     edges.push(edge)
-                    // }
-                }
-                // create session square
-                for (let [key, pos] of Object.entries(durationOfSpeakingPerRole)) {
-                    const role = key
-                    const start = pos[0]
-                    const end = pos[1]
-                    const agenda = session['agenda']
-                    const square = {role, start, end, session_id: session['session_id'], agenda, height: square_height}
-                    squares.push(square)
-                }
-            }
-            return {pathStringList, idx2sessionId, squares, outlineStringList}
-        })();
+        // const bind_edges2 = (function () {
+        //     // const edges = [] // 边
+        //     // const squares = [] // 捆绑节点
+        //     const idx2sessionId = {} // 节点id 到 sessionId 的映射
+        //     const pathStringList = []
+        //     const outlineStringList = []
+        //     const squares = []
+        //     const square_height = 10 // TODO 可调节参数
+        //     for (let session of locatedSession) {
+        //         if (Object.keys(session['subsessions']).length === 0)
+        //             continue
+        //         const durationOfSpeakingPerRole = Object.create(null)
+        //         const visited_subsession = new Set()
+        //         for (let subsession_name of Object.keys(session['subsessions'])) {
+        //             const speakers = subsession_name.split("_")
+        //             const reverse_subsession_name = speakers[1] + '_' + speakers[0]
+        //             if (speakers[0] === speakers[1] || visited_subsession.has(subsession_name))
+        //                 continue
+        //             visited_subsession.add(subsession_name) // speaker[0]_speaker[1],speaker[1]_speaker[0]双向两个subsession都需要标记为已使用
+        //             visited_subsession.add(reverse_subsession_name)
+        //             let startSpeaker0
+        //             let startVp0
+        //             let startVp1
+        //             let startSpeaker1
+        //             let endSpeaker1
+        //             let endVp1
+        //             let endVp0
+        //             let endSpeaker0
+        //             let start_end_range = []
+        //             for (let id of session['subsessions'][subsession_name]['pos']) {
+        //                 // idx2sessionId
+        //                 idx2sessionId[id] = session['session_id']
+        //                 // 计算 startSpeaker0 endSpeaker0
+        //                 const x_start = itav.method.xScale(dialogs[id].startTime)
+        //                 const x_end = itav.method.xScale(dialogs[id].endTime)
+        //                 if (start_end_range.length === 0) { // 计算最早发言和最晚发言节点的X坐标
+        //                     start_end_range[0] = x_start // 初始化
+        //                     start_end_range[1] = x_end
+        //                 } else if (start_end_range[0] > x_start) // x_start
+        //                 {
+        //                     start_end_range[0] = x_start
+        //                 } else if (start_end_range[1] < x_end) // x_end
+        //                 {
+        //                     start_end_range[1] = x_end
+        //                 }
+        //             }
+        //             // region update durationOfSpeakingPerRole
+        //             if (!(speakers[0] in durationOfSpeakingPerRole))
+        //                 durationOfSpeakingPerRole[speakers[0]] = [...start_end_range]
+        //             else if (durationOfSpeakingPerRole[speakers[0]][0] > start_end_range[0]) // x_start
+        //             {
+        //                 durationOfSpeakingPerRole[speakers[0]][0] = start_end_range[0]
+        //             } else if (durationOfSpeakingPerRole[speakers[0]][1] < start_end_range[1]) // x_end
+        //             {
+        //                 durationOfSpeakingPerRole[speakers[0]][1] = start_end_range[1]
+        //             }
+        //             //endregion
+        //             const offset = itav.method.yScale(speakers[0]) > itav.method.yScale(speakers[1]) ? -square_height / 2 : square_height / 2
+        //             startSpeaker0 = {x: start_end_range[0], y: itav.method.yScale(speakers[0]) + offset}
+        //             endSpeaker0 = {x: start_end_range[1], y: itav.method.yScale(speakers[0]) + offset}
+        //             start_end_range = []
+        //             for (let id of session['subsessions'][reverse_subsession_name]['pos']) {
+        //                 // idx2sessionId
+        //                 idx2sessionId[id] = session['session_id']
+        //                 // 计算 startSpeaker1 endSpeaker1
+        //                 const x_start = itav.method.xScale(dialogs[id].startTime)
+        //                 const x_end = itav.method.xScale(dialogs[id].endTime)
+        //                 if (start_end_range.length === 0) { // 计算最早发言和最晚发言节点的X坐标
+        //                     start_end_range[0] = x_start // 初始化
+        //                     start_end_range[1] = x_end
+        //                 } else if (start_end_range[0] > x_start) // x_start
+        //                 {
+        //                     start_end_range[0] = x_start
+        //                 } else if (start_end_range[1] < x_end) // x_end
+        //                 {
+        //                     start_end_range[1] = x_end
+        //                 }
+        //             }
+        //             // region update durationOfSpeakingPerRole
+        //             if (!(speakers[1] in durationOfSpeakingPerRole))
+        //                 durationOfSpeakingPerRole[speakers[1]] = [...start_end_range]
+        //             else if (durationOfSpeakingPerRole[speakers[1]][0] > start_end_range[0]) // x_start
+        //             {
+        //                 durationOfSpeakingPerRole[speakers[1]][0] = start_end_range[0]
+        //             } else if (durationOfSpeakingPerRole[speakers[1]][1] < start_end_range[1]) // x_end
+        //             {
+        //                 durationOfSpeakingPerRole[speakers[1]][1] = start_end_range[1]
+        //             }
+        //             //endregion
+        //             startSpeaker1 = {x: start_end_range[0], y: itav.method.yScale(speakers[1]) - offset}
+        //             endSpeaker1 = {x: start_end_range[1], y: itav.method.yScale(speakers[1]) - offset}
+        //
+        //             const width = 5 * session['subsessions'][subsession_name]['pos'].length
+        //             if (!session['subsessions'][subsession_name]['vp'] || !session['subsessions'][reverse_subsession_name]['vp'])
+        //                 console.log("err")
+        //             //console.log(subsession_name,reverse_subsession_name)
+        //             startVp0 = {
+        //                 x: session['subsessions'][subsession_name]['vp'][0] - width / 2,
+        //                 y: session['subsessions'][subsession_name]['vp'][1] + offset
+        //             }
+        //             endVp0 = {
+        //                 x: session['subsessions'][subsession_name]['vp'][0] + width / 2,
+        //                 y: session['subsessions'][subsession_name]['vp'][1] + offset
+        //             }
+        //             startVp1 = {
+        //                 x: session['subsessions'][reverse_subsession_name]['vp'][0] - width / 2,
+        //                 y: session['subsessions'][reverse_subsession_name]['vp'][1] - offset
+        //             }
+        //             endVp1 = {
+        //                 x: session['subsessions'][reverse_subsession_name]['vp'][0] + width / 2,
+        //                 y: session['subsessions'][reverse_subsession_name]['vp'][1] - offset
+        //             }
+        //             let path = ""
+        //             //path
+        //             path += itav.method.CubeBezierTo1(startSpeaker0, startVp0)
+        //             path += itav.method.CubeBezierTo1(startVp0, startVp1, false)
+        //             path += itav.method.CubeBezierTo1(startVp1, startSpeaker1, false)
+        //             path += itav.method.lineTo1(startSpeaker1, endSpeaker1, false)
+        //             path += itav.method.CubeBezierTo1(endSpeaker1, endVp1, false)
+        //             path += itav.method.CubeBezierTo1(endVp1, endVp0, false)
+        //             path += itav.method.CubeBezierTo1(endVp0, endSpeaker0, false)
+        //             path += itav.method.lineTo1(endSpeaker0, startSpeaker0, false)
+        //
+        //             pathStringList.push({
+        //                 'path': path,
+        //                 'session_id': session['session_id'],
+        //                 'agenda': session['agenda']
+        //             })
+        //             let outLine = ""
+        //             outLine += itav.method.CubeBezierTo1(startSpeaker0, startVp0)
+        //             outLine += itav.method.CubeBezierTo1(startVp0, startVp1, false)
+        //             outLine += itav.method.CubeBezierTo1(startVp1, startSpeaker1, false)
+        //             outLine += itav.method.CubeBezierTo1(endSpeaker1, endVp1)
+        //             outLine += itav.method.CubeBezierTo1(endVp1, endVp0, false)
+        //             outLine += itav.method.CubeBezierTo1(endVp0, endSpeaker0, false)
+        //             outlineStringList.push({
+        //                 'path': outLine,
+        //                 'session_id': session['session_id'],
+        //                 'agenda': session['agenda']
+        //             })
+        //             // nodes = nodes.concat(startSpeaker0,startSpeaker1,endSpeaker1,endSpeaker0)
+        //             //   console.log(startVp0.x == startVp1.x && startVp0.y == startVp1.y)
+        //             // if (!visited_subsession_trunk.has(subsession_name)) {
+        //             //     const another_vp = session['subsessions'][`${speakers[1]}_${speakers[0]}`]['vp']
+        //             //     const edge = {
+        //             //         source: session['subsessions'][subsession_name]['vp'],
+        //             //         target: another_vp,
+        //             //         weight: session['subsessions'][subsession_name]['pos'].length * 5,
+        //             //         type: "trunk",
+        //             //         id: session['session_id'] + '_' + subsession_name
+        //             //     }
+        //             //     visited_subsession_trunk.add(subsession_name)
+        //             //     visited_subsession_trunk.add(`${speakers[1]}_${speakers[0]}`)
+        //             //     edges.push(edge)
+        //             // }
+        //         }
+        //         // create session square
+        //         for (let [key, pos] of Object.entries(durationOfSpeakingPerRole)) {
+        //             const role = key
+        //             const start = pos[0]
+        //             const end = pos[1]
+        //             const agenda = session['agenda']
+        //             const square = {role, start, end, session_id: session['session_id'], agenda, height: square_height}
+        //             squares.push(square)
+        //         }
+        //     }
+        //     return {pathStringList, idx2sessionId, squares, outlineStringList}
+        // })();
         const bind_edges = (function () {
             const edges = []
             const squares = []
@@ -570,6 +577,9 @@
                 const speakers_dic = Object.create(null)
                 if (Object.keys(session['subsessions']).length === 0) {
                     idx2sessionId[session['single']] = session['session_id']
+                    const dialog = dialogs[Number(session['single'])]
+                    const square = {role:dialog['role'], start:itav.method.xScale(dialog['startTime']), end:itav.method.xScale(dialog['endTime']), session_id: session['session_id'], agenda:dialog['agenda']}
+                    squares.push(square)
                     continue
                     // if(session['agenda'] != "-")
                     // {
@@ -595,7 +605,7 @@
                     const speakers = subsession_name.split("_")
                     if (speakers[0] === speakers[1]) { //A_A 无需边捆绑
                         for (let id of session['subsessions'][subsession_name]['pos']) {
-                            //square
+                            //square 计算一个人在一次会话中的最早发言开始时间以及最晚发言结束时间
                             idx2sessionId[id] = session['session_id']
                             const x_start = itav.method.xScale(dialogs[id].startTime)
                             const x_end = itav.method.xScale(dialogs[id].endTime)
@@ -682,9 +692,11 @@
             c.y = itav.method.yScale(v.role)
             return c
         })
+        console.log(bind_edges)
         return {
-            edges, bind_edges, locatedSession, circles, bind_edges2, overviewData
+            edges, bind_edges, locatedSession, circles, overviewData
         }
+
     }
 
     var drawInteractionView = (function () {
@@ -789,20 +801,21 @@
                 .attr("fill", "none")
                 .on("click", itav.method.click)
 
-            singleNode.selectAll("ellipse")
-                .data(itav.data.locatedSession.filter(v => {
-                    return v.single != undefined
-                }).map(v => itav.data.circles[v.single]))
-                .join("ellipse")
-                .attr("class", (d, i) => `detailSidNode_${itav.data.bind_edges.idx2sessionId[i] ? itav.data.bind_edges.idx2sessionId[i] : 'single'}`)
-                .attr("rx", d => d.r)
-                .attr("ry", d => Math.min(d.r, 30))
-                .attr("cx", d => d.x)
-                .attr("cy", d => d.y)
-                .attr("opacity", 1)
-                .attr("fill", d => {
-                    return dialogs[d.id]['agenda'] !== '-' ? itav.config.agendaColor[Number(dialogs[d.id]['agenda'])] : "grey"
-                })
+            // singleNode.selectAll("ellipse")
+            //     .data(itav.data.locatedSession.filter(v => {
+            //         return v.single != undefined
+            //     }).map(v => itav.data.circles[v.single]))
+            //     .join("ellipse")
+            //     .attr("class", (d, i) => `detailSidNode_${itav.data.bind_edges.idx2sessionId[i] ? itav.data.bind_edges.idx2sessionId[i] : 'single'}`)
+            //     .attr("rx", d => d.r)
+            //     .attr("ry", d => Math.min(d.r, 30))
+            //     .attr("cx", d => d.x)
+            //     .attr("cy", d => d.y)
+            //     .attr("opacity", 1)
+            //     .on('click',(e,d)=>console.log(d))
+            //     .attr("fill", d => {
+            //         return dialogs[d.id]['agenda'] !== '-' ? itav.config.agendaColor[Number(dialogs[d.id]['agenda'])] : "grey"
+            //     })
 
 
             // 回复线渐变颜色
@@ -1103,7 +1116,7 @@
         pav.method.drawPersonalAbilityView()
         const opt = document.querySelectorAll('.pav-studentSelector option')
         opt.forEach(option => {
-            if(option.value === role)
+            if (option.value === role)
                 option.selected = true
         })
     }
@@ -1225,7 +1238,7 @@
         // Append event listener
         svg.on('click', () => {
             if (pav.data.focusRole !== Role) {
-             pav.method.changePerson(Role)
+                pav.method.changePerson(Role)
             }
         })
         svg.append("text")
@@ -2263,7 +2276,7 @@
             .join("p")
             .style('Font', "10px sans-serif")
             .attr("class", (d, i) => `ctxv-p ${i}`)
-            .text(d => d.text)
+            .text(d => d.role+': '+d.text)
         // .on("click", function (e, d) {
         //     // console.log(this.offsetTop, this.offsetTop - ctxv.config.h, this.parentNode.parentNode.scrollTop, e, d)
         //     //this.parentNode.parentNode.scrollTo(0,0)
@@ -2380,7 +2393,10 @@
     ctxv.method.draw()
     ctxv.data = ctxv.method.generateData()
     ctxv.method.drawOverview()
-
+    // const video = document.querySelector('.video video')
+    // video.addEventListener('timeupdate',function(e){
+    //     console.log(e.currentTarget.currentTime)
+    // })
     // endregion
     // region Reply view
     const rv = {}
