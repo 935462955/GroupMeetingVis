@@ -1,0 +1,2193 @@
+[
+    {
+        "id": 0,
+        "startTime-endTime": "0.1-0.84",
+        "text": "To agree.",
+        "speaker": "N",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 1,
+        "startTime-endTime": "0.7-1.98",
+        "text": "Agree on the items.",
+        "speaker": "K",
+        "reply_to_id": "0"
+    },
+    {
+        "id": 2,
+        "startTime-endTime": "2.4-3.54",
+        "text": "In ten minutes.",
+        "speaker": "L",
+        "reply_to_id": "1"
+    },
+    {
+        "id": 3,
+        "startTime-endTime": "3.2-3.58",
+        "text": "Yeah.",
+        "speaker": "K",
+        "reply_to_id": "2"
+    },
+    {
+        "id": 4,
+        "startTime-endTime": "3.6-3.92",
+        "text": "Okay.",
+        "speaker": "M",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 5,
+        "startTime-endTime": "5.8-9.04",
+        "text": "So which is your- the most important for you?",
+        "speaker": "N",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 6,
+        "startTime-endTime": "9.5-15.26",
+        "text": "For me was the piece of heavy duty canvas. I was thinking about making a kind of tent.",
+        "speaker": "K",
+        "reply_to_id": "5"
+    },
+    {
+        "id": 7,
+        "startTime-endTime": "17.7-18.34",
+        "text": "Mm hmm.",
+        "speaker": "N",
+        "reply_to_id": "6"
+    },
+    {
+        "id": 8,
+        "startTime-endTime": "18.6-20.7",
+        "text": "Against the cold. I don't know.",
+        "speaker": "K",
+        "reply_to_id": "7"
+    },
+    {
+        "id": 9,
+        "startTime-endTime": "22.2-25.53",
+        "text": "This weighs equally with the extra shirts and pants.",
+        "speaker": "L",
+        "reply_to_id": "8"
+    },
+    {
+        "id": 10,
+        "startTime-endTime": "28.4-29.39",
+        "text": "I think .",
+        "speaker": "M",
+        "reply_to_id": "9"
+    },
+    {
+        "id": 11,
+        "startTime-endTime": "28.9-38.89",
+        "text": "Er, I don't know if they're equal. Like, I mean, duty canvas can protect you against wind or rain. Extra shirts and pants will get wet, like.",
+        "speaker": "K",
+        "reply_to_id": "9"
+    },
+    {
+        "id": 12,
+        "startTime-endTime": "42.7-44.68",
+        "text": "It's- it's too cold to rain.",
+        "speaker": "N",
+        "reply_to_id": "11"
+    },
+    {
+        "id": 13,
+        "startTime-endTime": "44.7-45.06",
+        "text": "Yeah.",
+        "speaker": "K",
+        "reply_to_id": "12"
+    },
+    {
+        "id": 14,
+        "startTime-endTime": "45.2-51.28",
+        "text": "It's minus ten. So in- in my opinion, the time is the most important thing here.",
+        "speaker": "L",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 15,
+        "startTime-endTime": "49.8-50.5",
+        "text": "Well I...",
+        "speaker": "K",
+        "reply_to_id": "14"
+    },
+    {
+        "id": 16,
+        "startTime-endTime": "50.1-61.12",
+        "text": "So minus ten degrees in the morning meaning we know we can easily survive another two hours. In two hours from seventy kilometres habituation people can easily come, so.",
+        "speaker": "L",
+        "reply_to_id": "14"
+    },
+    {
+        "id": 17,
+        "startTime-endTime": "59.3-60.9",
+        "text": "Just a consideration, er .",
+        "speaker": "N",
+        "reply_to_id": "16"
+    },
+    {
+        "id": 18,
+        "startTime-endTime": "60.5-61.16",
+        "text": "I would...",
+        "speaker": "K",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 19,
+        "startTime-endTime": "61.8-62.79",
+        "text": "So making tent.",
+        "speaker": "L",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 20,
+        "startTime-endTime": "62.6-69.4",
+        "text": "No. I think it's more like we should walk or try to move to the direction where people is coming.",
+        "speaker": "K",
+        "reply_to_id": "19"
+    },
+    {
+        "id": 21,
+        "startTime-endTime": "68.7-80.95",
+        "text": "But in my opinion the most important thing is the thing that allows you to survive in the next five minutes at least to survive in the next- because minus ten degrees you can die.",
+        "speaker": "M",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 22,
+        "startTime-endTime": "76.4-77.54",
+        "text": "Next two hours.",
+        "speaker": "L",
+        "reply_to_id": "21"
+    },
+    {
+        "id": 23,
+        "startTime-endTime": "77.4-84.4",
+        "text": "Yeah, but at least you survive five minutes. So you have five minutes to decide what to do next. Because-",
+        "speaker": "M",
+        "reply_to_id": "22"
+    },
+    {
+        "id": 24,
+        "startTime-endTime": "83.1-84.9",
+        "text": "But you won't die in...",
+        "speaker": "K",
+        "reply_to_id": "23"
+    },
+    {
+        "id": 25,
+        "startTime-endTime": "84.6-89.7",
+        "text": "At minus ten you can die. If you are not well dressed you can die.",
+        "speaker": "M",
+        "reply_to_id": "24"
+    },
+    {
+        "id": 26,
+        "startTime-endTime": "88.2-91.08",
+        "text": "So we are well dressed that was mentioned.",
+        "speaker": "L",
+        "reply_to_id": "25"
+    },
+    {
+        "id": 27,
+        "startTime-endTime": "90.1-90.45",
+        "text": "Yeah.",
+        "speaker": "K",
+        "reply_to_id": "26"
+    },
+    {
+        "id": 28,
+        "startTime-endTime": "90.3-91.95",
+        "text": "We are all well dressed.",
+        "speaker": "L",
+        "reply_to_id": "26"
+    },
+    {
+        "id": 29,
+        "startTime-endTime": "91.0-92.32",
+        "text": "Yeah for winter clothes.",
+        "speaker": "K",
+        "reply_to_id": "28"
+    },
+    {
+        "id": 30,
+        "startTime-endTime": "92.4-97.2",
+        "text": "For winter so. Minus ten we have by default. Next two hours without doing effort-",
+        "speaker": "L",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 31,
+        "startTime-endTime": "97.5-99.54",
+        "text": "I think we have to move-",
+        "speaker": "K",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 32,
+        "startTime-endTime": "97.7-99.98",
+        "text": "We need to have something more.",
+        "speaker": "L",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 33,
+        "startTime-endTime": "99.4-108.04",
+        "text": "Like then start moving and then we- we need something to, er, well protect us like in winter, something to eat and to know where to go.",
+        "speaker": "K",
+        "reply_to_id": "31"
+    },
+    {
+        "id": 34,
+        "startTime-endTime": "110.7-118.38",
+        "text": "Exactly. I put the chocolate as the first one. So you can-if there are people who didn't eat, they can't move in the cold.",
+        "speaker": "M",
+        "reply_to_id": "33"
+    },
+    {
+        "id": 35,
+        "startTime-endTime": "116.1-117.95",
+        "text": "In the flight, er, well-",
+        "speaker": "L",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 36,
+        "startTime-endTime": "118.2-122.82",
+        "text": "Probably we were flying for one hour. We are in Minnesota. Imagine we are...",
+        "speaker": "L",
+        "reply_to_id": "35"
+    },
+    {
+        "id": 37,
+        "startTime-endTime": "122.1-127.05",
+        "text": "We are not well- well we are dressed like in flight, but not dressed like...",
+        "speaker": "M",
+        "reply_to_id": "36"
+    },
+    {
+        "id": 38,
+        "startTime-endTime": "128.2-130.42",
+        "text": "No it is mentioned we were...",
+        "speaker": "L",
+        "reply_to_id": "37"
+    },
+    {
+        "id": 39,
+        "startTime-endTime": "129.6-133.45",
+        "text": "Winter clothes. Suits, pant suits, street shoes and a work coat.",
+        "speaker": "K",
+        "reply_to_id": "38"
+    },
+    {
+        "id": 40,
+        "startTime-endTime": "133.2-134.22",
+        "text": "Yeah winter clothes.",
+        "speaker": "L",
+        "reply_to_id": "39"
+    },
+    {
+        "id": 41,
+        "startTime-endTime": "134.7-135.72",
+        "text": "I think that-",
+        "speaker": "K",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 42,
+        "startTime-endTime": "135.9-138.46",
+        "text": "Dressed in winter clothing, appropriate for city wear.",
+        "speaker": "L",
+        "reply_to_id": "40"
+    },
+    {
+        "id": 43,
+        "startTime-endTime": "138.4-145.24",
+        "text": "I think it's quite important also, like, to know where to go and, like, a compass and a map.",
+        "speaker": "K",
+        "reply_to_id": "41"
+    },
+    {
+        "id": 44,
+        "startTime-endTime": "143.3-145.54",
+        "text": "Appropriate for city weather, not the outskirts",
+        "speaker": "L",
+        "reply_to_id": "42"
+    },
+    {
+        "id": 45,
+        "startTime-endTime": "146.6-146.94",
+        "text": "Yeah.",
+        "speaker": "K",
+        "reply_to_id": "43"
+    },
+    {
+        "id": 46,
+        "startTime-endTime": "146.8-151.84",
+        "text": "So probably the first thing that we have to do is get more clothing.",
+        "speaker": "L",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 47,
+        "startTime-endTime": "150.1-150.45",
+        "text": "Yeah.",
+        "speaker": "K",
+        "reply_to_id": "46"
+    },
+    {
+        "id": 48,
+        "startTime-endTime": "151.7-155.54",
+        "text": "And then started moving. So to move we need to have something.",
+        "speaker": "L",
+        "reply_to_id": "46"
+    },
+    {
+        "id": 49,
+        "startTime-endTime": "159.4-162.2",
+        "text": "Yeah the maps- aerial maps and the compass.",
+        "speaker": "K",
+        "reply_to_id": "48"
+    },
+    {
+        "id": 50,
+        "startTime-endTime": "161.6-171.1",
+        "text": "So as I said, first of all seventy kilometres away from the habituation and they'd know the news already that we are- we have crashed.",
+        "speaker": "L",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 51,
+        "startTime-endTime": "172.2-178.28",
+        "text": "Yeah but they don't know exactly where we are. And if- we have to walk seventy kilometres in snow.",
+        "speaker": "K",
+        "reply_to_id": "50"
+    },
+    {
+        "id": 52,
+        "startTime-endTime": "177.8-179.6",
+        "text": "They, they must know because-",
+        "speaker": "L",
+        "reply_to_id": "51"
+    },
+    {
+        "id": 53,
+        "startTime-endTime": "178.1-179.62",
+        "text": "That could be like...",
+        "speaker": "K",
+        "reply_to_id": "52"
+    },
+    {
+        "id": 54,
+        "startTime-endTime": "179.3-182.34",
+        "text": "Because the information is sent before the crash.",
+        "speaker": "L",
+        "reply_to_id": "52"
+    },
+    {
+        "id": 55,
+        "startTime-endTime": "183.2-184.52",
+        "text": "That's not been sent.",
+        "speaker": "M",
+        "reply_to_id": "54"
+    },
+    {
+        "id": 56,
+        "startTime-endTime": "185.4-191.69",
+        "text": "The information is sent. It's mentioned. The crash came suddenly before the pilot had time to radio.",
+        "speaker": "L",
+        "reply_to_id": "55"
+    },
+    {
+        "id": 57,
+        "startTime-endTime": "191.4-191.77",
+        "text": "Before?",
+        "speaker": "N",
+        "reply_to_id": "56"
+    },
+    {
+        "id": 58,
+        "startTime-endTime": "191.9-192.22",
+        "text": "So.",
+        "speaker": "L",
+        "reply_to_id": "57"
+    },
+    {
+        "id": 59,
+        "startTime-endTime": "192.1-192.43",
+        "text": "Before.",
+        "speaker": "N",
+        "reply_to_id": "56"
+    },
+    {
+        "id": 60,
+        "startTime-endTime": "194.0-194.35",
+        "text": "Before.",
+        "speaker": "K",
+        "reply_to_id": "56"
+    },
+    {
+        "id": 61,
+        "startTime-endTime": "194.0-197.5",
+        "text": "Before the crash. Meaning they'd know our locations exactly, so.",
+        "speaker": "L",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 62,
+        "startTime-endTime": "196.8-197.14",
+        "text": "No.",
+        "speaker": "N",
+        "reply_to_id": "61"
+    },
+    {
+        "id": 63,
+        "startTime-endTime": "197.2-197.56",
+        "text": "No.",
+        "speaker": "K",
+        "reply_to_id": "61"
+    },
+    {
+        "id": 64,
+        "startTime-endTime": "198.3-200.94",
+        "text": "No. The crash came suddenly before the pilot-",
+        "speaker": "N",
+        "reply_to_id": "61"
+    },
+    {
+        "id": 65,
+        "startTime-endTime": "200.5-200.88",
+        "text": "Ah.",
+        "speaker": "L",
+        "reply_to_id": "64"
+    },
+    {
+        "id": 66,
+        "startTime-endTime": "200.8-202.4",
+        "text": "Had a chance to radio.",
+        "speaker": "N",
+        "reply_to_id": "64"
+    },
+    {
+        "id": 67,
+        "startTime-endTime": "201.4-203.0",
+        "text": "Okay. I wrongly read it.",
+        "speaker": "L",
+        "reply_to_id": "66"
+    },
+    {
+        "id": 68,
+        "startTime-endTime": "202.3-205.8",
+        "text": "So yes. It's like they don't know we have crashed.",
+        "speaker": "K",
+        "reply_to_id": "67"
+    },
+    {
+        "id": 69,
+        "startTime-endTime": "204.9-209.52",
+        "text": "Okay. So if they don't know we crashed suddenly before the pilot had time.",
+        "speaker": "L",
+        "reply_to_id": "67"
+    },
+    {
+        "id": 70,
+        "startTime-endTime": "210.1-212.0",
+        "text": "And, I mean, they could...",
+        "speaker": "K",
+        "reply_to_id": "69"
+    },
+    {
+        "id": 71,
+        "startTime-endTime": "213.4-219.01",
+        "text": "Okay this means we certainly have to move. So for that we need some direction maps, so.",
+        "speaker": "L",
+        "reply_to_id": "69"
+    },
+    {
+        "id": 72,
+        "startTime-endTime": "221.5-227.1",
+        "text": "And thirty-five, like, seventy kilometres with snow- that's two days of walking or something like that.",
+        "speaker": "K",
+        "reply_to_id": "71"
+    },
+    {
+        "id": 73,
+        "startTime-endTime": "227.2-229.12",
+        "text": "Yeah at least two days that.",
+        "speaker": "N",
+        "reply_to_id": "72"
+    },
+    {
+        "id": 74,
+        "startTime-endTime": "230.8-232.9",
+        "text": "So we need something to eat.",
+        "speaker": "K",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 75,
+        "startTime-endTime": "234.9-235.23",
+        "text": "Exactly.",
+        "speaker": "N",
+        "reply_to_id": "74"
+    },
+    {
+        "id": 76,
+        "startTime-endTime": "235.6-236.62",
+        "text": "To be warm.",
+        "speaker": "K",
+        "reply_to_id": "75"
+    },
+    {
+        "id": 77,
+        "startTime-endTime": "236.2-237.8",
+        "text": "So seventy-five kilometres of walking.",
+        "speaker": "L",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 78,
+        "startTime-endTime": "237.1-237.82",
+        "text": "In snow.",
+        "speaker": "K",
+        "reply_to_id": "77"
+    },
+    {
+        "id": 79,
+        "startTime-endTime": "239.7-240.72",
+        "text": "In the snow.",
+        "speaker": "N",
+        "reply_to_id": "77"
+    },
+    {
+        "id": 80,
+        "startTime-endTime": "240.3-242.1",
+        "text": "In the snow until .",
+        "speaker": "L",
+        "reply_to_id": "79"
+    },
+    {
+        "id": 81,
+        "startTime-endTime": "242.9-246.3",
+        "text": "Until- but well we hope maybe to find some maybe.",
+        "speaker": "K",
+        "reply_to_id": "80"
+    },
+    {
+        "id": 82,
+        "startTime-endTime": "248.3-252.0",
+        "text": "Okay let's- let's identify the- the first three or four-",
+        "speaker": "N",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 83,
+        "startTime-endTime": "251.6-251.93",
+        "text": "Yeah.",
+        "speaker": "K",
+        "reply_to_id": "82"
+    },
+    {
+        "id": 84,
+        "startTime-endTime": "252.2-256.16",
+        "text": "More- more important. Because we- we don't have too much time.",
+        "speaker": "N",
+        "reply_to_id": "83"
+    },
+    {
+        "id": 85,
+        "startTime-endTime": "253.1-253.48",
+        "text": "Yeah.",
+        "speaker": "K",
+        "reply_to_id": "84"
+    },
+    {
+        "id": 86,
+        "startTime-endTime": "253.5-253.82",
+        "text": "So.",
+        "speaker": "N",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 87,
+        "startTime-endTime": "254.9-256.38",
+        "text": "Extra shirts and pants?",
+        "speaker": "K",
+        "reply_to_id": "86"
+    },
+    {
+        "id": 88,
+        "startTime-endTime": "255.1-259.06",
+        "text": "So something to- something to eat, I don't know chocolate? At least.",
+        "speaker": "N",
+        "reply_to_id": "86"
+    },
+    {
+        "id": 89,
+        "startTime-endTime": "260.2-261.72",
+        "text": "It's not very useful.",
+        "speaker": "M",
+        "reply_to_id": "88"
+    },
+    {
+        "id": 90,
+        "startTime-endTime": "263.7-265.5",
+        "text": "Chocolate and can of shortening.",
+        "speaker": "K",
+        "reply_to_id": "88"
+    },
+    {
+        "id": 91,
+        "startTime-endTime": "264.4-269.44",
+        "text": "Well it is full of sugar. It burns. It keeps you alive at least.",
+        "speaker": "N",
+        "reply_to_id": "89"
+    },
+    {
+        "id": 92,
+        "startTime-endTime": "268.6-270.25",
+        "text": "It burns too- too rapidly.",
+        "speaker": "M",
+        "reply_to_id": "91"
+    },
+    {
+        "id": 93,
+        "startTime-endTime": "269.2-272.9",
+        "text": "So you don't need to eat for two- two days.",
+        "speaker": "N",
+        "reply_to_id": "92"
+    },
+    {
+        "id": 94,
+        "startTime-endTime": "271.4-276.8",
+        "text": "I don't think it's a good idea. Maybe we can find some animals to kill.",
+        "speaker": "M",
+        "reply_to_id": "93"
+    },
+    {
+        "id": 95,
+        "startTime-endTime": "275.1-278.52",
+        "text": "Er, how to eat them? How to kill them?",
+        "speaker": "K",
+        "reply_to_id": "94"
+    },
+    {
+        "id": 96,
+        "startTime-endTime": "280.1-281.54",
+        "text": "We have an axe.",
+        "speaker": "M",
+        "reply_to_id": "95"
+    },
+    {
+        "id": 97,
+        "startTime-endTime": "281.3-283.1",
+        "text": "Hand axe. But we ...",
+        "speaker": "L",
+        "reply_to_id": "96"
+    },
+    {
+        "id": 98,
+        "startTime-endTime": "284.5-285.55",
+        "text": "Well it .",
+        "speaker": "K",
+        "reply_to_id": "96"
+    },
+    {
+        "id": 99,
+        "startTime-endTime": "287.4-296.04",
+        "text": "First of all we just survived from the flight. So basically we want to survive from the cold. The cold is the main point. Not the hunger.",
+        "speaker": "L",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 100,
+        "startTime-endTime": "294.7-296.6",
+        "text": "I think we have to-",
+        "speaker": "K",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 101,
+        "startTime-endTime": "295.8-296.76",
+        "text": "Not the hunger.",
+        "speaker": "L",
+        "reply_to_id": "99"
+    },
+    {
+        "id": 102,
+        "startTime-endTime": "296.2-306.84",
+        "text": "If we are planning, like, we will have to walk for two days or three. Well we have to have something to eat but maybe not so much.",
+        "speaker": "K",
+        "reply_to_id": "101"
+    },
+    {
+        "id": 103,
+        "startTime-endTime": "304.1-312.42",
+        "text": "But we have the gun so we don't need the axe to kill animals. It's a- it's a forty-five calibre pistol. So we can kill animals.",
+        "speaker": "N",
+        "reply_to_id": "102"
+    },
+    {
+        "id": 104,
+        "startTime-endTime": "310.9-314.64",
+        "text": "I don't think we will have lots of things to kill.",
+        "speaker": "K",
+        "reply_to_id": "103"
+    },
+    {
+        "id": 105,
+        "startTime-endTime": "315.5-317.81",
+        "text": "A pistol is not a good idea.",
+        "speaker": "M",
+        "reply_to_id": "103"
+    },
+    {
+        "id": 106,
+        "startTime-endTime": "316.3-316.66",
+        "text": "Why?",
+        "speaker": "N",
+        "reply_to_id": "105"
+    },
+    {
+        "id": 107,
+        "startTime-endTime": "317.2-330.88",
+        "text": "When people are together for too long a period of time without a- with less hope to survive, I'm not very sure, except for a family, er, it's a good idea to give them a pistol.",
+        "speaker": "M",
+        "reply_to_id": "106"
+    },
+    {
+        "id": 108,
+        "startTime-endTime": "330.6-330.97",
+        "text": "Even...",
+        "speaker": "K",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 109,
+        "startTime-endTime": "330.0-331.92",
+        "text": "If you want to kill ",
+        "speaker": "N",
+        "reply_to_id": "107"
+    },
+    {
+        "id": 110,
+        "startTime-endTime": "334.1-335.09",
+        "text": "No I think..",
+        "speaker": "K",
+        "reply_to_id": "109"
+    },
+    {
+        "id": 111,
+        "startTime-endTime": "335.4-340.02",
+        "text": "No. But I- but I'm not pretty sure that human beings are good, so.",
+        "speaker": "M",
+        "reply_to_id": "109"
+    },
+    {
+        "id": 112,
+        "startTime-endTime": "339.3-346.33",
+        "text": "Come on. You are big and you can stay two days without eating and nothing will happen to you.",
+        "speaker": "K",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 113,
+        "startTime-endTime": "345.2-345.56",
+        "text": "Yes.",
+        "speaker": "N",
+        "reply_to_id": "112"
+    },
+    {
+        "id": 114,
+        "startTime-endTime": "345.6-347.82",
+        "text": "Okay we don't have time ",
+        "speaker": "M",
+        "reply_to_id": "112"
+    },
+    {
+        "id": 115,
+        "startTime-endTime": "347.7-356.2",
+        "text": "So four days- for me this is a second priority. We are still in the first priority where we need something to survive without food.",
+        "speaker": "L",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 116,
+        "startTime-endTime": "355.7-357.6",
+        "text": "Okay I think it's maybe..",
+        "speaker": "K",
+        "reply_to_id": "115"
+    },
+    {
+        "id": 117,
+        "startTime-endTime": "357.3-359.22",
+        "text": "Against the cold and walking towards.",
+        "speaker": "L",
+        "reply_to_id": "116"
+    },
+    {
+        "id": 118,
+        "startTime-endTime": "359.1-359.43",
+        "text": "Yeah.",
+        "speaker": "M",
+        "reply_to_id": "117"
+    },
+    {
+        "id": 119,
+        "startTime-endTime": "361.8-364.44",
+        "text": "Well cold, then something to eat and then-",
+        "speaker": "K",
+        "reply_to_id": "117"
+    },
+    {
+        "id": 120,
+        "startTime-endTime": "364.9-368.53",
+        "text": "So cannot reach the habituation in one day. We need shelter.",
+        "speaker": "L",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 121,
+        "startTime-endTime": "368.4-369.51",
+        "text": "We need something.",
+        "speaker": "K",
+        "reply_to_id": "119"
+    },
+    {
+        "id": 122,
+        "startTime-endTime": "369.3-372.1",
+        "text": "So second one should be the twenty-by-twenty metres-",
+        "speaker": "L",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 123,
+        "startTime-endTime": "373.6-373.94",
+        "text": "Tent.",
+        "speaker": "K",
+        "reply_to_id": "122"
+    },
+    {
+        "id": 124,
+        "startTime-endTime": "374.2-374.58",
+        "text": "Yeah.",
+        "speaker": "L",
+        "reply_to_id": "123"
+    },
+    {
+        "id": 125,
+        "startTime-endTime": "375.3-384.82",
+        "text": "I'm not so sure. Is it better to get second, like, the compass and the maps? Because, I mean, getting oriented in the snow, it's not so easy.",
+        "speaker": "K",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 126,
+        "startTime-endTime": "384.4-398.08",
+        "text": "Er, if if you have compass or not, you are not- you are going to stay in the forest for the night. So if you have compass, it doesn't make sense if you don't have, so.",
+        "speaker": "L",
+        "reply_to_id": "125"
+    },
+    {
+        "id": 127,
+        "startTime-endTime": "396.1-398.9",
+        "text": "We did what? Because time is running, so.",
+        "speaker": "N",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 128,
+        "startTime-endTime": "399.4-399.76",
+        "text": "Yeah.",
+        "speaker": "K",
+        "reply_to_id": "127"
+    },
+    {
+        "id": 129,
+        "startTime-endTime": "400.3-405.48",
+        "text": "So twenty-by-twenty piece of this should be the second one that we should carry?",
+        "speaker": "L",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 130,
+        "startTime-endTime": "405.7-408.66",
+        "text": "Sorry, which is the first one for you?",
+        "speaker": "N",
+        "reply_to_id": "129"
+    },
+    {
+        "id": 131,
+        "startTime-endTime": "409.5-411.1",
+        "text": "Er, extra pants and shirts.",
+        "speaker": "L",
+        "reply_to_id": "130"
+    },
+    {
+        "id": 132,
+        "startTime-endTime": "410.6-413.48",
+        "text": "Yeah okay I agree- I can agree with that.",
+        "speaker": "N",
+        "reply_to_id": "129"
+    },
+    {
+        "id": 133,
+        "startTime-endTime": "414.9-418.97",
+        "text": "And the third one is for the navigations I- I believe.",
+        "speaker": "L",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 134,
+        "startTime-endTime": "419.4-423.25",
+        "text": "The third one. But the second one, what did you put?",
+        "speaker": "M",
+        "reply_to_id": "133"
+    },
+    {
+        "id": 135,
+        "startTime-endTime": "426.5-429.38",
+        "text": "The second one is for a night tent.",
+        "speaker": "L",
+        "reply_to_id": "134"
+    },
+    {
+        "id": 136,
+        "startTime-endTime": "430.2-430.88",
+        "text": "Twenty-by-twenty foot.",
+        "speaker": "N",
+        "reply_to_id": "134"
+    },
+    {
+        "id": 137,
+        "startTime-endTime": "431.3-435.46",
+        "text": "Okay. Okay I can agree with that. Nothing to eat, are we sure?",
+        "speaker": "M",
+        "reply_to_id": "136"
+    },
+    {
+        "id": 138,
+        "startTime-endTime": "437.1-437.84",
+        "text": "I think.",
+        "speaker": "K",
+        "reply_to_id": "137"
+    },
+    {
+        "id": 139,
+        "startTime-endTime": "438.8-442.98",
+        "text": "It's a second priority. We are still in the first priority.",
+        "speaker": "L",
+        "reply_to_id": "137"
+    },
+    {
+        "id": 140,
+        "startTime-endTime": "441.5-441.88",
+        "text": "Okay.",
+        "speaker": "M",
+        "reply_to_id": "139"
+    },
+    {
+        "id": 141,
+        "startTime-endTime": "442.3-449.23",
+        "text": "Maybe we should not, like, fulfil the first priority but, like, first item of first priority, first item of second priority.",
+        "speaker": "K",
+        "reply_to_id": "139"
+    },
+    {
+        "id": 142,
+        "startTime-endTime": "458.0-465.36",
+        "text": "I'm not sure it's, like- first we take the map and the compass and afterwards the food? Or we take food and then...",
+        "speaker": "K",
+        "reply_to_id": "141"
+    },
+    {
+        "id": 143,
+        "startTime-endTime": "464.8-470.56",
+        "text": "Before we can pass we have to be sure that we have something to eat I think. No?",
+        "speaker": "N",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 144,
+        "startTime-endTime": "467.4-467.78",
+        "text": "Yeah.",
+        "speaker": "K",
+        "reply_to_id": "143"
+    },
+    {
+        "id": 145,
+        "startTime-endTime": "469.2-472.4",
+        "text": "I think at minus twenty you need to eat something.",
+        "speaker": "N",
+        "reply_to_id": "144"
+    },
+    {
+        "id": 146,
+        "startTime-endTime": "471.2-473.0",
+        "text": "Yeah. Let's go for food.",
+        "speaker": "L",
+        "reply_to_id": "145"
+    },
+    {
+        "id": 147,
+        "startTime-endTime": "472.1-474.69",
+        "text": "I can agree to kill animals .",
+        "speaker": "M",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 148,
+        "startTime-endTime": "475.9-481.98",
+        "text": "So food. Which kind of food? We go for chocolate bar which is small or the...",
+        "speaker": "L",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 149,
+        "startTime-endTime": "480.3-484.37",
+        "text": "Short- can of shortening it's not too- it's a little bigger.",
+        "speaker": "K",
+        "reply_to_id": "148"
+    },
+    {
+        "id": 150,
+        "startTime-endTime": "484.2-491.55",
+        "text": "Well a chocolate bar there's not enough for the whole plane, I think. So maybe it's fairly useless for four people.",
+        "speaker": "M",
+        "reply_to_id": "148"
+    },
+    {
+        "id": 151,
+        "startTime-endTime": "491.3-491.96",
+        "text": "Yeah. ",
+        "speaker": "K",
+        "reply_to_id": "150"
+    },
+    {
+        "id": 152,
+        "startTime-endTime": "492.1-497.54",
+        "text": "So we should go for the family-sized chocolate bar which is sugar . Let's go for this.",
+        "speaker": "L",
+        "reply_to_id": "150"
+    },
+    {
+        "id": 153,
+        "startTime-endTime": "499.1-499.48",
+        "text": "Yeah.",
+        "speaker": "K",
+        "reply_to_id": "152"
+    },
+    {
+        "id": 154,
+        "startTime-endTime": "502.3-503.32",
+        "text": "And then compass-",
+        "speaker": "L",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 155,
+        "startTime-endTime": "506.8-507.44",
+        "text": "Aerial map.",
+        "speaker": "K",
+        "reply_to_id": "154"
+    },
+    {
+        "id": 156,
+        "startTime-endTime": "507.4-508.88",
+        "text": "Or the map? So...",
+        "speaker": "L",
+        "reply_to_id": "155"
+    },
+    {
+        "id": 157,
+        "startTime-endTime": "510.2-512.51",
+        "text": "Okay. I think I'd go for the",
+        "speaker": "N",
+        "reply_to_id": "156"
+    },
+    {
+        "id": 158,
+        "startTime-endTime": "511.5-512.78",
+        "text": "Which for the map",
+        "speaker": "M",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 159,
+        "startTime-endTime": "512.7-514.62",
+        "text": "Well I think we need both.",
+        "speaker": "K",
+        "reply_to_id": "158"
+    },
+    {
+        "id": 160,
+        "startTime-endTime": "515.3-520.48",
+        "text": "Maybe the aerial map is more important. You can still understand where is the-",
+        "speaker": "N",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 161,
+        "startTime-endTime": "520.9-521.26",
+        "text": "Yeah.",
+        "speaker": "M",
+        "reply_to_id": "160"
+    },
+    {
+        "id": 162,
+        "startTime-endTime": "521.2-521.92",
+        "text": "The sun.",
+        "speaker": "L",
+        "reply_to_id": "160"
+    },
+    {
+        "id": 163,
+        "startTime-endTime": "522.1-525.3",
+        "text": "You can see, like, then put it in the map.",
+        "speaker": "M",
+        "reply_to_id": "162"
+    },
+    {
+        "id": 164,
+        "startTime-endTime": "524.5-525.82",
+        "text": "The light. Continue ",
+        "speaker": "L",
+        "reply_to_id": "163"
+    },
+    {
+        "id": 165,
+        "startTime-endTime": "526.7-533.5",
+        "text": "Or if you see a bit light you can understand where is the sun. You can guess where is North.",
+        "speaker": "M",
+        "reply_to_id": "163"
+    },
+    {
+        "id": 166,
+        "startTime-endTime": "531.5-533.66",
+        "text": "The map is more important then?",
+        "speaker": "L",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 167,
+        "startTime-endTime": "532.4-532.74",
+        "text": "Yeah.",
+        "speaker": "M",
+        "reply_to_id": "166"
+    },
+    {
+        "id": 168,
+        "startTime-endTime": "533.4-537.82",
+        "text": "Yes. I think it's more important, but I would take the compass also.",
+        "speaker": "K",
+        "reply_to_id": "166"
+    },
+    {
+        "id": 169,
+        "startTime-endTime": "538.6-546.65",
+        "text": "So compass should go into the next, depending on the food and the compass. Now we can choose between whisky or compass. ",
+        "speaker": "L",
+        "reply_to_id": "168"
+    },
+    {
+        "id": 170,
+        "startTime-endTime": "550.2-558.56",
+        "text": "Come on. Whisky, I mean, it wouldn't keep- you may feel warmer drinking alcohol, but it, in fact, it just dilates your....",
+        "speaker": "K",
+        "reply_to_id": "169"
+    },
+    {
+        "id": 171,
+        "startTime-endTime": "557.7-558.38",
+        "text": "Mm hmm.",
+        "speaker": "N",
+        "reply_to_id": "170"
+    },
+    {
+        "id": 172,
+        "startTime-endTime": "558.4-563.5",
+        "text": "Maybe you can- you can use- because we are not sure we can light wood.",
+        "speaker": "M",
+        "reply_to_id": "170"
+    },
+    {
+        "id": 173,
+        "startTime-endTime": "562.2-565.08",
+        "text": "We have nothing to light it with. ",
+        "speaker": "K",
+        "reply_to_id": "172"
+    },
+    {
+        "id": 174,
+        "startTime-endTime": "564.9-569.45",
+        "text": "No you can use the whisky and the empty cigarette lighter to- to...",
+        "speaker": "M",
+        "reply_to_id": "173"
+    },
+    {
+        "id": 175,
+        "startTime-endTime": "568.2-573.32",
+        "text": "But then you also need to take the newspapers and the hand axe, so it's like...",
+        "speaker": "K",
+        "reply_to_id": "174"
+    },
+    {
+        "id": 176,
+        "startTime-endTime": "574.6-577.26",
+        "text": "Yeah. Actually- actually we were going to...",
+        "speaker": "N",
+        "reply_to_id": "174"
+    },
+    {
+        "id": 177,
+        "startTime-endTime": "577.6-584.6",
+        "text": "They said there is plenty of dead wood. So you just need a spark and then it will burn normally.",
+        "speaker": "M",
+        "reply_to_id": "175"
+    },
+    {
+        "id": 178,
+        "startTime-endTime": "583.1-583.74",
+        "text": "Mmm. Yeah.",
+        "speaker": "N",
+        "reply_to_id": "177"
+    },
+    {
+        "id": 179,
+        "startTime-endTime": "585.8-589.54",
+        "text": "Being said it's dead wood. Not- not wood plenty of .",
+        "speaker": "M",
+        "reply_to_id": "177"
+    },
+    {
+        "id": 180,
+        "startTime-endTime": "590.6-596.89",
+        "text": "You need some kind of paper. I mean, you cannot put a lighter and dead wood and...",
+        "speaker": "K",
+        "reply_to_id": "179"
+    },
+    {
+        "id": 181,
+        "startTime-endTime": "596.2-597.95",
+        "text": "The cold is minus ten.",
+        "speaker": "L",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 182,
+        "startTime-endTime": "597.3-600.9",
+        "text": "You can- can- you can take newspapers if you want.",
+        "speaker": "N",
+        "reply_to_id": "180"
+    },
+    {
+        "id": 183,
+        "startTime-endTime": "599.3-599.66",
+        "text": "Yeah.",
+        "speaker": "L",
+        "reply_to_id": "182"
+    },
+    {
+        "id": 184,
+        "startTime-endTime": "600.6-602.04",
+        "text": "But whisky is not-",
+        "speaker": "N",
+        "reply_to_id": "182"
+    },
+    {
+        "id": 185,
+        "startTime-endTime": "601.1-602.54",
+        "text": "No I don't see.",
+        "speaker": "K",
+        "reply_to_id": "184"
+    },
+    {
+        "id": 186,
+        "startTime-endTime": "602.4-603.36",
+        "text": "Not very useful.",
+        "speaker": "N",
+        "reply_to_id": "184"
+    },
+    {
+        "id": 187,
+        "startTime-endTime": "603.3-604.38",
+        "text": "But no it's-",
+        "speaker": "K",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 188,
+        "startTime-endTime": "604.6-605.68",
+        "text": "It doesn't burn?",
+        "speaker": "L",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 189,
+        "startTime-endTime": "604.3-607.93",
+        "text": "Well it's a thing to get the spark on- the spark.",
+        "speaker": "K",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 190,
+        "startTime-endTime": "607.4-608.16",
+        "text": "The spark?",
+        "speaker": "M",
+        "reply_to_id": "189"
+    },
+    {
+        "id": 191,
+        "startTime-endTime": "608.7-609.42",
+        "text": "Cigarette lighter.",
+        "speaker": "N",
+        "reply_to_id": "189"
+    },
+    {
+        "id": 192,
+        "startTime-endTime": "609.7-610.46",
+        "text": "Without flint?",
+        "speaker": "K",
+        "reply_to_id": "191"
+    },
+    {
+        "id": 193,
+        "startTime-endTime": "611.9-615.23",
+        "text": "There is no flint so how do you ?",
+        "speaker": "L",
+        "reply_to_id": "191"
+    },
+    {
+        "id": 194,
+        "startTime-endTime": "612.2-615.6",
+        "text": "You can have a spark- or a stone for spark.",
+        "speaker": "N",
+        "reply_to_id": "193"
+    },
+    {
+        "id": 195,
+        "startTime-endTime": "615.1-621.5",
+        "text": "Yeah, yeah. That's the point. You use the stone of the- of the cigarette lighter and the whisky as liquid.",
+        "speaker": "M",
+        "reply_to_id": "194"
+    },
+    {
+        "id": 196,
+        "startTime-endTime": "621.1-623.08",
+        "text": "I'm pretty sure whisky is .",
+        "speaker": "N",
+        "reply_to_id": "195"
+    },
+    {
+        "id": 197,
+        "startTime-endTime": "622.4-625.92",
+        "text": "At minus twenty you can light the wood with only the-",
+        "speaker": "M",
+        "reply_to_id": "194"
+    },
+    {
+        "id": 198,
+        "startTime-endTime": "626.6-626.97",
+        "text": "No.",
+        "speaker": "N",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 199,
+        "startTime-endTime": "626.6-626.98",
+        "text": "Newspaper.",
+        "speaker": "M",
+        "reply_to_id": "197"
+    },
+    {
+        "id": 200,
+        "startTime-endTime": "628.4-632.96",
+        "text": "I- I'm not- I'm not sure, but I don't know if it.",
+        "speaker": "N",
+        "reply_to_id": "199"
+    },
+    {
+        "id": 201,
+        "startTime-endTime": "630.7-634.22",
+        "text": "Newspaper standing- well newspaper is with us, it's- it's- it's dry.",
+        "speaker": "L",
+        "reply_to_id": "200"
+    },
+    {
+        "id": 202,
+        "startTime-endTime": "635.9-639.23",
+        "text": "Yeah. And newspaper is smaller than a whisky bottle.",
+        "speaker": "N",
+        "reply_to_id": "201"
+    },
+    {
+        "id": 203,
+        "startTime-endTime": "639.3-643.38",
+        "text": "But with only the stone of the lighter you can light newspaper?",
+        "speaker": "M",
+        "reply_to_id": "202"
+    },
+    {
+        "id": 204,
+        "startTime-endTime": "643.8-644.12",
+        "text": "Certainly.",
+        "speaker": "N",
+        "reply_to_id": "203"
+    },
+    {
+        "id": 205,
+        "startTime-endTime": "646.1-646.43",
+        "text": "Okay.",
+        "speaker": "N",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 206,
+        "startTime-endTime": "649.9-652.56",
+        "text": "Okay. So lighter without newspaper is meaningless?",
+        "speaker": "L",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 207,
+        "startTime-endTime": "656.5-657.58",
+        "text": "No. Then you-",
+        "speaker": "N",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 208,
+        "startTime-endTime": "657.4-658.36",
+        "text": "Yeah. I mean...",
+        "speaker": "K",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 209,
+        "startTime-endTime": "658.2-661.72",
+        "text": "Lighter and newspaper is the next- are the next. Yeah, so.",
+        "speaker": "N",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 210,
+        "startTime-endTime": "660.7-663.74",
+        "text": "Are we allowed to rank both together? Or..",
+        "speaker": "L",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 211,
+        "startTime-endTime": "663.6-665.04",
+        "text": "What about the compass?",
+        "speaker": "M",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 212,
+        "startTime-endTime": "665.3-674.18",
+        "text": "I think the compass is much more important. We will be moving and in a snowy area it's- it's really easy to get lost-",
+        "speaker": "K",
+        "reply_to_id": "211"
+    },
+    {
+        "id": 213,
+        "startTime-endTime": "671.5-671.88",
+        "text": "True-",
+        "speaker": "N",
+        "reply_to_id": "212"
+    },
+    {
+        "id": 214,
+        "startTime-endTime": "671.4-672.45",
+        "text": "If there's snow.",
+        "speaker": "K",
+        "reply_to_id": "212"
+    },
+    {
+        "id": 215,
+        "startTime-endTime": "673.2-683.08",
+        "text": "that if it's night- if it's night and it's cloudy you don't really know where is anything. You don't see anything. So maybe compass is still...",
+        "speaker": "N",
+        "reply_to_id": "214"
+    },
+    {
+        "id": 216,
+        "startTime-endTime": "681.8-683.6",
+        "text": "And if there's er you-",
+        "speaker": "K",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 217,
+        "startTime-endTime": "684.5-684.85",
+        "text": "Smoke.",
+        "speaker": "M",
+        "reply_to_id": "216"
+    },
+    {
+        "id": 218,
+        "startTime-endTime": "685.6-685.92",
+        "text": "Smoke.",
+        "speaker": "K",
+        "reply_to_id": "217"
+    },
+    {
+        "id": 219,
+        "startTime-endTime": "686.2-686.94",
+        "text": "Er, fog.",
+        "speaker": "M",
+        "reply_to_id": "218"
+    },
+    {
+        "id": 220,
+        "startTime-endTime": "686.7-689.74",
+        "text": "Fog? You- you wouldn't know where you are.",
+        "speaker": "K",
+        "reply_to_id": "219"
+    },
+    {
+        "id": 221,
+        "startTime-endTime": "689.1-691.2",
+        "text": "Hmm. Okay. So five for compass?",
+        "speaker": "N",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 222,
+        "startTime-endTime": "692.1-693.58",
+        "text": "Yeah. Then cigarette lighter?",
+        "speaker": "M",
+        "reply_to_id": "221"
+    },
+    {
+        "id": 223,
+        "startTime-endTime": "698.7-699.46",
+        "text": "Oh yeah.",
+        "speaker": "N",
+        "reply_to_id": "222"
+    },
+    {
+        "id": 224,
+        "startTime-endTime": "700.2-708.02",
+        "text": "How would- how would- thinking like this. If the crash happens, sooner or later they will know and they will search for us.",
+        "speaker": "L",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 225,
+        "startTime-endTime": "706.2-710.62",
+        "text": "Well no if there's a snow storm they could spend two days without.",
+        "speaker": "K",
+        "reply_to_id": "224"
+    },
+    {
+        "id": 226,
+        "startTime-endTime": "711.5-712.46",
+        "text": "Okay. No idea.",
+        "speaker": "L",
+        "reply_to_id": "225"
+    },
+    {
+        "id": 227,
+        "startTime-endTime": "718.3-722.46",
+        "text": "I mean think just as the plane can get covered with snow and...",
+        "speaker": "K",
+        "reply_to_id": "226"
+    },
+    {
+        "id": 228,
+        "startTime-endTime": "724.4-725.88",
+        "text": "The plane has sunk.",
+        "speaker": "M",
+        "reply_to_id": "227"
+    },
+    {
+        "id": 229,
+        "startTime-endTime": "725.6-731.87",
+        "text": "What about the . I was just thinking about the food. Are we surviving with just the chocolate bar?",
+        "speaker": "N",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 230,
+        "startTime-endTime": "734.4-738.0",
+        "text": "I think we should just take the can of shortening.",
+        "speaker": "K",
+        "reply_to_id": "229"
+    },
+    {
+        "id": 231,
+        "startTime-endTime": "735.7-742.35",
+        "text": "Now we should make the fire. We need fire now. Because we have to be a certain amount of...",
+        "speaker": "L",
+        "reply_to_id": "230"
+    },
+    {
+        "id": 232,
+        "startTime-endTime": "743.9-745.34",
+        "text": "So cigarette and newspaper.",
+        "speaker": "K",
+        "reply_to_id": "231"
+    },
+    {
+        "id": 233,
+        "startTime-endTime": "747.2-749.58",
+        "text": "Okay. Let's go cigarette lighter is five?",
+        "speaker": "L",
+        "reply_to_id": "232"
+    },
+    {
+        "id": 234,
+        "startTime-endTime": "750.3-750.63",
+        "text": "Six.",
+        "speaker": "N",
+        "reply_to_id": "233"
+    },
+    {
+        "id": 235,
+        "startTime-endTime": "751.2-751.53",
+        "text": "Six.",
+        "speaker": "K",
+        "reply_to_id": "233"
+    },
+    {
+        "id": 236,
+        "startTime-endTime": "751.8-752.91",
+        "text": "What was five?",
+        "speaker": "L",
+        "reply_to_id": "234"
+    },
+    {
+        "id": 237,
+        "startTime-endTime": "752.1-752.43",
+        "text": "Compass.",
+        "speaker": "K",
+        "reply_to_id": "236"
+    },
+    {
+        "id": 238,
+        "startTime-endTime": "752.7-753.36",
+        "text": "Er, compass.",
+        "speaker": "N",
+        "reply_to_id": "237"
+    },
+    {
+        "id": 239,
+        "startTime-endTime": "753.3-753.63",
+        "text": "Compass.",
+        "speaker": "L",
+        "reply_to_id": "234"
+    },
+    {
+        "id": 240,
+        "startTime-endTime": "755.6-756.24",
+        "text": "And then",
+        "speaker": "M",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 241,
+        "startTime-endTime": "756.4-758.2",
+        "text": "Six and then newspaper seven?",
+        "speaker": "L",
+        "reply_to_id": "240"
+    },
+    {
+        "id": 242,
+        "startTime-endTime": "758.1-758.43",
+        "text": "Yeah.",
+        "speaker": "K",
+        "reply_to_id": "241"
+    },
+    {
+        "id": 243,
+        "startTime-endTime": "759.4-760.14",
+        "text": "Except .",
+        "speaker": "M",
+        "reply_to_id": "241"
+    },
+    {
+        "id": 244,
+        "startTime-endTime": "760.9-766.15",
+        "text": "Okay so once we have this we need a hand axe to cut the wood?",
+        "speaker": "L",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 245,
+        "startTime-endTime": "764.2-764.55",
+        "text": "Er.",
+        "speaker": "K",
+        "reply_to_id": "244"
+    },
+    {
+        "id": 246,
+        "startTime-endTime": "766.7-771.18",
+        "text": "We can just burn it otherwise. A hand axe is not- but we need...",
+        "speaker": "L",
+        "reply_to_id": "244"
+    },
+    {
+        "id": 247,
+        "startTime-endTime": "772.1-781.22",
+        "text": "What's- what's the point of making it more complicated to use a newspaper. Because probably it's possible to do it, but it's more difficult.",
+        "speaker": "M",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 248,
+        "startTime-endTime": "781.4-792.5",
+        "text": "Yes but it's more than a bottle of whisky. The bottle of whisky is heavy. It's big. And if you have to walk, you will not be happy with that.",
+        "speaker": "N",
+        "reply_to_id": "247"
+    },
+    {
+        "id": 249,
+        "startTime-endTime": "789.3-792.93",
+        "text": "It's not big. It's one litre. I mean, it's one kilo.",
+        "speaker": "M",
+        "reply_to_id": "248"
+    },
+    {
+        "id": 250,
+        "startTime-endTime": "792.5-794.4",
+        "text": "I can carry it. ",
+        "speaker": "L",
+        "reply_to_id": "249"
+    },
+    {
+        "id": 251,
+        "startTime-endTime": "794.3-802.7",
+        "text": "I offer my services. Well at least I don't spend what thirty minutes, I don't know, to try to- maybe it's windy and it...",
+        "speaker": "N",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 252,
+        "startTime-endTime": "801.1-802.8",
+        "text": "I- I think it's like...",
+        "speaker": "K",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 253,
+        "startTime-endTime": "802.6-806.23",
+        "text": "Does it burn first of all? Whisky. Does- does it burn?",
+        "speaker": "L",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 254,
+        "startTime-endTime": "807.2-811.04",
+        "text": "Whisky is maybe it can be sixty degrees, fifty. So it burns.",
+        "speaker": "M",
+        "reply_to_id": "253"
+    },
+    {
+        "id": 255,
+        "startTime-endTime": "812.3-813.41",
+        "text": "Sure it burns.",
+        "speaker": "K",
+        "reply_to_id": "253"
+    },
+    {
+        "id": 256,
+        "startTime-endTime": "813.7-814.69",
+        "text": "Like- like oil.",
+        "speaker": "M",
+        "reply_to_id": "254"
+    },
+    {
+        "id": 257,
+        "startTime-endTime": "816.6-816.94",
+        "text": "Okay.",
+        "speaker": "L",
+        "reply_to_id": "255"
+    },
+    {
+        "id": 258,
+        "startTime-endTime": "817.9-825.16",
+        "text": "The thing is that I am not sure it will work with a cigarette lighter. I've never tried to put real alcohol.",
+        "speaker": "K",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 259,
+        "startTime-endTime": "824.3-828.04",
+        "text": "I've never tried it. I- I'm trying only to think, erm.",
+        "speaker": "M",
+        "reply_to_id": "258"
+    },
+    {
+        "id": 260,
+        "startTime-endTime": "827.9-830.78",
+        "text": "So maybe we should change the newspaper to...",
+        "speaker": "L",
+        "reply_to_id": "259"
+    },
+    {
+        "id": 261,
+        "startTime-endTime": "831.6-832.32",
+        "text": "Should we-",
+        "speaker": "K",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 262,
+        "startTime-endTime": "833.1-839.02",
+        "text": "Should we maybe, like, start by the ending now so we'll have less things to decide.",
+        "speaker": "K",
+        "reply_to_id": "261"
+    },
+    {
+        "id": 263,
+        "startTime-endTime": "837.5-837.86",
+        "text": "Okay.",
+        "speaker": "N",
+        "reply_to_id": "262"
+    },
+    {
+        "id": 264,
+        "startTime-endTime": "838.2-842.82",
+        "text": "I don't see the point of the ball of steel wool. It's heavy and...",
+        "speaker": "K",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 265,
+        "startTime-endTime": "844.8-846.72",
+        "text": "It's not- it's not really heavy.",
+        "speaker": "M",
+        "reply_to_id": "264"
+    },
+    {
+        "id": 266,
+        "startTime-endTime": "846.5-846.83",
+        "text": "No?",
+        "speaker": "K",
+        "reply_to_id": "265"
+    },
+    {
+        "id": 267,
+        "startTime-endTime": "847.1-847.78",
+        "text": "But useful-",
+        "speaker": "M",
+        "reply_to_id": "266"
+    },
+    {
+        "id": 268,
+        "startTime-endTime": "848.1-848.78",
+        "text": "It's steel.",
+        "speaker": "K",
+        "reply_to_id": "267"
+    },
+    {
+        "id": 269,
+        "startTime-endTime": "849.7-852.08",
+        "text": "I'm not very sure. Steel, but it's-",
+        "speaker": "M",
+        "reply_to_id": "268"
+    },
+    {
+        "id": 270,
+        "startTime-endTime": "851.6-855.8",
+        "text": "The only use I could think of was, like, trying to fish.",
+        "speaker": "K",
+        "reply_to_id": "269"
+    },
+    {
+        "id": 271,
+        "startTime-endTime": "854.4-856.96",
+        "text": "Yes but it's a very, very, very thin-",
+        "speaker": "M",
+        "reply_to_id": "270"
+    },
+    {
+        "id": 272,
+        "startTime-endTime": "857.5-857.87",
+        "text": "Yes.",
+        "speaker": "K",
+        "reply_to_id": "271"
+    },
+    {
+        "id": 273,
+        "startTime-endTime": "857.9-863.15",
+        "text": "Thread of steel wool so it's not very heavy. But useful, I'm not very sure.",
+        "speaker": "M",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 274,
+        "startTime-endTime": "864.3-870.24",
+        "text": "No I think it's less useful. So we'll put it as the last one? We have any other...",
+        "speaker": "K",
+        "reply_to_id": "273"
+    },
+    {
+        "id": 275,
+        "startTime-endTime": "876.1-878.69",
+        "text": "I don't see any use of it.",
+        "speaker": "L",
+        "reply_to_id": "273"
+    },
+    {
+        "id": 276,
+        "startTime-endTime": "877.5-878.24",
+        "text": "No. Okay.",
+        "speaker": "M",
+        "reply_to_id": "274"
+    },
+    {
+        "id": 277,
+        "startTime-endTime": "878.1-878.42",
+        "text": "Okay.",
+        "speaker": "K",
+        "reply_to_id": "276"
+    },
+    {
+        "id": 278,
+        "startTime-endTime": "879.3-880.7",
+        "text": "So it's twelve. Right?",
+        "speaker": "N",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 279,
+        "startTime-endTime": "880.1-880.46",
+        "text": "Yeah.",
+        "speaker": "K",
+        "reply_to_id": "278"
+    },
+    {
+        "id": 280,
+        "startTime-endTime": "881.2-882.64",
+        "text": "Yes it is useful.",
+        "speaker": "L",
+        "reply_to_id": "278"
+    },
+    {
+        "id": 281,
+        "startTime-endTime": "884.4-884.78",
+        "text": "Okay.",
+        "speaker": "M",
+        "reply_to_id": "280"
+    },
+    {
+        "id": 282,
+        "startTime-endTime": "884.8-885.17",
+        "text": "Okay.",
+        "speaker": "K",
+        "reply_to_id": "280"
+    },
+    {
+        "id": 283,
+        "startTime-endTime": "885.2-885.55",
+        "text": "Quickly.",
+        "speaker": "N",
+        "reply_to_id": "280"
+    },
+    {
+        "id": 284,
+        "startTime-endTime": "885.5-894.86",
+        "text": "Okay but then, er, look. If you are stuck in the snow while walking, we don't have any way to get out. Maybe this is useful.",
+        "speaker": "L",
+        "reply_to_id": "283"
+    },
+    {
+        "id": 285,
+        "startTime-endTime": "894.6-896.3",
+        "text": "You will cut your hand.",
+        "speaker": "N",
+        "reply_to_id": "284"
+    },
+    {
+        "id": 286,
+        "startTime-endTime": "895.4-895.77",
+        "text": "Huh?",
+        "speaker": "L",
+        "reply_to_id": "285"
+    },
+    {
+        "id": 287,
+        "startTime-endTime": "896.3-898.0",
+        "text": "You will cut your hands.",
+        "speaker": "N",
+        "reply_to_id": "286"
+    },
+    {
+        "id": 288,
+        "startTime-endTime": "897.2-901.36",
+        "text": "On this kind of thing. Okay so let's go for twelve on this.",
+        "speaker": "L",
+        "reply_to_id": "287"
+    },
+    {
+        "id": 289,
+        "startTime-endTime": "900.2-900.94",
+        "text": "So then...",
+        "speaker": "K",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 290,
+        "startTime-endTime": "902.8-905.02",
+        "text": "We have shortening, whisky. Whisky was?",
+        "speaker": "L",
+        "reply_to_id": "289"
+    },
+    {
+        "id": 291,
+        "startTime-endTime": "906.2-909.16",
+        "text": "Er, whisky we were not pretty sure. ",
+        "speaker": "M",
+        "reply_to_id": "290"
+    },
+    {
+        "id": 292,
+        "startTime-endTime": "911.5-919.5",
+        "text": "Okay. So less useful the pistol. The only use I can make of it is to make noise to let someone know where we are.",
+        "speaker": "K",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 293,
+        "startTime-endTime": "920.1-920.86",
+        "text": "That's eleven.",
+        "speaker": "L",
+        "reply_to_id": "292"
+    },
+    {
+        "id": 294,
+        "startTime-endTime": "921.4-921.76",
+        "text": "Eleven.",
+        "speaker": "N",
+        "reply_to_id": "292"
+    },
+    {
+        "id": 295,
+        "startTime-endTime": "922.7-923.03",
+        "text": "Okay.",
+        "speaker": "M",
+        "reply_to_id": "294"
+    },
+    {
+        "id": 296,
+        "startTime-endTime": "923.9-925.5",
+        "text": "Er, one can of shortening.",
+        "speaker": "N",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 297,
+        "startTime-endTime": "925.2-927.05",
+        "text": "That's- we can always take.",
+        "speaker": "K",
+        "reply_to_id": "296"
+    },
+    {
+        "id": 298,
+        "startTime-endTime": "926.6-927.34",
+        "text": "Ten. Okay.",
+        "speaker": "N",
+        "reply_to_id": "297"
+    },
+    {
+        "id": 299,
+        "startTime-endTime": "928.2-928.84",
+        "text": "Ten. Okay.",
+        "speaker": "L",
+        "reply_to_id": "297"
+    },
+    {
+        "id": 300,
+        "startTime-endTime": "928.9-929.23",
+        "text": "Then",
+        "speaker": "N",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 301,
+        "startTime-endTime": "930.7-931.42",
+        "text": "Next whisky.",
+        "speaker": "L",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 302,
+        "startTime-endTime": "932.5-933.52",
+        "text": "Er, hand axe.",
+        "speaker": "N",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 303,
+        "startTime-endTime": "934.7-935.03",
+        "text": "Nine.",
+        "speaker": "L",
+        "reply_to_id": "302"
+    },
+    {
+        "id": 304,
+        "startTime-endTime": "935.2-935.58",
+        "text": "Nine.",
+        "speaker": "N",
+        "reply_to_id": "302"
+    },
+    {
+        "id": 305,
+        "startTime-endTime": "936.7-937.4",
+        "text": "Whisky eight.",
+        "speaker": "M",
+        "reply_to_id": "301"
+    },
+    {
+        "id": 306,
+        "startTime-endTime": "938.2-938.52",
+        "text": "Okay.",
+        "speaker": "K",
+        "reply_to_id": "305"
+    },
+    {
+        "id": 307,
+        "startTime-endTime": "938.7-942.54",
+        "text": "So whisky and papers together so we can use together. You can...",
+        "speaker": "M",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 308,
+        "startTime-endTime": "950.6-952.0",
+        "text": "So I give you...",
+        "speaker": "L",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 309,
+        "startTime-endTime": "962.3-962.68",
+        "text": "Okay.",
+        "speaker": "K",
+        "reply_to_id": "307"
+    },
+    {
+        "id": 310,
+        "startTime-endTime": "985.7-989.99",
+        "text": "I think it's the- at least one other person we have to .",
+        "speaker": "M",
+        "reply_to_id": "-"
+    },
+    {
+        "id": 311,
+        "startTime-endTime": "989.8-993.96",
+        "text": "Yeah but I asked them and they told me I could leave early.",
+        "speaker": "K",
+        "reply_to_id": "310"
+    },
+    {
+        "id": 312,
+        "startTime-endTime": "991.1-991.43",
+        "text": "Okay.",
+        "speaker": "M",
+        "reply_to_id": "311"
+    }
+]

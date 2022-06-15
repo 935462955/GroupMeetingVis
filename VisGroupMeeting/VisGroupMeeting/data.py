@@ -1,15 +1,17 @@
 import base64
-import json, os,time
+import json, os, time
 from VisGroupMeeting import app
 import cv2
 
+
 class Node():
-    def __init__(self, id, parent, children, speaker,session_id = None):
+    def __init__(self, id, parent, children, speaker, session_id=None):
         self.id = id
         self.speaker = speaker
         self.parent = parent
         self.children = children
         self.session_id = session_id
+
 
 def get_key_frame(desire_frames, file):  # file 从会议名称开始
     path = os.path.join(app.config['DATA_PATH'], 'video/' + file)
@@ -22,32 +24,54 @@ def get_key_frame(desire_frames, file):  # file 从会议名称开始
     for i in desire_frames:
         vidcap.set(1, i - 1)
         success, image = vidcap.read()
-        # RBG矩阵转 base64图片
-        res_b = cv2.imencode('.jpg', image)[1].tostring()
-        res_bs64 = base64.b64encode(res_b)
-        result.append({'frame':i,'img':"data:image/jpg;base64,{}".format(res_bs64.decode())})
+        if success:
+            # RBG矩阵转 base64图片
+            res_b = cv2.imencode('.jpg', image)[1].tostring()
+            res_bs64 = base64.b64encode(res_b)
+            result.append({'frame': i, 'img': "data:image/jpg;base64,{}".format(res_bs64.decode())})
+        else:
+            result.append({'frame': i, 'img': "data:image/jpg;base64,{}".format("")})
     #  cv2.imwrite("frame%d.jpg" % count, image)     # save frame as JPEG file
     vidcap.release()
     print(time.time() - start)
     return result
+
+
+def getVideoFPS(file):
+    video = cv2.VideoCapture(os.path.join(app.config['DATA_PATH'], 'video/' + file))
+    # Find OpenCV version
+    (major_ver, minor_ver, subminor_ver) = (cv2.__version__).split('.')
+
+    if int(major_ver) < 3:
+        fps = video.get(cv2.cv.CV_CAP_PROP_FPS)
+        print("Frames per second using video.get(cv2.cv.CV_CAP_PROP_FPS): {0}".format(fps))
+    else:
+        fps = video.get(cv2.CAP_PROP_FPS)
+        print("Frames per second using video.get(cv2.CAP_PROP_FPS) : {0}".format(fps))
+    video.release()
+    return fps
+
 def class2json(root):
     session_id = root.session_id
     idx2treenode = {}
     nodelist = []
     def traver(pynode):
-        result = get_key_frame([int((float(dialogs[pynode.id]['startTime']) + float(dialogs[pynode.id]['endTime']))/2) * 25],meetingName+'/'+dialogs[pynode.id]['role']+'.mp4')
+        result = get_key_frame(
+            [int((float(dialogs[pynode.id]['startTime']) + float(dialogs[pynode.id]['endTime'])) / 2) * fps],
+            meetingName + '/' + dialogs[pynode.id]['role'] + '.mp4')
         nodelist.append({
-        "id" : pynode.id,
-        "parent": pynode.parent.id if pynode.parent else -1,
-        "children": [node.id for node in pynode.children],
-        "session_id": session_id,
-        "img":result[0]['img']
-    })
+            "id": pynode.id,
+            "parent": pynode.parent.id if pynode.parent else -1,
+            "children": [node.id for node in pynode.children],
+            "session_id": session_id,
+            "img": result[0]['img']
+        })
         idx2treenode[pynode.id] = len(nodelist) - 1
         for node in pynode.children:
             traver(node)
+
     traver(root)
-    return {"nodelist":nodelist,"idx2treenode":idx2treenode}
+    return {"nodelist": nodelist, "idx2treenode": idx2treenode}
 
 
 def getReplyTree(session_id):
@@ -55,60 +79,63 @@ def getReplyTree(session_id):
         if root.session_id == session_id:
             return class2json(root)
 
+
 meetingName = "ES2002a"
-path = os.path.join(app.config['DATA_PATH'], 'merged/'+meetingName+'.json')
+path = os.path.join(app.config['DATA_PATH'], 'merged/' + meetingName + '.json')
 dialogs = None
 reply_relation = None
 sessions = None
-agendas = ['xxx', 'xxx', 'xxx', 'xxx']
 with open(path, 'r', encoding='utf-8') as f:
     dialogs = json.load(f)
 roles = list(set([dialog['role'] for dialog in dialogs]))
-path = os.path.join(app.config['DATA_PATH'], 'reply_relation/reply_'+meetingName+'.json')
+path = os.path.join(app.config['DATA_PATH'], 'reply_relation/reply_' + meetingName + '.json')
 with open(path, 'r', encoding='utf-8') as f:
     reply_relation = json.load(f)
-path = os.path.join(app.config['DATA_PATH'], 'edge_bunding/edgeBunding_'+meetingName+'.json')
+path = os.path.join(app.config['DATA_PATH'], 'edge_bunding/edgeBunding_' + meetingName + '.json')
 with open(path, 'r', encoding='utf-8') as f:
     sessions = json.load(f)
-path = os.path.join(app.config['DATA_PATH'],'agendas/'+meetingName+'.json')
+path = os.path.join(app.config['DATA_PATH'], 'agendas/' + meetingName + '.json')
 with open(path, 'r', encoding='utf-8') as f:
     agendas = json.load(f)
 headPos = {}
 key_frames = {}
+fps = getVideoFPS(meetingName + '/' + roles[0] + '.mp4')
 for role in roles:
     path = os.path.join(app.config['DATA_PATH'], 'headPose/{}/{}.json'.format(meetingName, role))
     with open(path, 'r', encoding='utf-8') as f:
         headPos[role] = json.load(f)
         # 以下为读取关键帧图像
-        fps = 25
         require_frame = []
         left = headPos[role][0]
         right = left
-        for i,pos in enumerate(headPos[role]):
+        for i, pos in enumerate(headPos[role]):
             if pos['facePos'] == left['facePos']:
                 right = pos
             else:
                 if left['facePos'] != 'up':
-                    j = (int(left['time']) + int(headPos[role][i]['time']))//2
-                    require_frame.append(j * 25)
+                    j = (int(left['time']) + int(headPos[role][i]['time'])) // 2
+                    require_frame.append(j * fps)
                 left = pos
                 right = left
         key_frames[role] = require_frame
 # print(key_frames)
 temp = {}
 for role in roles:
-   temp[role] =  get_key_frame(key_frames[role],meetingName+'/'+role+'.mp4')
+    temp[role] = get_key_frame(key_frames[role], meetingName + '/' + role + '.mp4')
 key_frames = temp
-#print(headPos)
+# print(headPos)
 trees = []  # 下标索引树节点
 roots = []  # 所有子会话的根
 session_id = 0
 for index, item in enumerate(reply_relation):
     if item['reply_to_id'] != '-':
-        node = Node(index, trees[int(item['reply_to_id'])], [], item['speaker'])
+        try:
+            node = Node(index, trees[int(item['reply_to_id'])], [], item['speaker'])
+        except:
+            print(int(item['reply_to_id']))
         trees[int(item['reply_to_id'])].children.append(node)
     else:
-        node = Node(index, None, [], item['speaker'],session_id)
+        node = Node(index, None, [], item['speaker'], session_id)
         session_id += 1
         roots.append(node)
     trees.append(node)
@@ -123,8 +150,7 @@ with open(os.path.join(app.config['DATA_PATH'], 'agreeWords.txt'), 'r') as f:  #
     agreeWords = set([word.lower() for word in f.read().split(",")])
 with open(os.path.join(app.config['DATA_PATH'], 'stopwords.txt'), 'r', encoding='utf-8') as f:  # 附和词
     stopwords = set([word.lower() for word in f.read().split("\n")])
-stopwords.remove("\"") # 传到前端会报错
-
+stopwords.remove("\"")  # 传到前端会报错
 
 
 def mystrip(s, l):
@@ -152,25 +178,25 @@ def getKeyWords(sentences):
     for s in sentences:
         if 'agenda' not in dialogs[s] or dialogs[s]['agenda'] == "-":  # TODO 需要更好的方式处理没有分配议程的句子
             continue
-        agenda_id = dialogs[s]['agenda']
+        agenda_id = int(dialogs[s]['agenda'])
         agenda_sentence_num[agenda_id] += 1
         # 分词
         text = dialogs[s]['text'].lower().split(" ")
         for word in text:
-            token = mystrip(word, ['.?! ,'])
+            token = mystrip(word, ['.?! ,-'])
             if token not in stopwords:  # 去停用词
                 tokIdx = myfind(wordsOfAgenda[agenda_id], token, 'word')
                 if tokIdx == -1:
-                    wordsOfAgenda[agenda_id].append({'word': token, 'cnt': 1, 'sentences': [s],'agenda':agenda_id})
+                    wordsOfAgenda[agenda_id].append({'word': token, 'cnt': 1, 'sentences': [s], 'agenda': agenda_id})
                 else:
                     wordsOfAgenda[agenda_id][tokIdx]['cnt'] += 1
                     wordsOfAgenda[agenda_id][tokIdx]['sentences'].append(s)
     for index, num in enumerate(agenda_sentence_num):
         agenda_sentence_num[index] = round(num / len(sentences) * total)  # 每个议题可展示关键词席位
     out = []
-    for index, _ in enumerate(wordsOfAgenda): # 选择每个议题下的高频词输出
+    for index, _ in enumerate(wordsOfAgenda):  # 选择每个议题下的高频词输出
         wordsOfAgenda[index] = sorted(wordsOfAgenda[index], key=lambda x: x['cnt'], reverse=True)
-        if agenda_sentence_num[index] < len(wordsOfAgenda[index]):#
+        if agenda_sentence_num[index] < len(wordsOfAgenda[index]):  #
             out.extend(wordsOfAgenda[index][:agenda_sentence_num[index]])
         else:
             out.extend(wordsOfAgenda[index])
@@ -209,7 +235,7 @@ def calBackchannel(role):
             totalUtr += 1
             backchannel_num = 0
             for word in dialog['text'].lower().split(" "):
-                if mystrip(word, ['.?! ,']) in bc:
+                if mystrip(word, ['.?! ,-']) in bc:
                     backchannel_num += 1
             rate = backchannel_num / len(dialog['text'].split(" ")) * 100
             if rate >= 50:
@@ -249,7 +275,7 @@ def calContribution(role):
             for child in node.children:
                 if node.speaker == role and not counted:
                     for word in dialogs[child.id]['text'].lower().split(" "):
-                        if mystrip(word, ['.?! ,']) in agreeWords:
+                        if mystrip(word, ['.?! ,-']) in agreeWords:
                             nonlocal contribute
                             nonlocal keySentences
                             contribute += 1
@@ -270,7 +296,7 @@ chordData = {}
 for role in roles:
     chordData[role] = {}
     for innerRole in roles:
-        chordData[role][innerRole] = 0 # #初始化
+        chordData[role][innerRole] = 0  # #初始化
 for role in roles:
     activity = calActivity(role)
     contribution, keywordsOfContribution = calContribution(role)
@@ -289,4 +315,3 @@ for role in roles:
                                 "Leadership": keywordsOfLeadership}
 
 # endregion
-

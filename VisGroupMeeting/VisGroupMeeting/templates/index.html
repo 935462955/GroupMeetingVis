@@ -17,7 +17,7 @@
                     <span>Select a Group: </span>
                     <select onchange="">
                         <option value="A">ES2001A</option>
-                        <option value="B" selected="true">ES2002A</option>
+                        <option value="B" selected="true">ELEA12</option>
                         <option value="C">ES2003A</option>
                         <option value="D">ES2004A</option>
                     </select>
@@ -34,6 +34,32 @@
         <div class="rv-toolbar">
             <div class="rv-toolbar">
                 <div class="viewName">Detail View</div>
+                <!-- Button trigger modal -->
+                <div class="rv-toolbar-right-component">
+                <button type="button" class="btn btn-outline-secondary" onClick="rv.method.drawReplyTreeInModal()" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Enlarge
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog rv-modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="rv-modal-body">
+                                <svg></svg>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 </div>
             </div>
         </div>
         <div class="rv" style="overflow-y: scroll">
@@ -75,10 +101,14 @@
                 <div class="pav-selector">
                     <span>Select a student: </span>
                     <select class="pav-studentSelector" onchange="pav.method.changePerson(this.value)">
-                        <option value="A">A</option>
-                        <option value="B" selected="true">B</option>
-                        <option value="C">C</option>
-                        <option value="D">D</option>
+                                                <option value="A">A</option>
+                                                <option value="B" selected="true">B</option>
+                                                <option value="C">C</option>
+                                                <option value="D">D</option>
+<!--                        <option value="L">L</option>-->
+<!--                        <option value="N" selected="true">N</option>-->
+<!--                        <option value="K">K</option>-->
+<!--                        <option value="M">M</option>-->
                     </select>
                 </div>
             </div>
@@ -139,7 +169,7 @@
     })
     const sessions = JSON.parse(`{{sessions|safe}}`)
     const personal_ability = JSON.parse(`{{personal_ability|safe}}`)
-     const roles = [...new Set(dialogs.map(v => v.role))]
+    const roles = [...new Set(dialogs.map(v => v.role))]
     //const roles = ['D','B','A','C']
     //const roles = JSON.parse(`{{roles|safe}}`)
     const headPos = JSON.parse(`{{headPos|safe}}`)
@@ -161,7 +191,7 @@
         paddingTop: 100,
         agendaColor: d3.schemeSet2,// ['#3FC846','#FF606F','#BDBDBD','#4666CB'],
         maxRy: 100,
-        timeSlice: 30,
+        timeSlice: 10,
     }
     itav.method = { // 这个图比较复杂需要重复绘制为避免性能损失所以把固定函数单独放在method里面了
         xScale: d3.scaleLinear()
@@ -198,15 +228,19 @@
     itav.data = generateInteractionViewData(dialogs, sessions)
     itav.method = Object.assign(itav.method, {
         click: function (e, d) {
-            const session_id = d.session_id ? d.session_id : d3.select(this).attr("class").split("_")[1]
-            if (session_id === 'single')
+            const session_id = d.session_id != null ? d.session_id : d3.select(this).attr("class").split("_")[1]
+            console.log(session_id)
+            if (session_id === 'single') {
+                console.log(session_id)
                 return
+            }
             // 更新 rv视图
-            if (d.session_id) {
+            if (d.session_id != null) {
+                console.log(d.session_id)
                 rv.data = rv.method.generateData(d.session_id)
                 rv.method.drawReplyTree()
             }
-            if (d.session_id) //捆绑
+            if (d.session_id != null) //捆绑
             {
                 d3.selectAll(`.sidNode_${session_id}`).attr("fill", "none")
                 //d3.selectAll(`.sidEge_${session_id}`).attr("opacity", 0)
@@ -578,7 +612,13 @@
                 if (Object.keys(session['subsessions']).length === 0) {
                     idx2sessionId[session['single']] = session['session_id']
                     const dialog = dialogs[Number(session['single'])]
-                    const square = {role:dialog['role'], start:itav.method.xScale(dialog['startTime']), end:itav.method.xScale(dialog['endTime']), session_id: session['session_id'], agenda:dialog['agenda']}
+                    const square = {
+                        role: dialog['role'],
+                        start: itav.method.xScale(dialog['startTime']),
+                        end: itav.method.xScale(dialog['endTime']),
+                        session_id: session['session_id'],
+                        agenda: dialog['agenda']
+                    }
                     squares.push(square)
                     continue
                     // if(session['agenda'] != "-")
@@ -793,7 +833,7 @@
             const nodes = storyBoard.selectAll("ellipse")
                 .data(itav.data.circles)
                 .join("ellipse")
-                .attr("class", (d, i) => `detailSidNode_${itav.data.bind_edges.idx2sessionId[i] ? itav.data.bind_edges.idx2sessionId[i] : 'single'}`)
+                .attr("class", (d, i) => `detailSidNode_${itav.data.bind_edges.idx2sessionId[i] != null ? itav.data.bind_edges.idx2sessionId[i] : 'single'}`)
                 .attr("rx", d => d.r)
                 .attr("ry", d => Math.min(d.r, 30))
                 .attr("cx", d => d.x)
@@ -857,7 +897,7 @@
                 .attr("stroke-linecap", "round")
                 .attr("fill", "none")
                 .attr("class", d => {
-                    return `detailSidEge_${itav.data.bind_edges.idx2sessionId[d.source] ? itav.data.bind_edges.idx2sessionId[d.source] : 'single'}`
+                    return `detailSidEge_${itav.data.bind_edges.idx2sessionId[d.source] != null ? itav.data.bind_edges.idx2sessionId[d.source] : 'single'}`
                 })
 
 
@@ -1901,13 +1941,13 @@
         outerRadius: 50,
         circlePadding: 20,
         marginLeft: 10,
-        marginTop: 3,
+        marginTop: 8,
         barWidth: 3,
         barPadding: 1,
     }
     adv.method = {}
     adv.method.changeText = function (val) {
-        document.querySelector(".adv-range span").innerHTML = `TimeSlice: [10~120]: ${val}s`
+        document.querySelector(".adv-range span").innerHTML = `TimeSlice: [50~120]: ${val}s`
     }
     adv.method.updateData = function (circle_index, selected_agenda) {
         const old_circle = adv.data.circles[circle_index]
@@ -2023,7 +2063,7 @@
                 const words = dialogs[i].text.split(" ")
                 circle.personGiveWordNum[dialogs[i].role] += words.length
                 words.forEach(w => {
-                    if (w[w.length - 1] == '.' || w[w.length - 1] == '?' || w[w.length - 1] == '!' || w[w.length - 1] == ',')
+                    if (w[w.length - 1] == '.' || w[w.length - 1] == '?' || w[w.length - 1] == '!' || w[w.length - 1] == ',' || w[w.length - 1] == '-')
                         w = w.slice(0, w.length - 1)
                     w = w.toLowerCase()
                     if (!stopwords.has(w)) {
@@ -2276,7 +2316,7 @@
             .join("p")
             .style('Font', "10px sans-serif")
             .attr("class", (d, i) => `ctxv-p ${i}`)
-            .text(d => d.role+': '+d.text)
+            .text(d => d.role + ': ' + d.text)
         // .on("click", function (e, d) {
         //     // console.log(this.offsetTop, this.offsetTop - ctxv.config.h, this.parentNode.parentNode.scrollTop, e, d)
         //     //this.parentNode.parentNode.scrollTo(0,0)
@@ -2429,7 +2469,8 @@
         function dfs(n) {
             pos.push({id: n.id, x: x * rv.config.xoffset, y: y * rv.config.yoffset})
             img.push({id: n.id, x: x * rv.config.xoffset - rv.config.radius, y: y * rv.config.yoffset, img: n.img})
-            let textlength = ctx.measureText(dialogs[n.id].text).width
+            let fullTextLength = ctx.measureText(dialogs[n.id].text).width
+            let textlength = fullTextLength
             if (textlength + x * rv.config.xoffset >= 560)
                 textlength = 560 - x * rv.config.xoffset
             rects.push({
@@ -2437,6 +2478,7 @@
                 x: x * rv.config.xoffset,
                 y: y * rv.config.yoffset - 7.5,
                 width: textlength,
+                fullWidth: fullTextLength,
                 height: 15
             })
             const init_y = y
@@ -2539,6 +2581,115 @@
                 .data(rv.data.pos)
                 .join("text")
                 .attr("clip-path", d => `url(#clip${d.id})`)
+                .attr("alignment-baseline", "middle")
+                .attr("x", d => d.x)
+                .attr("y", d => d.y)
+                .text(d => dialogs[d.id].text)
+                .on('click', (event, d) => {
+                    const dy = ctxv.method.yscale(ctxv.config.initalHeight) - ctxv.method.yscale(0); // Use a fixed width when recentering.
+                    const cy = ctxv.method.yscale(ctxv.data.id2row[d.id])
+                    const [y0, y1] = [cy, cy + dy];
+                    const [Y0, Y1] = ctxv.method.yscale.range();
+                    d3.select('.y.brush')
+                        .call(ctxv.method.brush.move, y1 > Y1 ? [Y1 - dy, Y1]
+                            : y0 < Y0 ? [Y0, Y0 + dy]
+                                : [y0, y1]);
+                })
+                .append("title")
+                .text(d => dialogs[d.id].text.split(".").join(".\n"))
+
+            const img = g.selectAll("g")
+                .data(rv.data.img)
+                .join("g")
+            img.append("circle")
+                .attr("fill", d => `url(#avatar_${d.id})`)
+                .attr("cx", d => d.x)
+                .attr("cy", d => d.y)
+                .attr("r", rv.config.radius);
+            img.append("svg:defs").append("svg:pattern")
+                .attr("id", d => `avatar_${d.id}`)
+                .attr("width", rv.config.radius * 2)
+                .attr("height", rv.config.radius * 2)
+                .attr("patternUnits", "objectBoundingBox")
+                .append("svg:image")
+                .attr("xlink:href", d => d.img)
+                .attr("width", rv.config.radius * 2)
+                .attr("height", rv.config.radius * 2)
+                .attr("preserveAspectRatio", "xMidYMid slice")
+
+
+        }
+    })()
+    rv.method.drawReplyTreeInModal = (function () {
+        const svg = d3.select('.rv-modal-body svg')
+            .attr("width", "100%")
+            .attr("height", "100%")
+        //  .attr("style", "max-width: 100%;height: auto; height: intrinsic;")
+        const xOffset = 300
+        const yOffset = 20
+        const legendRectWidth = 15
+
+        const legend = svg.append("g")
+            .attr("transform", `translate(50,50)`)
+            .attr("font-size", 15)
+        // legend.append("g").attr("class", "title")
+        //     .append("text")
+        //     .attr("stroke", "black")
+        //     .attr("font-weight", 1)
+        //     .text(" Legends:")
+        //     .attr("transform", `translate(0,-20)`)
+        legend.selectAll("g").data(roles).join("g").append("text")
+            .attr("y", (d, i) => Math.floor(i / 2) * yOffset)
+            .attr("x", (d, i) => (i % 2) * xOffset)
+            .text(d => d)
+
+        legend.selectAll("g")
+            .append("rect")
+            .attr("x", (d, i) => (i % 2) * xOffset - legendRectWidth - 5)
+            .attr("y", (d, i) => Math.floor(i / 2) * 20 - legendRectWidth / 1.25)
+            .attr("width", legendRectWidth)
+            .attr("height", legendRectWidth)
+            .attr("fill", d => personColor(d))
+        return function () {
+            svg.selectAll("#tree").remove()
+
+            const g = svg.append("g")
+                .attr("id", "tree")
+                .attr("transform", `translate(40,100)`)
+                .attr("width", "100%")
+                .attr("height", "100%")
+                .style("overflow", "scroll")
+                .attr("font-size", 13)
+            g.selectAll("line")
+                .data(rv.data.lines)
+                .join("line")
+                .attr("x1", d => d.x1)
+                .attr("x2", d => d.x2)
+                .attr("y1", d => d.y1)
+                .attr("y2", d => d.y2)
+                .attr("stroke", "grey")
+            g.selectAll("rect")
+                .data(rv.data.rects)
+                .join("rect")
+                .attr("x", d => d.x)
+                .attr("y", d => d.y)
+                .attr("width", d => d.fullWidth)
+                .attr("height", d => d.height)
+                .attr("fill", d => personColor(dialogs[d.id].role))
+            // g.selectAll("clipPath")
+            //     .data(rv.data.rects)
+            //     .join("clipPath")
+            //     .attr("id", d => "clip" + d.id)
+            //     .append("rect")
+            //     .attr("x", d => d.x)
+            //     .attr("y", d => d.y)
+            //     .attr("width", d => d.fullWidth)
+            //     .attr("height", d => d.height)
+
+            g.selectAll("text")
+                .data(rv.data.pos)
+                .join("text")
+                // .attr("clip-path", d => `url(#clip${d.id})`)
                 .attr("alignment-baseline", "middle")
                 .attr("x", d => d.x)
                 .attr("y", d => d.y)

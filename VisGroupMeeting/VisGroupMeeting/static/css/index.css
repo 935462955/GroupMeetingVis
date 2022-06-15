@@ -2,7 +2,7 @@ html {
     font-size: 10px;
     height: 99vh;
     width: 100vw;
-    overflow-x: hidden;
+    /*overflow-x: hidden;*/
     /*overflow-y: hidden;*/
     /*font-family: "Microsoft YaHei UI";*/
     font-family: "sans-serif";
@@ -215,17 +215,33 @@ div.rv-container {
 
 div.rv-toolbar {
     height: 4rem;
+    width:100%;
     border-bottom: solid #999999 1px;
     border-radius: 0.5rem;
     background: #F7F7F7;
     display: flex;
+    justify-content: space-between;
 }
-
+div.rv-toolbar-right-component{
+    width:50%;
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+div.rv-toolbar-right-component button{
+    margin-right: 1rem;
+}
 div.rv {
     height: 36rem;
     width: 64rem;
     marigin-bottom: 1rem;
-
+}
+div.rv-modal-dialog{
+    max-width: 98vw;
+}
+div.rv-modal-body{
+    height:98vh;
+    width:98vw;
 }
 
 div.defocus {

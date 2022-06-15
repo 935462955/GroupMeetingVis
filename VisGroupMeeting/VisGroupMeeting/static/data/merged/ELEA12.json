@@ -1,0 +1,2506 @@
+[
+  {
+    "startTime": 0.1,
+    "endTime": 0.84,
+    "role": "N",
+    "text": "To agree.",
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 0.7,
+    "endTime": 1.98,
+    "role": "K",
+    "text": "Agree on the items.",
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 2.4,
+    "endTime": 3.54,
+    "role": "L",
+    "text": "In ten minutes.",
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 3.2,
+    "endTime": 3.58,
+    "role": "K",
+    "text": "Yeah.",
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 3.6,
+    "endTime": 3.92,
+    "role": "M",
+    "text": "Okay.",
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 5.8,
+    "endTime": 9.04,
+    "role": "N",
+    "text": "So which is your- the most important for you?",
+    "agenda": 1,
+    "agenda_similiarity": 0.4196150404662515
+  },
+  {
+    "startTime": 9.5,
+    "endTime": 15.26,
+    "role": "K",
+    "text": "For me was the piece of heavy duty canvas. I was thinking about making a kind of tent.",
+    "agenda": 1,
+    "agenda_similiarity": 0.4196150404662515
+  },
+  {
+    "startTime": 17.7,
+    "endTime": 18.34,
+    "role": "N",
+    "text": "Mm hmm.",
+    "agenda": 1,
+    "agenda_similiarity": 0.4196150404662515
+  },
+  {
+    "startTime": 18.6,
+    "endTime": 20.7,
+    "role": "K",
+    "text": "Against the cold. I don't know.",
+    "agenda": 1,
+    "agenda_similiarity": 0.4196150404662515
+  },
+  {
+    "startTime": 22.2,
+    "endTime": 25.53,
+    "role": "L",
+    "text": "This weighs equally with the extra shirts and pants.",
+    "agenda": 1,
+    "agenda_similiarity": 0.4196150404662515
+  },
+  {
+    "startTime": 28.4,
+    "endTime": 29.39,
+    "role": "M",
+    "text": "I think .",
+    "agenda": 1,
+    "agenda_similiarity": 0.4196150404662515
+  },
+  {
+    "startTime": 28.9,
+    "endTime": 38.89,
+    "role": "K",
+    "text": "Er, I don't know if they're equal. Like, I mean, duty canvas can protect you against wind or rain. Extra shirts and pants will get wet, like.",
+    "agenda": 1,
+    "agenda_similiarity": 0.4196150404662515
+  },
+  {
+    "startTime": 42.7,
+    "endTime": 44.68,
+    "role": "N",
+    "text": "It's- it's too cold to rain.",
+    "agenda": 1,
+    "agenda_similiarity": 0.4196150404662515
+  },
+  {
+    "startTime": 44.7,
+    "endTime": 45.06,
+    "role": "K",
+    "text": "Yeah.",
+    "agenda": 1,
+    "agenda_similiarity": 0.4196150404662515
+  },
+  {
+    "startTime": 45.2,
+    "endTime": 51.28,
+    "role": "L",
+    "text": "It's minus ten. So in- in my opinion, the time is the most important thing here.",
+    "agenda": 1,
+    "agenda_similiarity": 0.1532784636768867
+  },
+  {
+    "startTime": 49.8,
+    "endTime": 50.5,
+    "role": "K",
+    "text": "Well I...",
+    "agenda": 1,
+    "agenda_similiarity": 0.1532784636768867
+  },
+  {
+    "startTime": 50.1,
+    "endTime": 61.12,
+    "role": "L",
+    "text": "So minus ten degrees in the morning meaning we know we can easily survive another two hours. In two hours from seventy kilometres habituation people can easily come, so.",
+    "agenda": 1,
+    "agenda_similiarity": 0.1532784636768867
+  },
+  {
+    "startTime": 59.3,
+    "endTime": 60.9,
+    "role": "N",
+    "text": "Just a consideration, er .",
+    "agenda": 1,
+    "agenda_similiarity": 0.1532784636768867
+  },
+  {
+    "startTime": 60.5,
+    "endTime": 61.16,
+    "role": "K",
+    "text": "I would...",
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 61.8,
+    "endTime": 62.79,
+    "role": "L",
+    "text": "So making tent.",
+    "agenda": 1,
+    "agenda_similiarity": 0.11027442576154395
+  },
+  {
+    "startTime": 62.6,
+    "endTime": 69.4,
+    "role": "K",
+    "text": "No. I think it's more like we should walk or try to move to the direction where people is coming.",
+    "agenda": 1,
+    "agenda_similiarity": 0.11027442576154395
+  },
+  {
+    "startTime": 68.7,
+    "endTime": 80.95,
+    "role": "M",
+    "text": "But in my opinion the most important thing is the thing that allows you to survive in the next five minutes at least to survive in the next- because minus ten degrees you can die.",
+    "agenda": 1,
+    "agenda_similiarity": 0.20886256595830235
+  },
+  {
+    "startTime": 76.4,
+    "endTime": 77.54,
+    "role": "L",
+    "text": "Next two hours.",
+    "agenda": 1,
+    "agenda_similiarity": 0.20886256595830235
+  },
+  {
+    "startTime": 77.4,
+    "endTime": 84.4,
+    "role": "M",
+    "text": "Yeah, but at least you survive five minutes. So you have five minutes to decide what to do next. Because-",
+    "agenda": 1,
+    "agenda_similiarity": 0.20886256595830235
+  },
+  {
+    "startTime": 83.1,
+    "endTime": 84.9,
+    "role": "K",
+    "text": "But you won't die in...",
+    "agenda": 1,
+    "agenda_similiarity": 0.20886256595830235
+  },
+  {
+    "startTime": 84.6,
+    "endTime": 89.7,
+    "role": "M",
+    "text": "At minus ten you can die. If you are not well dressed you can die.",
+    "agenda": 1,
+    "agenda_similiarity": 0.20886256595830235
+  },
+  {
+    "startTime": 88.2,
+    "endTime": 91.08,
+    "role": "L",
+    "text": "So we are well dressed that was mentioned.",
+    "agenda": 1,
+    "agenda_similiarity": 0.20886256595830235
+  },
+  {
+    "startTime": 90.1,
+    "endTime": 90.45,
+    "role": "K",
+    "text": "Yeah.",
+    "agenda": 1,
+    "agenda_similiarity": 0.20886256595830235
+  },
+  {
+    "startTime": 90.3,
+    "endTime": 91.95,
+    "role": "L",
+    "text": "We are all well dressed.",
+    "agenda": 1,
+    "agenda_similiarity": 0.20886256595830235
+  },
+  {
+    "startTime": 91.0,
+    "endTime": 92.32,
+    "role": "K",
+    "text": "Yeah for winter clothes.",
+    "agenda": 1,
+    "agenda_similiarity": 0.20886256595830235
+  },
+  {
+    "startTime": 92.4,
+    "endTime": 97.2,
+    "role": "L",
+    "text": "For winter so. Minus ten we have by default. Next two hours without doing effort-",
+    "agenda": 1,
+    "agenda_similiarity": 0.1951118997756494
+  },
+  {
+    "startTime": 97.5,
+    "endTime": 99.54,
+    "role": "K",
+    "text": "I think we have to move-",
+    "agenda": 0,
+    "agenda_similiarity": 0.2362497301205719
+  },
+  {
+    "startTime": 97.7,
+    "endTime": 99.98,
+    "role": "L",
+    "text": "We need to have something more.",
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 99.4,
+    "endTime": 108.04,
+    "role": "K",
+    "text": "Like then start moving and then we- we need something to, er, well protect us like in winter, something to eat and to know where to go.",
+    "agenda": 0,
+    "agenda_similiarity": 0.2362497301205719
+  },
+  {
+    "startTime": 110.7,
+    "endTime": 118.38,
+    "role": "M",
+    "text": "Exactly. I put the chocolate as the first one. So you can-if there are people who didn't eat, they can't move in the cold.",
+    "agenda": 0,
+    "agenda_similiarity": 0.2362497301205719
+  },
+  {
+    "startTime": 116.1,
+    "endTime": 117.95,
+    "role": "L",
+    "text": "In the flight, er, well-",
+    "agenda": 1,
+    "agenda_similiarity": 0.15351957000198052
+  },
+  {
+    "startTime": 118.2,
+    "endTime": 122.82,
+    "role": "L",
+    "text": "Probably we were flying for one hour. We are in Minnesota. Imagine we are...",
+    "agenda": 1,
+    "agenda_similiarity": 0.15351957000198052
+  },
+  {
+    "startTime": 122.1,
+    "endTime": 127.05,
+    "role": "M",
+    "text": "We are not well- well we are dressed like in flight, but not dressed like...",
+    "agenda": 1,
+    "agenda_similiarity": 0.15351957000198052
+  },
+  {
+    "startTime": 128.2,
+    "endTime": 130.42,
+    "role": "L",
+    "text": "No it is mentioned we were...",
+    "agenda": 1,
+    "agenda_similiarity": 0.15351957000198052
+  },
+  {
+    "startTime": 129.6,
+    "endTime": 133.45,
+    "role": "K",
+    "text": "Winter clothes. Suits, pant suits, street shoes and a work coat.",
+    "agenda": 1,
+    "agenda_similiarity": 0.15351957000198052
+  },
+  {
+    "startTime": 133.2,
+    "endTime": 134.22,
+    "role": "L",
+    "text": "Yeah winter clothes.",
+    "agenda": 1,
+    "agenda_similiarity": 0.15351957000198052
+  },
+  {
+    "startTime": 134.7,
+    "endTime": 135.72,
+    "role": "K",
+    "text": "I think that-",
+    "agenda": 2,
+    "agenda_similiarity": 0.09219700411601985
+  },
+  {
+    "startTime": 135.9,
+    "endTime": 138.46,
+    "role": "L",
+    "text": "Dressed in winter clothing, appropriate for city wear.",
+    "agenda": 1,
+    "agenda_similiarity": 0.15351957000198052
+  },
+  {
+    "startTime": 138.4,
+    "endTime": 145.24,
+    "role": "K",
+    "text": "I think it's quite important also, like, to know where to go and, like, a compass and a map.",
+    "agenda": 2,
+    "agenda_similiarity": 0.09219700411601985
+  },
+  {
+    "startTime": 143.3,
+    "endTime": 145.54,
+    "role": "L",
+    "text": "Appropriate for city weather, not the outskirts",
+    "agenda": 1,
+    "agenda_similiarity": 0.15351957000198052
+  },
+  {
+    "startTime": 146.6,
+    "endTime": 146.94,
+    "role": "K",
+    "text": "Yeah.",
+    "agenda": 2,
+    "agenda_similiarity": 0.09219700411601985
+  },
+  {
+    "startTime": 146.8,
+    "endTime": 151.84,
+    "role": "L",
+    "text": "So probably the first thing that we have to do is get more clothing.",
+    "agenda": 2,
+    "agenda_similiarity": 0.12941070010640668
+  },
+  {
+    "startTime": 150.1,
+    "endTime": 150.45,
+    "role": "K",
+    "text": "Yeah.",
+    "agenda": 2,
+    "agenda_similiarity": 0.12941070010640668
+  },
+  {
+    "startTime": 151.7,
+    "endTime": 155.54,
+    "role": "L",
+    "text": "And then started moving. So to move we need to have something.",
+    "agenda": 2,
+    "agenda_similiarity": 0.12941070010640668
+  },
+  {
+    "startTime": 159.4,
+    "endTime": 162.2,
+    "role": "K",
+    "text": "Yeah the maps- aerial maps and the compass.",
+    "agenda": 2,
+    "agenda_similiarity": 0.12941070010640668
+  },
+  {
+    "startTime": 161.6,
+    "endTime": 171.1,
+    "role": "L",
+    "text": "So as I said, first of all seventy kilometres away from the habituation and they'd know the news already that we are- we have crashed.",
+    "agenda": 2,
+    "agenda_similiarity": 0.15299203644391937
+  },
+  {
+    "startTime": 172.2,
+    "endTime": 178.28,
+    "role": "K",
+    "text": "Yeah but they don't know exactly where we are. And if- we have to walk seventy kilometres in snow.",
+    "agenda": 2,
+    "agenda_similiarity": 0.15299203644391937
+  },
+  {
+    "startTime": 177.8,
+    "endTime": 179.6,
+    "role": "L",
+    "text": "They, they must know because-",
+    "agenda": 2,
+    "agenda_similiarity": 0.15299203644391937
+  },
+  {
+    "startTime": 178.1,
+    "endTime": 179.62,
+    "role": "K",
+    "text": "That could be like...",
+    "agenda": 2,
+    "agenda_similiarity": 0.15299203644391937
+  },
+  {
+    "startTime": 179.3,
+    "endTime": 182.34,
+    "role": "L",
+    "text": "Because the information is sent before the crash.",
+    "agenda": 2,
+    "agenda_similiarity": 0.15299203644391937
+  },
+  {
+    "startTime": 183.2,
+    "endTime": 184.52,
+    "role": "M",
+    "text": "That's not been sent.",
+    "agenda": 2,
+    "agenda_similiarity": 0.15299203644391937
+  },
+  {
+    "startTime": 185.4,
+    "endTime": 191.69,
+    "role": "L",
+    "text": "The information is sent. It's mentioned. The crash came suddenly before the pilot had time to radio.",
+    "agenda": 2,
+    "agenda_similiarity": 0.15299203644391937
+  },
+  {
+    "startTime": 191.4,
+    "endTime": 191.77,
+    "role": "N",
+    "text": "Before?",
+    "agenda": 2,
+    "agenda_similiarity": 0.15299203644391937
+  },
+  {
+    "startTime": 191.9,
+    "endTime": 192.22,
+    "role": "L",
+    "text": "So.",
+    "agenda": 2,
+    "agenda_similiarity": 0.15299203644391937
+  },
+  {
+    "startTime": 192.1,
+    "endTime": 192.43,
+    "role": "N",
+    "text": "Before.",
+    "agenda": 2,
+    "agenda_similiarity": 0.15299203644391937
+  },
+  {
+    "startTime": 194.0,
+    "endTime": 194.35,
+    "role": "K",
+    "text": "Before.",
+    "agenda": 2,
+    "agenda_similiarity": 0.15299203644391937
+  },
+  {
+    "startTime": 194.0,
+    "endTime": 197.5,
+    "role": "L",
+    "text": "Before the crash. Meaning they'd know our locations exactly, so.",
+    "agenda": 2,
+    "agenda_similiarity": 0.16119429866357748
+  },
+  {
+    "startTime": 196.8,
+    "endTime": 197.14,
+    "role": "N",
+    "text": "No.",
+    "agenda": 2,
+    "agenda_similiarity": 0.16119429866357748
+  },
+  {
+    "startTime": 197.2,
+    "endTime": 197.56,
+    "role": "K",
+    "text": "No.",
+    "agenda": 2,
+    "agenda_similiarity": 0.16119429866357748
+  },
+  {
+    "startTime": 198.3,
+    "endTime": 200.94,
+    "role": "N",
+    "text": "No. The crash came suddenly before the pilot-",
+    "agenda": 2,
+    "agenda_similiarity": 0.16119429866357748
+  },
+  {
+    "startTime": 200.5,
+    "endTime": 200.88,
+    "role": "L",
+    "text": "Ah.",
+    "agenda": 2,
+    "agenda_similiarity": 0.16119429866357748
+  },
+  {
+    "startTime": 200.8,
+    "endTime": 202.4,
+    "role": "N",
+    "text": "Had a chance to radio.",
+    "agenda": 2,
+    "agenda_similiarity": 0.16119429866357748
+  },
+  {
+    "startTime": 201.4,
+    "endTime": 203.0,
+    "role": "L",
+    "text": "Okay. I wrongly read it.",
+    "agenda": 2,
+    "agenda_similiarity": 0.16119429866357748
+  },
+  {
+    "startTime": 202.3,
+    "endTime": 205.8,
+    "role": "K",
+    "text": "So yes. It's like they don't know we have crashed.",
+    "agenda": 2,
+    "agenda_similiarity": 0.16119429866357748
+  },
+  {
+    "startTime": 204.9,
+    "endTime": 209.52,
+    "role": "L",
+    "text": "Okay. So if they don't know we crashed suddenly before the pilot had time.",
+    "agenda": 2,
+    "agenda_similiarity": 0.16119429866357748
+  },
+  {
+    "startTime": 210.1,
+    "endTime": 212.0,
+    "role": "K",
+    "text": "And, I mean, they could...",
+    "agenda": 2,
+    "agenda_similiarity": 0.16119429866357748
+  },
+  {
+    "startTime": 213.4,
+    "endTime": 219.01,
+    "role": "L",
+    "text": "Okay this means we certainly have to move. So for that we need some direction maps, so.",
+    "agenda": 2,
+    "agenda_similiarity": 0.16119429866357748
+  },
+  {
+    "startTime": 221.5,
+    "endTime": 227.1,
+    "role": "K",
+    "text": "And thirty-five, like, seventy kilometres with snow- that's two days of walking or something like that.",
+    "agenda": 2,
+    "agenda_similiarity": 0.16119429866357748
+  },
+  {
+    "startTime": 227.2,
+    "endTime": 229.12,
+    "role": "N",
+    "text": "Yeah at least two days that.",
+    "agenda": 2,
+    "agenda_similiarity": 0.16119429866357748
+  },
+  {
+    "startTime": 230.8,
+    "endTime": 232.9,
+    "role": "K",
+    "text": "So we need something to eat.",
+    "agenda": 0,
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 234.9,
+    "endTime": 235.23,
+    "role": "N",
+    "text": "Exactly.",
+    "agenda": 0,
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 235.6,
+    "endTime": 236.62,
+    "role": "K",
+    "text": "To be warm.",
+    "agenda": 0,
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 236.2,
+    "endTime": 237.8,
+    "role": "L",
+    "text": "So seventy-five kilometres of walking.",
+    "agenda": 1,
+    "agenda_similiarity": 0.15405184571505626
+  },
+  {
+    "startTime": 237.1,
+    "endTime": 237.82,
+    "role": "K",
+    "text": "In snow.",
+    "agenda": 1,
+    "agenda_similiarity": 0.15405184571505626
+  },
+  {
+    "startTime": 239.7,
+    "endTime": 240.72,
+    "role": "N",
+    "text": "In the snow.",
+    "agenda": 1,
+    "agenda_similiarity": 0.15405184571505626
+  },
+  {
+    "startTime": 240.3,
+    "endTime": 242.1,
+    "role": "L",
+    "text": "In the snow until .",
+    "agenda": 1,
+    "agenda_similiarity": 0.15405184571505626
+  },
+  {
+    "startTime": 242.9,
+    "endTime": 246.3,
+    "role": "K",
+    "text": "Until- but well we hope maybe to find some maybe.",
+    "agenda": 1,
+    "agenda_similiarity": 0.15405184571505626
+  },
+  {
+    "startTime": 248.3,
+    "endTime": 252.0,
+    "role": "N",
+    "text": "Okay let's- let's identify the- the first three or four-",
+    "agenda": 1,
+    "agenda_similiarity": 0.05406711208759469
+  },
+  {
+    "startTime": 251.6,
+    "endTime": 251.93,
+    "role": "K",
+    "text": "Yeah.",
+    "agenda": 1,
+    "agenda_similiarity": 0.05406711208759469
+  },
+  {
+    "startTime": 252.2,
+    "endTime": 256.16,
+    "role": "N",
+    "text": "More- more important. Because we- we don't have too much time.",
+    "agenda": 1,
+    "agenda_similiarity": 0.05406711208759469
+  },
+  {
+    "startTime": 253.1,
+    "endTime": 253.48,
+    "role": "K",
+    "text": "Yeah.",
+    "agenda": 1,
+    "agenda_similiarity": 0.05406711208759469
+  },
+  {
+    "startTime": 253.5,
+    "endTime": 253.82,
+    "role": "N",
+    "text": "So.",
+    "agenda": 0,
+    "agenda_similiarity": 0.2798768952859531
+  },
+  {
+    "startTime": 254.9,
+    "endTime": 256.38,
+    "role": "K",
+    "text": "Extra shirts and pants?",
+    "agenda": 0,
+    "agenda_similiarity": 0.2798768952859531
+  },
+  {
+    "startTime": 255.1,
+    "endTime": 259.06,
+    "role": "N",
+    "text": "So something to- something to eat, I don't know chocolate? At least.",
+    "agenda": 0,
+    "agenda_similiarity": 0.2798768952859531
+  },
+  {
+    "startTime": 260.2,
+    "endTime": 261.72,
+    "role": "M",
+    "text": "It's not very useful.",
+    "agenda": 0,
+    "agenda_similiarity": 0.2798768952859531
+  },
+  {
+    "startTime": 263.7,
+    "endTime": 265.5,
+    "role": "K",
+    "text": "Chocolate and can of shortening.",
+    "agenda": 0,
+    "agenda_similiarity": 0.2798768952859531
+  },
+  {
+    "startTime": 264.4,
+    "endTime": 269.44,
+    "role": "N",
+    "text": "Well it is full of sugar. It burns. It keeps you alive at least.",
+    "agenda": 0,
+    "agenda_similiarity": 0.2798768952859531
+  },
+  {
+    "startTime": 268.6,
+    "endTime": 270.25,
+    "role": "M",
+    "text": "It burns too- too rapidly.",
+    "agenda": 0,
+    "agenda_similiarity": 0.2798768952859531
+  },
+  {
+    "startTime": 269.2,
+    "endTime": 272.9,
+    "role": "N",
+    "text": "So you don't need to eat for two- two days.",
+    "agenda": 0,
+    "agenda_similiarity": 0.2798768952859531
+  },
+  {
+    "startTime": 271.4,
+    "endTime": 276.8,
+    "role": "M",
+    "text": "I don't think it's a good idea. Maybe we can find some animals to kill.",
+    "agenda": 0,
+    "agenda_similiarity": 0.2798768952859531
+  },
+  {
+    "startTime": 275.1,
+    "endTime": 278.52,
+    "role": "K",
+    "text": "Er, how to eat them? How to kill them?",
+    "agenda": 0,
+    "agenda_similiarity": 0.2798768952859531
+  },
+  {
+    "startTime": 280.1,
+    "endTime": 281.54,
+    "role": "M",
+    "text": "We have an axe.",
+    "agenda": 0,
+    "agenda_similiarity": 0.2798768952859531
+  },
+  {
+    "startTime": 281.3,
+    "endTime": 283.1,
+    "role": "L",
+    "text": "Hand axe. But we ...",
+    "agenda": 0,
+    "agenda_similiarity": 0.2798768952859531
+  },
+  {
+    "startTime": 284.5,
+    "endTime": 285.55,
+    "role": "K",
+    "text": "Well it .",
+    "agenda": 0,
+    "agenda_similiarity": 0.2798768952859531
+  },
+  {
+    "startTime": 287.4,
+    "endTime": 296.04,
+    "role": "L",
+    "text": "First of all we just survived from the flight. So basically we want to survive from the cold. The cold is the main point. Not the hunger.",
+    "agenda": 2,
+    "agenda_similiarity": 0.28260330710531684
+  },
+  {
+    "startTime": 294.7,
+    "endTime": 296.6,
+    "role": "K",
+    "text": "I think we have to-",
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 295.8,
+    "endTime": 296.76,
+    "role": "L",
+    "text": "Not the hunger.",
+    "agenda": 2,
+    "agenda_similiarity": 0.28260330710531684
+  },
+  {
+    "startTime": 296.2,
+    "endTime": 306.84,
+    "role": "K",
+    "text": "If we are planning, like, we will have to walk for two days or three. Well we have to have something to eat but maybe not so much.",
+    "agenda": 2,
+    "agenda_similiarity": 0.28260330710531684
+  },
+  {
+    "startTime": 304.1,
+    "endTime": 312.42,
+    "role": "N",
+    "text": "But we have the gun so we don't need the axe to kill animals. It's a- it's a forty-five calibre pistol. So we can kill animals.",
+    "agenda": 2,
+    "agenda_similiarity": 0.28260330710531684
+  },
+  {
+    "startTime": 310.9,
+    "endTime": 314.64,
+    "role": "K",
+    "text": "I don't think we will have lots of things to kill.",
+    "agenda": 2,
+    "agenda_similiarity": 0.28260330710531684
+  },
+  {
+    "startTime": 315.5,
+    "endTime": 317.81,
+    "role": "M",
+    "text": "A pistol is not a good idea.",
+    "agenda": 2,
+    "agenda_similiarity": 0.28260330710531684
+  },
+  {
+    "startTime": 316.3,
+    "endTime": 316.66,
+    "role": "N",
+    "text": "Why?",
+    "agenda": 2,
+    "agenda_similiarity": 0.28260330710531684
+  },
+  {
+    "startTime": 317.2,
+    "endTime": 330.88,
+    "role": "M",
+    "text": "When people are together for too long a period of time without a- with less hope to survive, I'm not very sure, except for a family, er, it's a good idea to give them a pistol.",
+    "agenda": 2,
+    "agenda_similiarity": 0.28260330710531684
+  },
+  {
+    "startTime": 330.6,
+    "endTime": 330.97,
+    "role": "K",
+    "text": "Even...",
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 330.0,
+    "endTime": 331.92,
+    "role": "N",
+    "text": "If you want to kill ",
+    "agenda": 2,
+    "agenda_similiarity": 0.28260330710531684
+  },
+  {
+    "startTime": 334.1,
+    "endTime": 335.09,
+    "role": "K",
+    "text": "No I think..",
+    "agenda": 2,
+    "agenda_similiarity": 0.28260330710531684
+  },
+  {
+    "startTime": 335.4,
+    "endTime": 340.02,
+    "role": "M",
+    "text": "No. But I- but I'm not pretty sure that human beings are good, so.",
+    "agenda": 2,
+    "agenda_similiarity": 0.28260330710531684
+  },
+  {
+    "startTime": 339.3,
+    "endTime": 346.33,
+    "role": "K",
+    "text": "Come on. You are big and you can stay two days without eating and nothing will happen to you.",
+    "agenda": 0,
+    "agenda_similiarity": 0.12611105317051124
+  },
+  {
+    "startTime": 345.2,
+    "endTime": 345.56,
+    "role": "N",
+    "text": "Yes.",
+    "agenda": 0,
+    "agenda_similiarity": 0.12611105317051124
+  },
+  {
+    "startTime": 345.6,
+    "endTime": 347.82,
+    "role": "M",
+    "text": "Okay we don't have time ",
+    "agenda": 0,
+    "agenda_similiarity": 0.12611105317051124
+  },
+  {
+    "startTime": 347.7,
+    "endTime": 356.2,
+    "role": "L",
+    "text": "So four days- for me this is a second priority. We are still in the first priority where we need something to survive without food.",
+    "agenda": 0,
+    "agenda_similiarity": 0.40128968804670023
+  },
+  {
+    "startTime": 355.7,
+    "endTime": 357.6,
+    "role": "K",
+    "text": "Okay I think it's maybe..",
+    "agenda": 0,
+    "agenda_similiarity": 0.40128968804670023
+  },
+  {
+    "startTime": 357.3,
+    "endTime": 359.22,
+    "role": "L",
+    "text": "Against the cold and walking towards.",
+    "agenda": 0,
+    "agenda_similiarity": 0.40128968804670023
+  },
+  {
+    "startTime": 359.1,
+    "endTime": 359.43,
+    "role": "M",
+    "text": "Yeah.",
+    "agenda": 0,
+    "agenda_similiarity": 0.40128968804670023
+  },
+  {
+    "startTime": 361.8,
+    "endTime": 364.44,
+    "role": "K",
+    "text": "Well cold, then something to eat and then-",
+    "agenda": 0,
+    "agenda_similiarity": 0.40128968804670023
+  },
+  {
+    "startTime": 364.9,
+    "endTime": 368.53,
+    "role": "L",
+    "text": "So cannot reach the habituation in one day. We need shelter.",
+    "agenda": 2,
+    "agenda_similiarity": 0.12518018993715144
+  },
+  {
+    "startTime": 368.4,
+    "endTime": 369.51,
+    "role": "K",
+    "text": "We need something.",
+    "agenda": 0,
+    "agenda_similiarity": 0.40128968804670023
+  },
+  {
+    "startTime": 369.3,
+    "endTime": 372.1,
+    "role": "L",
+    "text": "So second one should be the twenty-by-twenty metres-",
+    "agenda": 1,
+    "agenda_similiarity": 0.012432370448373352
+  },
+  {
+    "startTime": 373.6,
+    "endTime": 373.94,
+    "role": "K",
+    "text": "Tent.",
+    "agenda": 1,
+    "agenda_similiarity": 0.012432370448373352
+  },
+  {
+    "startTime": 374.2,
+    "endTime": 374.58,
+    "role": "L",
+    "text": "Yeah.",
+    "agenda": 1,
+    "agenda_similiarity": 0.012432370448373352
+  },
+  {
+    "startTime": 375.3,
+    "endTime": 384.82,
+    "role": "K",
+    "text": "I'm not so sure. Is it better to get second, like, the compass and the maps? Because, I mean, getting oriented in the snow, it's not so easy.",
+    "agenda": 2,
+    "agenda_similiarity": 0.17096690321051572
+  },
+  {
+    "startTime": 384.4,
+    "endTime": 398.08,
+    "role": "L",
+    "text": "Er, if if you have compass or not, you are not- you are going to stay in the forest for the night. So if you have compass, it doesn't make sense if you don't have, so.",
+    "agenda": 2,
+    "agenda_similiarity": 0.17096690321051572
+  },
+  {
+    "startTime": 396.1,
+    "endTime": 398.9,
+    "role": "N",
+    "text": "We did what? Because time is running, so.",
+    "agenda": 2,
+    "agenda_similiarity": 0.04825865941952381
+  },
+  {
+    "startTime": 399.4,
+    "endTime": 399.76,
+    "role": "K",
+    "text": "Yeah.",
+    "agenda": 2,
+    "agenda_similiarity": 0.04825865941952381
+  },
+  {
+    "startTime": 400.3,
+    "endTime": 405.48,
+    "role": "L",
+    "text": "So twenty-by-twenty piece of this should be the second one that we should carry?",
+    "agenda": 1,
+    "agenda_similiarity": 0.06936215782428407
+  },
+  {
+    "startTime": 405.7,
+    "endTime": 408.66,
+    "role": "N",
+    "text": "Sorry, which is the first one for you?",
+    "agenda": 1,
+    "agenda_similiarity": 0.06936215782428407
+  },
+  {
+    "startTime": 409.5,
+    "endTime": 411.1,
+    "role": "L",
+    "text": "Er, extra pants and shirts.",
+    "agenda": 1,
+    "agenda_similiarity": 0.06936215782428407
+  },
+  {
+    "startTime": 410.6,
+    "endTime": 413.48,
+    "role": "N",
+    "text": "Yeah okay I agree- I can agree with that.",
+    "agenda": 1,
+    "agenda_similiarity": 0.06936215782428407
+  },
+  {
+    "startTime": 414.9,
+    "endTime": 418.97,
+    "role": "L",
+    "text": "And the third one is for the navigations I- I believe.",
+    "agenda": 0,
+    "agenda_similiarity": 0.09825389191254019
+  },
+  {
+    "startTime": 419.4,
+    "endTime": 423.25,
+    "role": "M",
+    "text": "The third one. But the second one, what did you put?",
+    "agenda": 0,
+    "agenda_similiarity": 0.09825389191254019
+  },
+  {
+    "startTime": 426.5,
+    "endTime": 429.38,
+    "role": "L",
+    "text": "The second one is for a night tent.",
+    "agenda": 0,
+    "agenda_similiarity": 0.09825389191254019
+  },
+  {
+    "startTime": 430.2,
+    "endTime": 430.88,
+    "role": "N",
+    "text": "Twenty-by-twenty foot.",
+    "agenda": 0,
+    "agenda_similiarity": 0.09825389191254019
+  },
+  {
+    "startTime": 431.3,
+    "endTime": 435.46,
+    "role": "M",
+    "text": "Okay. Okay I can agree with that. Nothing to eat, are we sure?",
+    "agenda": 0,
+    "agenda_similiarity": 0.09825389191254019
+  },
+  {
+    "startTime": 437.1,
+    "endTime": 437.84,
+    "role": "K",
+    "text": "I think.",
+    "agenda": 0,
+    "agenda_similiarity": 0.09825389191254019
+  },
+  {
+    "startTime": 438.8,
+    "endTime": 442.98,
+    "role": "L",
+    "text": "It's a second priority. We are still in the first priority.",
+    "agenda": 0,
+    "agenda_similiarity": 0.09825389191254019
+  },
+  {
+    "startTime": 441.5,
+    "endTime": 441.88,
+    "role": "M",
+    "text": "Okay.",
+    "agenda": 0,
+    "agenda_similiarity": 0.09825389191254019
+  },
+  {
+    "startTime": 442.3,
+    "endTime": 449.23,
+    "role": "K",
+    "text": "Maybe we should not, like, fulfil the first priority but, like, first item of first priority, first item of second priority.",
+    "agenda": 0,
+    "agenda_similiarity": 0.09825389191254019
+  },
+  {
+    "startTime": 458.0,
+    "endTime": 465.36,
+    "role": "K",
+    "text": "I'm not sure it's, like- first we take the map and the compass and afterwards the food? Or we take food and then...",
+    "agenda": 0,
+    "agenda_similiarity": 0.09825389191254019
+  },
+  {
+    "startTime": 464.8,
+    "endTime": 470.56,
+    "role": "N",
+    "text": "Before we can pass we have to be sure that we have something to eat I think. No?",
+    "agenda": 0,
+    "agenda_similiarity": 0.4041106255540055
+  },
+  {
+    "startTime": 467.4,
+    "endTime": 467.78,
+    "role": "K",
+    "text": "Yeah.",
+    "agenda": 0,
+    "agenda_similiarity": 0.4041106255540055
+  },
+  {
+    "startTime": 469.2,
+    "endTime": 472.4,
+    "role": "N",
+    "text": "I think at minus twenty you need to eat something.",
+    "agenda": 0,
+    "agenda_similiarity": 0.4041106255540055
+  },
+  {
+    "startTime": 471.2,
+    "endTime": 473.0,
+    "role": "L",
+    "text": "Yeah. Let's go for food.",
+    "agenda": 0,
+    "agenda_similiarity": 0.4041106255540055
+  },
+  {
+    "startTime": 472.1,
+    "endTime": 474.69,
+    "role": "M",
+    "text": "I can agree to kill animals .",
+    "agenda": 0,
+    "agenda_similiarity": 0.18150521840389314
+  },
+  {
+    "startTime": 475.9,
+    "endTime": 481.98,
+    "role": "L",
+    "text": "So food. Which kind of food? We go for chocolate bar which is small or the...",
+    "agenda": 0,
+    "agenda_similiarity": 0.22292468694598727
+  },
+  {
+    "startTime": 480.3,
+    "endTime": 484.37,
+    "role": "K",
+    "text": "Short- can of shortening it's not too- it's a little bigger.",
+    "agenda": 0,
+    "agenda_similiarity": 0.22292468694598727
+  },
+  {
+    "startTime": 484.2,
+    "endTime": 491.55,
+    "role": "M",
+    "text": "Well a chocolate bar there's not enough for the whole plane, I think. So maybe it's fairly useless for four people.",
+    "agenda": 0,
+    "agenda_similiarity": 0.22292468694598727
+  },
+  {
+    "startTime": 491.3,
+    "endTime": 491.96,
+    "role": "K",
+    "text": "Yeah. ",
+    "agenda": 0,
+    "agenda_similiarity": 0.22292468694598727
+  },
+  {
+    "startTime": 492.1,
+    "endTime": 497.54,
+    "role": "L",
+    "text": "So we should go for the family-sized chocolate bar which is sugar . Let's go for this.",
+    "agenda": 0,
+    "agenda_similiarity": 0.22292468694598727
+  },
+  {
+    "startTime": 499.1,
+    "endTime": 499.48,
+    "role": "K",
+    "text": "Yeah.",
+    "agenda": 0,
+    "agenda_similiarity": 0.22292468694598727
+  },
+  {
+    "startTime": 502.3,
+    "endTime": 503.32,
+    "role": "L",
+    "text": "And then compass-",
+    "agenda": 2,
+    "agenda_similiarity": 0.03682890452334573
+  },
+  {
+    "startTime": 506.8,
+    "endTime": 507.44,
+    "role": "K",
+    "text": "Aerial map.",
+    "agenda": 2,
+    "agenda_similiarity": 0.03682890452334573
+  },
+  {
+    "startTime": 507.4,
+    "endTime": 508.88,
+    "role": "L",
+    "text": "Or the map? So...",
+    "agenda": 2,
+    "agenda_similiarity": 0.03682890452334573
+  },
+  {
+    "startTime": 510.2,
+    "endTime": 512.51,
+    "role": "N",
+    "text": "Okay. I think I'd go for the",
+    "agenda": 2,
+    "agenda_similiarity": 0.03682890452334573
+  },
+  {
+    "startTime": 511.5,
+    "endTime": 512.78,
+    "role": "M",
+    "text": "Which for the map",
+    "agenda": 2,
+    "agenda_similiarity": 0.07845682462465425
+  },
+  {
+    "startTime": 512.7,
+    "endTime": 514.62,
+    "role": "K",
+    "text": "Well I think we need both.",
+    "agenda": 2,
+    "agenda_similiarity": 0.07845682462465425
+  },
+  {
+    "startTime": 515.3,
+    "endTime": 520.48,
+    "role": "N",
+    "text": "Maybe the aerial map is more important. You can still understand where is the-",
+    "agenda": 2,
+    "agenda_similiarity": 0.14100756412456025
+  },
+  {
+    "startTime": 520.9,
+    "endTime": 521.26,
+    "role": "M",
+    "text": "Yeah.",
+    "agenda": 2,
+    "agenda_similiarity": 0.14100756412456025
+  },
+  {
+    "startTime": 521.2,
+    "endTime": 521.92,
+    "role": "L",
+    "text": "The sun.",
+    "agenda": 2,
+    "agenda_similiarity": 0.14100756412456025
+  },
+  {
+    "startTime": 522.1,
+    "endTime": 525.3,
+    "role": "M",
+    "text": "You can see, like, then put it in the map.",
+    "agenda": 2,
+    "agenda_similiarity": 0.14100756412456025
+  },
+  {
+    "startTime": 524.5,
+    "endTime": 525.82,
+    "role": "L",
+    "text": "The light. Continue ",
+    "agenda": 2,
+    "agenda_similiarity": 0.14100756412456025
+  },
+  {
+    "startTime": 526.7,
+    "endTime": 533.5,
+    "role": "M",
+    "text": "Or if you see a bit light you can understand where is the sun. You can guess where is North.",
+    "agenda": 2,
+    "agenda_similiarity": 0.14100756412456025
+  },
+  {
+    "startTime": 531.5,
+    "endTime": 533.66,
+    "role": "L",
+    "text": "The map is more important then?",
+    "agenda": 2,
+    "agenda_similiarity": 0.2420016327105271
+  },
+  {
+    "startTime": 532.4,
+    "endTime": 532.74,
+    "role": "M",
+    "text": "Yeah.",
+    "agenda": 2,
+    "agenda_similiarity": 0.2420016327105271
+  },
+  {
+    "startTime": 533.4,
+    "endTime": 537.82,
+    "role": "K",
+    "text": "Yes. I think it's more important, but I would take the compass also.",
+    "agenda": 2,
+    "agenda_similiarity": 0.2420016327105271
+  },
+  {
+    "startTime": 538.6,
+    "endTime": 546.65,
+    "role": "L",
+    "text": "So compass should go into the next, depending on the food and the compass. Now we can choose between whisky or compass. ",
+    "agenda": 2,
+    "agenda_similiarity": 0.2420016327105271
+  },
+  {
+    "startTime": 550.2,
+    "endTime": 558.56,
+    "role": "K",
+    "text": "Come on. Whisky, I mean, it wouldn't keep- you may feel warmer drinking alcohol, but it, in fact, it just dilates your....",
+    "agenda": 2,
+    "agenda_similiarity": 0.2420016327105271
+  },
+  {
+    "startTime": 557.7,
+    "endTime": 558.38,
+    "role": "N",
+    "text": "Mm hmm.",
+    "agenda": 2,
+    "agenda_similiarity": 0.2420016327105271
+  },
+  {
+    "startTime": 558.4,
+    "endTime": 563.5,
+    "role": "M",
+    "text": "Maybe you can- you can use- because we are not sure we can light wood.",
+    "agenda": 2,
+    "agenda_similiarity": 0.2420016327105271
+  },
+  {
+    "startTime": 562.2,
+    "endTime": 565.08,
+    "role": "K",
+    "text": "We have nothing to light it with. ",
+    "agenda": 2,
+    "agenda_similiarity": 0.2420016327105271
+  },
+  {
+    "startTime": 564.9,
+    "endTime": 569.45,
+    "role": "M",
+    "text": "No you can use the whisky and the empty cigarette lighter to- to...",
+    "agenda": 2,
+    "agenda_similiarity": 0.2420016327105271
+  },
+  {
+    "startTime": 568.2,
+    "endTime": 573.32,
+    "role": "K",
+    "text": "But then you also need to take the newspapers and the hand axe, so it's like...",
+    "agenda": 2,
+    "agenda_similiarity": 0.2420016327105271
+  },
+  {
+    "startTime": 574.6,
+    "endTime": 577.26,
+    "role": "N",
+    "text": "Yeah. Actually- actually we were going to...",
+    "agenda": 2,
+    "agenda_similiarity": 0.2420016327105271
+  },
+  {
+    "startTime": 577.6,
+    "endTime": 584.6,
+    "role": "M",
+    "text": "They said there is plenty of dead wood. So you just need a spark and then it will burn normally.",
+    "agenda": 2,
+    "agenda_similiarity": 0.2420016327105271
+  },
+  {
+    "startTime": 583.1,
+    "endTime": 583.74,
+    "role": "N",
+    "text": "Mmm. Yeah.",
+    "agenda": 2,
+    "agenda_similiarity": 0.2420016327105271
+  },
+  {
+    "startTime": 585.8,
+    "endTime": 589.54,
+    "role": "M",
+    "text": "Being said it's dead wood. Not- not wood plenty of .",
+    "agenda": 2,
+    "agenda_similiarity": 0.2420016327105271
+  },
+  {
+    "startTime": 590.6,
+    "endTime": 596.89,
+    "role": "K",
+    "text": "You need some kind of paper. I mean, you cannot put a lighter and dead wood and...",
+    "agenda": 2,
+    "agenda_similiarity": 0.2420016327105271
+  },
+  {
+    "startTime": 596.2,
+    "endTime": 597.95,
+    "role": "L",
+    "text": "The cold is minus ten.",
+    "agenda": 1,
+    "agenda_similiarity": 0.519933834612258
+  },
+  {
+    "startTime": 597.3,
+    "endTime": 600.9,
+    "role": "N",
+    "text": "You can- can- you can take newspapers if you want.",
+    "agenda": 2,
+    "agenda_similiarity": 0.2420016327105271
+  },
+  {
+    "startTime": 599.3,
+    "endTime": 599.66,
+    "role": "L",
+    "text": "Yeah.",
+    "agenda": 2,
+    "agenda_similiarity": 0.2420016327105271
+  },
+  {
+    "startTime": 600.6,
+    "endTime": 602.04,
+    "role": "N",
+    "text": "But whisky is not-",
+    "agenda": 2,
+    "agenda_similiarity": 0.2420016327105271
+  },
+  {
+    "startTime": 601.1,
+    "endTime": 602.54,
+    "role": "K",
+    "text": "No I don't see.",
+    "agenda": 2,
+    "agenda_similiarity": 0.2420016327105271
+  },
+  {
+    "startTime": 602.4,
+    "endTime": 603.36,
+    "role": "N",
+    "text": "Not very useful.",
+    "agenda": 2,
+    "agenda_similiarity": 0.2420016327105271
+  },
+  {
+    "startTime": 603.3,
+    "endTime": 604.38,
+    "role": "K",
+    "text": "But no it's-",
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 604.6,
+    "endTime": 605.68,
+    "role": "L",
+    "text": "It doesn't burn?",
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 604.3,
+    "endTime": 607.93,
+    "role": "K",
+    "text": "Well it's a thing to get the spark on- the spark.",
+    "agenda": 3,
+    "agenda_similiarity": 0.1793947214201759
+  },
+  {
+    "startTime": 607.4,
+    "endTime": 608.16,
+    "role": "M",
+    "text": "The spark?",
+    "agenda": 3,
+    "agenda_similiarity": 0.1793947214201759
+  },
+  {
+    "startTime": 608.7,
+    "endTime": 609.42,
+    "role": "N",
+    "text": "Cigarette lighter.",
+    "agenda": 3,
+    "agenda_similiarity": 0.1793947214201759
+  },
+  {
+    "startTime": 609.7,
+    "endTime": 610.46,
+    "role": "K",
+    "text": "Without flint?",
+    "agenda": 3,
+    "agenda_similiarity": 0.1793947214201759
+  },
+  {
+    "startTime": 611.9,
+    "endTime": 615.23,
+    "role": "L",
+    "text": "There is no flint so how do you ?",
+    "agenda": 3,
+    "agenda_similiarity": 0.1793947214201759
+  },
+  {
+    "startTime": 612.2,
+    "endTime": 615.6,
+    "role": "N",
+    "text": "You can have a spark- or a stone for spark.",
+    "agenda": 3,
+    "agenda_similiarity": 0.1793947214201759
+  },
+  {
+    "startTime": 615.1,
+    "endTime": 621.5,
+    "role": "M",
+    "text": "Yeah, yeah. That's the point. You use the stone of the- of the cigarette lighter and the whisky as liquid.",
+    "agenda": 3,
+    "agenda_similiarity": 0.1793947214201759
+  },
+  {
+    "startTime": 621.1,
+    "endTime": 623.08,
+    "role": "N",
+    "text": "I'm pretty sure whisky is .",
+    "agenda": 3,
+    "agenda_similiarity": 0.1793947214201759
+  },
+  {
+    "startTime": 622.4,
+    "endTime": 625.92,
+    "role": "M",
+    "text": "At minus twenty you can light the wood with only the-",
+    "agenda": 3,
+    "agenda_similiarity": 0.1793947214201759
+  },
+  {
+    "startTime": 626.6,
+    "endTime": 626.97,
+    "role": "N",
+    "text": "No.",
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 626.6,
+    "endTime": 626.98,
+    "role": "M",
+    "text": "Newspaper.",
+    "agenda": 3,
+    "agenda_similiarity": 0.1793947214201759
+  },
+  {
+    "startTime": 628.4,
+    "endTime": 632.96,
+    "role": "N",
+    "text": "I- I'm not- I'm not sure, but I don't know if it.",
+    "agenda": 3,
+    "agenda_similiarity": 0.1793947214201759
+  },
+  {
+    "startTime": 630.7,
+    "endTime": 634.22,
+    "role": "L",
+    "text": "Newspaper standing- well newspaper is with us, it's- it's- it's dry.",
+    "agenda": 3,
+    "agenda_similiarity": 0.1793947214201759
+  },
+  {
+    "startTime": 635.9,
+    "endTime": 639.23,
+    "role": "N",
+    "text": "Yeah. And newspaper is smaller than a whisky bottle.",
+    "agenda": 3,
+    "agenda_similiarity": 0.1793947214201759
+  },
+  {
+    "startTime": 639.3,
+    "endTime": 643.38,
+    "role": "M",
+    "text": "But with only the stone of the lighter you can light newspaper?",
+    "agenda": 3,
+    "agenda_similiarity": 0.1793947214201759
+  },
+  {
+    "startTime": 643.8,
+    "endTime": 644.12,
+    "role": "N",
+    "text": "Certainly.",
+    "agenda": 3,
+    "agenda_similiarity": 0.1793947214201759
+  },
+  {
+    "startTime": 646.1,
+    "endTime": 646.43,
+    "role": "N",
+    "text": "Okay.",
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 649.9,
+    "endTime": 652.56,
+    "role": "L",
+    "text": "Okay. So lighter without newspaper is meaningless?",
+    "agenda": 3,
+    "agenda_similiarity": 0.11111144957942927
+  },
+  {
+    "startTime": 656.5,
+    "endTime": 657.58,
+    "role": "N",
+    "text": "No. Then you-",
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 657.4,
+    "endTime": 658.36,
+    "role": "K",
+    "text": "Yeah. I mean...",
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 658.2,
+    "endTime": 661.72,
+    "role": "N",
+    "text": "Lighter and newspaper is the next- are the next. Yeah, so.",
+    "agenda": 3,
+    "agenda_similiarity": 0.08495006162857958
+  },
+  {
+    "startTime": 660.7,
+    "endTime": 663.74,
+    "role": "L",
+    "text": "Are we allowed to rank both together? Or..",
+    "agenda": "-",
+    "agenda_similiarity": 0.05538151388160534
+  },
+  {
+    "startTime": 663.6,
+    "endTime": 665.04,
+    "role": "M",
+    "text": "What about the compass?",
+    "agenda": 2,
+    "agenda_similiarity": 0.24128845202490912
+  },
+  {
+    "startTime": 665.3,
+    "endTime": 674.18,
+    "role": "K",
+    "text": "I think the compass is much more important. We will be moving and in a snowy area it's- it's really easy to get lost-",
+    "agenda": 2,
+    "agenda_similiarity": 0.24128845202490912
+  },
+  {
+    "startTime": 671.5,
+    "endTime": 671.88,
+    "role": "N",
+    "text": "True-",
+    "agenda": 2,
+    "agenda_similiarity": 0.24128845202490912
+  },
+  {
+    "startTime": 671.4,
+    "endTime": 672.45,
+    "role": "K",
+    "text": "If there's snow.",
+    "agenda": 2,
+    "agenda_similiarity": 0.24128845202490912
+  },
+  {
+    "startTime": 673.2,
+    "endTime": 683.08,
+    "role": "N",
+    "text": "that if it's night- if it's night and it's cloudy you don't really know where is anything. You don't see anything. So maybe compass is still...",
+    "agenda": 2,
+    "agenda_similiarity": 0.24128845202490912
+  },
+  {
+    "startTime": 681.8,
+    "endTime": 683.6,
+    "role": "K",
+    "text": "And if there's er you-",
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 684.5,
+    "endTime": 684.85,
+    "role": "M",
+    "text": "Smoke.",
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 685.6,
+    "endTime": 685.92,
+    "role": "K",
+    "text": "Smoke.",
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 686.2,
+    "endTime": 686.94,
+    "role": "M",
+    "text": "Er, fog.",
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 686.7,
+    "endTime": 689.74,
+    "role": "K",
+    "text": "Fog? You- you wouldn't know where you are.",
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 689.1,
+    "endTime": 691.2,
+    "role": "N",
+    "text": "Hmm. Okay. So five for compass?",
+    "agenda": 2,
+    "agenda_similiarity": 0.08994148006591403
+  },
+  {
+    "startTime": 692.1,
+    "endTime": 693.58,
+    "role": "M",
+    "text": "Yeah. Then cigarette lighter?",
+    "agenda": 2,
+    "agenda_similiarity": 0.08994148006591403
+  },
+  {
+    "startTime": 698.7,
+    "endTime": 699.46,
+    "role": "N",
+    "text": "Oh yeah.",
+    "agenda": 2,
+    "agenda_similiarity": 0.08994148006591403
+  },
+  {
+    "startTime": 700.2,
+    "endTime": 708.02,
+    "role": "L",
+    "text": "How would- how would- thinking like this. If the crash happens, sooner or later they will know and they will search for us.",
+    "agenda": 1,
+    "agenda_similiarity": 0.12523580014161723
+  },
+  {
+    "startTime": 706.2,
+    "endTime": 710.62,
+    "role": "K",
+    "text": "Well no if there's a snow storm they could spend two days without.",
+    "agenda": 1,
+    "agenda_similiarity": 0.12523580014161723
+  },
+  {
+    "startTime": 711.5,
+    "endTime": 712.46,
+    "role": "L",
+    "text": "Okay. No idea.",
+    "agenda": 1,
+    "agenda_similiarity": 0.12523580014161723
+  },
+  {
+    "startTime": 718.3,
+    "endTime": 722.46,
+    "role": "K",
+    "text": "I mean think just as the plane can get covered with snow and...",
+    "agenda": 1,
+    "agenda_similiarity": 0.12523580014161723
+  },
+  {
+    "startTime": 724.4,
+    "endTime": 725.88,
+    "role": "M",
+    "text": "The plane has sunk.",
+    "agenda": 1,
+    "agenda_similiarity": 0.12523580014161723
+  },
+  {
+    "startTime": 725.6,
+    "endTime": 731.87,
+    "role": "N",
+    "text": "What about the . I was just thinking about the food. Are we surviving with just the chocolate bar?",
+    "agenda": 2,
+    "agenda_similiarity": 0.1915118407572021
+  },
+  {
+    "startTime": 734.4,
+    "endTime": 738.0,
+    "role": "K",
+    "text": "I think we should just take the can of shortening.",
+    "agenda": 2,
+    "agenda_similiarity": 0.1915118407572021
+  },
+  {
+    "startTime": 735.7,
+    "endTime": 742.35,
+    "role": "L",
+    "text": "Now we should make the fire. We need fire now. Because we have to be a certain amount of...",
+    "agenda": 2,
+    "agenda_similiarity": 0.1915118407572021
+  },
+  {
+    "startTime": 743.9,
+    "endTime": 745.34,
+    "role": "K",
+    "text": "So cigarette and newspaper.",
+    "agenda": 2,
+    "agenda_similiarity": 0.1915118407572021
+  },
+  {
+    "startTime": 747.2,
+    "endTime": 749.58,
+    "role": "L",
+    "text": "Okay. Let's go cigarette lighter is five?",
+    "agenda": 2,
+    "agenda_similiarity": 0.1915118407572021
+  },
+  {
+    "startTime": 750.3,
+    "endTime": 750.63,
+    "role": "N",
+    "text": "Six.",
+    "agenda": 2,
+    "agenda_similiarity": 0.1915118407572021
+  },
+  {
+    "startTime": 751.2,
+    "endTime": 751.53,
+    "role": "K",
+    "text": "Six.",
+    "agenda": 2,
+    "agenda_similiarity": 0.1915118407572021
+  },
+  {
+    "startTime": 751.8,
+    "endTime": 752.91,
+    "role": "L",
+    "text": "What was five?",
+    "agenda": 2,
+    "agenda_similiarity": 0.1915118407572021
+  },
+  {
+    "startTime": 752.1,
+    "endTime": 752.43,
+    "role": "K",
+    "text": "Compass.",
+    "agenda": 2,
+    "agenda_similiarity": 0.1915118407572021
+  },
+  {
+    "startTime": 752.7,
+    "endTime": 753.36,
+    "role": "N",
+    "text": "Er, compass.",
+    "agenda": 2,
+    "agenda_similiarity": 0.1915118407572021
+  },
+  {
+    "startTime": 753.3,
+    "endTime": 753.63,
+    "role": "L",
+    "text": "Compass.",
+    "agenda": 2,
+    "agenda_similiarity": 0.1915118407572021
+  },
+  {
+    "startTime": 755.6,
+    "endTime": 756.24,
+    "role": "M",
+    "text": "And then",
+    "agenda": 3,
+    "agenda_similiarity": 0.08495006162857958
+  },
+  {
+    "startTime": 756.4,
+    "endTime": 758.2,
+    "role": "L",
+    "text": "Six and then newspaper seven?",
+    "agenda": 3,
+    "agenda_similiarity": 0.08495006162857958
+  },
+  {
+    "startTime": 758.1,
+    "endTime": 758.43,
+    "role": "K",
+    "text": "Yeah.",
+    "agenda": 3,
+    "agenda_similiarity": 0.08495006162857958
+  },
+  {
+    "startTime": 759.4,
+    "endTime": 760.14,
+    "role": "M",
+    "text": "Except .",
+    "agenda": 3,
+    "agenda_similiarity": 0.08495006162857958
+  },
+  {
+    "startTime": 760.9,
+    "endTime": 766.15,
+    "role": "L",
+    "text": "Okay so once we have this we need a hand axe to cut the wood?",
+    "agenda": 2,
+    "agenda_similiarity": 0.2253788740808909
+  },
+  {
+    "startTime": 764.2,
+    "endTime": 764.55,
+    "role": "K",
+    "text": "Er.",
+    "agenda": 2,
+    "agenda_similiarity": 0.2253788740808909
+  },
+  {
+    "startTime": 766.7,
+    "endTime": 771.18,
+    "role": "L",
+    "text": "We can just burn it otherwise. A hand axe is not- but we need...",
+    "agenda": 2,
+    "agenda_similiarity": 0.2253788740808909
+  },
+  {
+    "startTime": 772.1,
+    "endTime": 781.22,
+    "role": "M",
+    "text": "What's- what's the point of making it more complicated to use a newspaper. Because probably it's possible to do it, but it's more difficult.",
+    "agenda": 3,
+    "agenda_similiarity": 0.15631172973770938
+  },
+  {
+    "startTime": 781.4,
+    "endTime": 792.5,
+    "role": "N",
+    "text": "Yes but it's more than a bottle of whisky. The bottle of whisky is heavy. It's big. And if you have to walk, you will not be happy with that.",
+    "agenda": 3,
+    "agenda_similiarity": 0.15631172973770938
+  },
+  {
+    "startTime": 789.3,
+    "endTime": 792.93,
+    "role": "M",
+    "text": "It's not big. It's one litre. I mean, it's one kilo.",
+    "agenda": 3,
+    "agenda_similiarity": 0.15631172973770938
+  },
+  {
+    "startTime": 792.5,
+    "endTime": 794.4,
+    "role": "L",
+    "text": "I can carry it. ",
+    "agenda": 3,
+    "agenda_similiarity": 0.15631172973770938
+  },
+  {
+    "startTime": 794.3,
+    "endTime": 802.7,
+    "role": "N",
+    "text": "I offer my services. Well at least I don't spend what thirty minutes, I don't know, to try to- maybe it's windy and it...",
+    "agenda": 3,
+    "agenda_similiarity": 0.13840224468002393
+  },
+  {
+    "startTime": 801.1,
+    "endTime": 802.8,
+    "role": "K",
+    "text": "I- I think it's like...",
+    "agenda": "-",
+    "agenda_similiarity": 0.03682890452334573
+  },
+  {
+    "startTime": 802.6,
+    "endTime": 806.23,
+    "role": "L",
+    "text": "Does it burn first of all? Whisky. Does- does it burn?",
+    "agenda": 1,
+    "agenda_similiarity": 0.06204179237842269
+  },
+  {
+    "startTime": 807.2,
+    "endTime": 811.04,
+    "role": "M",
+    "text": "Whisky is maybe it can be sixty degrees, fifty. So it burns.",
+    "agenda": 1,
+    "agenda_similiarity": 0.06204179237842269
+  },
+  {
+    "startTime": 812.3,
+    "endTime": 813.41,
+    "role": "K",
+    "text": "Sure it burns.",
+    "agenda": 1,
+    "agenda_similiarity": 0.06204179237842269
+  },
+  {
+    "startTime": 813.7,
+    "endTime": 814.69,
+    "role": "M",
+    "text": "Like- like oil.",
+    "agenda": 1,
+    "agenda_similiarity": 0.06204179237842269
+  },
+  {
+    "startTime": 816.6,
+    "endTime": 816.94,
+    "role": "L",
+    "text": "Okay.",
+    "agenda": 1,
+    "agenda_similiarity": 0.06204179237842269
+  },
+  {
+    "startTime": 817.9,
+    "endTime": 825.16,
+    "role": "K",
+    "text": "The thing is that I am not sure it will work with a cigarette lighter. I've never tried to put real alcohol.",
+    "agenda": 3,
+    "agenda_similiarity": 0.12509514451842793
+  },
+  {
+    "startTime": 824.3,
+    "endTime": 828.04,
+    "role": "M",
+    "text": "I've never tried it. I- I'm trying only to think, erm.",
+    "agenda": 3,
+    "agenda_similiarity": 0.12509514451842793
+  },
+  {
+    "startTime": 827.9,
+    "endTime": 830.78,
+    "role": "L",
+    "text": "So maybe we should change the newspaper to...",
+    "agenda": 3,
+    "agenda_similiarity": 0.12509514451842793
+  },
+  {
+    "startTime": 831.6,
+    "endTime": 832.32,
+    "role": "K",
+    "text": "Should we-",
+    "agenda": "-",
+    "agenda_similiarity": 0.1490609624888986
+  },
+  {
+    "startTime": 833.1,
+    "endTime": 839.02,
+    "role": "K",
+    "text": "Should we maybe, like, start by the ending now so we'll have less things to decide.",
+    "agenda": "-",
+    "agenda_similiarity": 0.1490609624888986
+  },
+  {
+    "startTime": 837.5,
+    "endTime": 837.86,
+    "role": "N",
+    "text": "Okay.",
+    "agenda": "-",
+    "agenda_similiarity": 0.1490609624888986
+  },
+  {
+    "startTime": 838.2,
+    "endTime": 842.82,
+    "role": "K",
+    "text": "I don't see the point of the ball of steel wool. It's heavy and...",
+    "agenda": 3,
+    "agenda_similiarity": 0.1749720301006754
+  },
+  {
+    "startTime": 844.8,
+    "endTime": 846.72,
+    "role": "M",
+    "text": "It's not- it's not really heavy.",
+    "agenda": 3,
+    "agenda_similiarity": 0.1749720301006754
+  },
+  {
+    "startTime": 846.5,
+    "endTime": 846.83,
+    "role": "K",
+    "text": "No?",
+    "agenda": 3,
+    "agenda_similiarity": 0.1749720301006754
+  },
+  {
+    "startTime": 847.1,
+    "endTime": 847.78,
+    "role": "M",
+    "text": "But useful-",
+    "agenda": 3,
+    "agenda_similiarity": 0.1749720301006754
+  },
+  {
+    "startTime": 848.1,
+    "endTime": 848.78,
+    "role": "K",
+    "text": "It's steel.",
+    "agenda": 3,
+    "agenda_similiarity": 0.1749720301006754
+  },
+  {
+    "startTime": 849.7,
+    "endTime": 852.08,
+    "role": "M",
+    "text": "I'm not very sure. Steel, but it's-",
+    "agenda": 3,
+    "agenda_similiarity": 0.1749720301006754
+  },
+  {
+    "startTime": 851.6,
+    "endTime": 855.8,
+    "role": "K",
+    "text": "The only use I could think of was, like, trying to fish.",
+    "agenda": 3,
+    "agenda_similiarity": 0.1749720301006754
+  },
+  {
+    "startTime": 854.4,
+    "endTime": 856.96,
+    "role": "M",
+    "text": "Yes but it's a very, very, very thin-",
+    "agenda": 3,
+    "agenda_similiarity": 0.1749720301006754
+  },
+  {
+    "startTime": 857.5,
+    "endTime": 857.87,
+    "role": "K",
+    "text": "Yes.",
+    "agenda": 3,
+    "agenda_similiarity": 0.1749720301006754
+  },
+  {
+    "startTime": 857.9,
+    "endTime": 863.15,
+    "role": "M",
+    "text": "Thread of steel wool so it's not very heavy. But useful, I'm not very sure.",
+    "agenda": 3,
+    "agenda_similiarity": 0.17462206563302785
+  },
+  {
+    "startTime": 864.3,
+    "endTime": 870.24,
+    "role": "K",
+    "text": "No I think it's less useful. So we'll put it as the last one? We have any other...",
+    "agenda": 3,
+    "agenda_similiarity": 0.17462206563302785
+  },
+  {
+    "startTime": 876.1,
+    "endTime": 878.69,
+    "role": "L",
+    "text": "I don't see any use of it.",
+    "agenda": 3,
+    "agenda_similiarity": 0.17462206563302785
+  },
+  {
+    "startTime": 877.5,
+    "endTime": 878.24,
+    "role": "M",
+    "text": "No. Okay.",
+    "agenda": 3,
+    "agenda_similiarity": 0.17462206563302785
+  },
+  {
+    "startTime": 878.1,
+    "endTime": 878.42,
+    "role": "K",
+    "text": "Okay.",
+    "agenda": 3,
+    "agenda_similiarity": 0.17462206563302785
+  },
+  {
+    "startTime": 879.3,
+    "endTime": 880.7,
+    "role": "N",
+    "text": "So it's twelve. Right?",
+    "agenda": 3,
+    "agenda_similiarity": 0.12284198721316282
+  },
+  {
+    "startTime": 880.1,
+    "endTime": 880.46,
+    "role": "K",
+    "text": "Yeah.",
+    "agenda": 3,
+    "agenda_similiarity": 0.12284198721316282
+  },
+  {
+    "startTime": 881.2,
+    "endTime": 882.64,
+    "role": "L",
+    "text": "Yes it is useful.",
+    "agenda": 3,
+    "agenda_similiarity": 0.12284198721316282
+  },
+  {
+    "startTime": 884.4,
+    "endTime": 884.78,
+    "role": "M",
+    "text": "Okay.",
+    "agenda": 3,
+    "agenda_similiarity": 0.12284198721316282
+  },
+  {
+    "startTime": 884.8,
+    "endTime": 885.17,
+    "role": "K",
+    "text": "Okay.",
+    "agenda": 3,
+    "agenda_similiarity": 0.12284198721316282
+  },
+  {
+    "startTime": 885.2,
+    "endTime": 885.55,
+    "role": "N",
+    "text": "Quickly.",
+    "agenda": 3,
+    "agenda_similiarity": 0.12284198721316282
+  },
+  {
+    "startTime": 885.5,
+    "endTime": 894.86,
+    "role": "L",
+    "text": "Okay but then, er, look. If you are stuck in the snow while walking, we don't have any way to get out. Maybe this is useful.",
+    "agenda": 3,
+    "agenda_similiarity": 0.12284198721316282
+  },
+  {
+    "startTime": 894.6,
+    "endTime": 896.3,
+    "role": "N",
+    "text": "You will cut your hand.",
+    "agenda": 3,
+    "agenda_similiarity": 0.12284198721316282
+  },
+  {
+    "startTime": 895.4,
+    "endTime": 895.77,
+    "role": "L",
+    "text": "Huh?",
+    "agenda": 3,
+    "agenda_similiarity": 0.12284198721316282
+  },
+  {
+    "startTime": 896.3,
+    "endTime": 898.0,
+    "role": "N",
+    "text": "You will cut your hands.",
+    "agenda": 3,
+    "agenda_similiarity": 0.12284198721316282
+  },
+  {
+    "startTime": 897.2,
+    "endTime": 901.36,
+    "role": "L",
+    "text": "On this kind of thing. Okay so let's go for twelve on this.",
+    "agenda": 3,
+    "agenda_similiarity": 0.12284198721316282
+  },
+  {
+    "startTime": 900.2,
+    "endTime": 900.94,
+    "role": "K",
+    "text": "So then...",
+    "agenda": 1,
+    "agenda_similiarity": 0.14253433447253117
+  },
+  {
+    "startTime": 902.8,
+    "endTime": 905.02,
+    "role": "L",
+    "text": "We have shortening, whisky. Whisky was?",
+    "agenda": 1,
+    "agenda_similiarity": 0.14253433447253117
+  },
+  {
+    "startTime": 906.2,
+    "endTime": 909.16,
+    "role": "M",
+    "text": "Er, whisky we were not pretty sure. ",
+    "agenda": 1,
+    "agenda_similiarity": 0.14253433447253117
+  },
+  {
+    "startTime": 911.5,
+    "endTime": 919.5,
+    "role": "K",
+    "text": "Okay. So less useful the pistol. The only use I can make of it is to make noise to let someone know where we are.",
+    "agenda": 2,
+    "agenda_similiarity": 0.2814059788616026
+  },
+  {
+    "startTime": 920.1,
+    "endTime": 920.86,
+    "role": "L",
+    "text": "That's eleven.",
+    "agenda": 2,
+    "agenda_similiarity": 0.2814059788616026
+  },
+  {
+    "startTime": 921.4,
+    "endTime": 921.76,
+    "role": "N",
+    "text": "Eleven.",
+    "agenda": 2,
+    "agenda_similiarity": 0.2814059788616026
+  },
+  {
+    "startTime": 922.7,
+    "endTime": 923.03,
+    "role": "M",
+    "text": "Okay.",
+    "agenda": 2,
+    "agenda_similiarity": 0.2814059788616026
+  },
+  {
+    "startTime": 923.9,
+    "endTime": 925.5,
+    "role": "N",
+    "text": "Er, one can of shortening.",
+    "agenda": 0,
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 925.2,
+    "endTime": 927.05,
+    "role": "K",
+    "text": "That's- we can always take.",
+    "agenda": 0,
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 926.6,
+    "endTime": 927.34,
+    "role": "N",
+    "text": "Ten. Okay.",
+    "agenda": 0,
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 928.2,
+    "endTime": 928.84,
+    "role": "L",
+    "text": "Ten. Okay.",
+    "agenda": 0,
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 928.9,
+    "endTime": 929.23,
+    "role": "N",
+    "text": "Then",
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 930.7,
+    "endTime": 931.42,
+    "role": "L",
+    "text": "Next whisky.",
+    "agenda": "0",
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 932.5,
+    "endTime": 933.52,
+    "role": "N",
+    "text": "Er, hand axe.",
+    "agenda": 2,
+    "agenda_similiarity": 0.11363051352197968
+  },
+  {
+    "startTime": 934.7,
+    "endTime": 935.03,
+    "role": "L",
+    "text": "Nine.",
+    "agenda": 2,
+    "agenda_similiarity": 0.11363051352197968
+  },
+  {
+    "startTime": 935.2,
+    "endTime": 935.58,
+    "role": "N",
+    "text": "Nine.",
+    "agenda": 2,
+    "agenda_similiarity": 0.11363051352197968
+  },
+  {
+    "startTime": 936.7,
+    "endTime": 937.4,
+    "role": "M",
+    "text": "Whisky eight.",
+    "agenda": 0,
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 938.2,
+    "endTime": 938.52,
+    "role": "K",
+    "text": "Okay.",
+    "agenda": 0,
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 938.7,
+    "endTime": 942.54,
+    "role": "M",
+    "text": "So whisky and papers together so we can use together. You can...",
+    "agenda": 0,
+    "agenda_similiarity": 0.19041090551677953
+  },
+  {
+    "startTime": 950.6,
+    "endTime": 952.0,
+    "role": "L",
+    "text": "So I give you...",
+    "agenda": "-",
+    "agenda_similiarity": "-"
+  },
+  {
+    "startTime": 962.3,
+    "endTime": 962.68,
+    "role": "K",
+    "text": "Okay.",
+    "agenda": 0,
+    "agenda_similiarity": 0.19041090551677953
+  },
+  {
+    "startTime": 985.7,
+    "endTime": 989.99,
+    "role": "M",
+    "text": "I think it's the- at least one other person we have to .",
+    "agenda": "-",
+    "agenda_similiarity": 0.07385113645077089
+  },
+  {
+    "startTime": 989.8,
+    "endTime": 993.96,
+    "role": "K",
+    "text": "Yeah but I asked them and they told me I could leave early.",
+    "agenda": "-",
+    "agenda_similiarity": 0.07385113645077089
+  },
+  {
+    "startTime": 991.1,
+    "endTime": 991.43,
+    "role": "M",
+    "text": "Okay.",
+    "agenda": "-",
+    "agenda_similiarity": 0.07385113645077089
+  }
+]
