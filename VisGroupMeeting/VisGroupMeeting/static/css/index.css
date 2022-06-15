@@ -2,8 +2,8 @@ html {
     font-size: 10px;
     height: 99vh;
     width: 100vw;
-    /*overflow-x: hidden;*/
-    /*overflow-y: hidden;*/
+    overflow-x: hidden;
+    overflow-y: hidden;
     /*font-family: "Microsoft YaHei UI";*/
     font-family: "sans-serif";
 }
