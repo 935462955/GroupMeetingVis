@@ -116,10 +116,13 @@ $ flask run
 
 #### 交互流程展示
 
-![Product Name Screen Shot][vis-i]
+
+
+![20220625153551](https://user-images.githubusercontent.com/25620785/177925601-9d4d46ef-4f1e-45c5-8346-a1ba72dc9813.gif)
 
 
 <!-- ROADMAP -->
+
 
 
 
