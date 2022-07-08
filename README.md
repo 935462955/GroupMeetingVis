@@ -22,9 +22,10 @@
 
 <p align="center">
   <a href="#">
-    <img src="gif/logo.png" alt="Logo" width="80" height="80">
+   
   </a>
-  <h3 align="center">Visplatform</h3>
+  <h3 align="center">GroupMeetingVis
+</h3>
 
   <p align="center">
     本项目是一个面向会议视频数据的可视分析系统，通过交互式的可视分析帮助用户快速获取会议主要内容和开展情况。主要分为三个部分：议题进展分析、成员互动分析以及成员表现分析。
@@ -89,7 +90,7 @@
 
 ```
 $ git clone https://github.com/935462955/GroupMeetingVis.git
-$ cd root
+$ cd VisGroupMeeting
 ```
 
 #### 2.创建 & 激活虚拟环境 & 安装依赖包
@@ -106,11 +107,9 @@ $ pipenv shell
 #### 3.运行程序
 
 ```
-$ cd visplatform/visplatform
 $ flask run
 ```
 
-（有两个visplatform目录我们把虚拟环境创建在第一层vispaltform目录，激活以后切换进 visplatform/visplatform 目录对应的子目录再执行 flask run 命令来启动程序。）
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -152,5 +151,5 @@ Project Link: https://github.com/935462955/GroupMeetingVis
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/othneildrew
 [product-screenshot]: images/screenshot.png
-[vis-i]:gif/interaction.gif
+[vis-i]:vis-i.gif
 
